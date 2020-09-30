@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_select_app_cleanup" android:state_selected="true" />
+    <item android:drawable="@drawable/ic_select_app_cleanup" android:state_pressed="true" />
+    <item android:drawable="@drawable/ic_app_cleanup" />
+</selector>

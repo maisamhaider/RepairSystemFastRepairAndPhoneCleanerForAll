@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">repair system: Fast Repair &amp; Phone Cleaner for all</string>
+    <string name="clean">Clean</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+        <string name="app_id">ca-app-pub-8589419510089723~2498820693</string>
+    <string name="banner">ca-app-pub-8589419510089723/5476337829</string>
+    <string name="interstial">ca-app-pub-8589419510089723/8681085668</string>
+
+
+    //test ids
+<!--             <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
+<!--            <string name="interstial">ca-app-pub-3940256099942544/1033173712</string>-->
+
+    <string name="images">Images</string>
+    <string name="videos">Videos</string>
+    <string name="saved">Saved</string>
+    <string name="show_charging_state_and_optimized_charging_process">show charging state and optimized charging process</string>
+    <string name="smart_charge">Smart charge</string>
+    <string name="fast_charge">Fast charge</string>
+    <string name="full_charged_remind">Full Charged Remind</string>
+    <string name="_2_real_time_reminder_to_help_you_avoid_overcharging">2. Real-Time reminder to help you avoid \n\t overcharging.</string>
+    <string name="_1_improve_your_charging_process">1. Improve your charging process.</string>
+    <string name="smart_charge_can_help_you">Smart charge can help you:</string>
+    <string name="enable_now">ENABLE NOW</string>
+    <string name="title_home">Home</string>
+    <string name="title_tool">Tools</string>
+    <string name="title_setting">Setting</string>
+    <string name="title_me">About us</string>
+    <string name="junk_files"><b>Junk</b> Files</string>
+    <string name="cpu_cooler"><b>CPU</b> Cooler</string>
+    <string name="boost_phone"><b>Boost</b> Phone</string>
+    <string name="power_saving"><b>Power</b> Saving</string>
+    <string name="status_saver"><b>Status</b> Saver</string>
+    <string name="app_cleanup"><b>App</b> Cleanup</string>
+    <string name="clean_whatsapp">CLEAN WHATSAPP</string>
+    <string name="analyzing_usage">ANALYZING USAGE</string>
+    <string name="uninstall_apps">Uninstall apps</string>
+
+    <string name="exit_dialog">Exit.</string>
+    <string name="exit_text">Thank you for using our app. Are you sure you want to exit?</string>
+    <string name="rateus">Rate us</string>
+
+    <string name="p_info_about"> In this application you will able to clean Ram, Junk Files, Cache and empty folders that are not usable. This app helps you to uninstall the application present in your phone, this app helps you to save status. This app shows the device info, Battery Info and also the Internet Speed, with the help of deep clean feature you can delete video images and other files. </string>
+    <string name="p_info"> In this application you will able to clean Ram, Junk Files, Cache and empty folders that are not usable. This app helps you to uninstall the application present in your phone, this app helps you to save status. This app shows the device info, Battery Info and also the Internet Speed, with the help of deep clean feature you can delete video images and other files. To perform the above mentioned features we need to get permissions from the user. We neither collect any personal information nor do we host user\'s data.  </string>
+    <string name="P_desc">\t\n1. Storage permission is required to get memory usage status.\n\n2. Network state permission is required to access internet data usage information.\n\n3. Contact permission is required to get phone number for blocking purpose.\n\n4. Phone State permission is required to get information about applications.\n\n5. Access wifi state is required to check wifi on/off state </string>
+    <string name="accepting">By accepting you are agree to our <u><b>Terms and Conditions</b></u> </string>
+    <string name="repair_phone">Repair Phone</string>
+    <string name="analyzing_apps">Analyzing Apps</string>
+    <string name="no">No</string>
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/standard_white"
+    tools:context=".activities.FastChargeAct">
+
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/textView28"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@color/colorPrimaryDark"
+        android:text="Selected apps will not be destroyed during clean up"
+        app:layout_constraintBottom_toTopOf="@+id/fastCharge_rv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/select_tv"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fastCharge_rv"
+        android:layout_below="@+id/textView28"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="select/deselect" />
+    <CheckBox
+        android:id="@+id/selectAll_cb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView28"
+        android:layout_alignParentEnd="true"
+          android:buttonTint="@color/checkbox_selector"
+        android:checked="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fastCharge_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/selectAll_cb1"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

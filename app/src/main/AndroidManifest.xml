@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cleaner.booster.phone.repairer.app">
+
+
+    <uses-permission android:name="android.permission.PRE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> -->
+
+
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+
+    <uses-permission
+        android:name="android.permission.CLEAR_APP_CACHE"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon_main"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/ic_icon_main"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeNoActionBar"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="q">
+
+        <activity android:name=".activities.BaseActivity" />
+
+        <activity android:name=".activities.RepairAct" />
+
+        <activity android:name=".activities.ProcessorDetailAct" />
+
+        <activity android:name=".activities.SensorListAct" />
+
+        <activity android:name=".activities.RootCheckerAct" />
+
+        <activity
+            android:name=".activities.DeviceInfoAct"
+            android:launchMode="singleInstance" />
+
+        <activity android:name=".activities.FeaturesAct" />
+
+        <activity android:name=".activities.BluetoothInfoAct" />
+
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/SplashNoActionBar">
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".activities.JunkFilesAct" />
+
+        <activity
+            android:name=".activities.ChargingLockedScreenAct"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:screenOrientation="sensorPortrait"
+            android:showOnLockScreen="true" />
+
+        <activity android:name=".activities.FastChargeAct" />
+
+        <activity android:name=".activities.FullChargedRemindAct" />
+
+        <activity android:name=".activities.SmartChargingAct" />
+
+        <activity android:name=".activities.DeepCleanAllPackagesAct" />
+
+        <activity android:name=".activities.DeepCleanAllDocsAct" />
+
+        <activity android:name=".activities.DeepCleanAllAudiosAct" />
+
+        <activity android:name=".activities.DeepCleanAllVideosAct" />
+
+        <activity android:name=".activities.DeepCleanAllImagesAct" />
+
+        <activity android:name=".activities.DeepCleanAppDataAct" />
+
+        <activity android:name=".activities.DeepCleanAct" />
+
+        <activity android:name=".activities.UnInstallAppAct" />
+
+        <activity android:name=".activities.BatterySavingAct" />
+
+        <activity android:name=".activities.HarassmentFilterAct" />
+
+        <activity android:name=".activities.OnImageVideoAct" />
+
+        <activity android:name=".activities.WhatsAppStatusAct" />
+
+        <activity android:name=".activities.PhoneBoostAct" />
+
+        <activity android:name=".activities.CpuCooler" />
+
+        <activity android:name=".activities.WhatsAppDocumentsListAct" />
+
+        <activity android:name=".activities.WhatsAppBackUpConversationHistory" />
+
+        <activity android:name=".activities.WhatsAppVideosListAct" />
+
+        <activity android:name=".activities.WhatsAppImagesListAct" />
+
+        <activity android:name=".activities.WhatsAppAudioListAct" />
+
+        <activity android:name=".activities.CleanWhatsAppAct" />
+
+        <activity android:name=".activities.InternetSpeedAct" />
+
+        <activity android:name=".activities.MainActivity" />
+
+        <activity android:name=".activities.HardwareTest" />
+
+        <activity android:name=".activities.DrawingAct" />
+
+
+        <receiver
+            android:name=".receivers.BootUpReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <receiver
+            android:name=".receivers.FastChargingChargerReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.SCREEN_OFF" />
+
+                <action android:name="android.intent.action.SCREEN_ON" />
+
+                <action android:name="android.intent.action.PHONE_STATE" />
+
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <service
+            android:name=".services.SmartChargeService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/app_id" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+
+    </application>
+
+</manifest>
