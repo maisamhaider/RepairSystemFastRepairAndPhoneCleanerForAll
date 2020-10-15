@@ -116,10 +116,12 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="20dp"
                     android:progressDrawable="@drawable/customprogress_two"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/deepCleanMainTotalDataSize_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/deepCleanMainTotalDataSize_tv"
+                    app:layout_constraintVertical_bias="0.0" />
 
 
                 <TextView
@@ -166,21 +168,23 @@
                         app:srcCompat="@drawable/ic_clean_whatsapp" />
 
                     <LinearLayout
-                        android:layout_marginBottom="5dp"
                         android:id="@+id/linearLayout2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/deepCleanWhatsAppNext_iv"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/deepCleanWhatsApp_iv"
                         app:layout_constraintTop_toBottomOf="@+id/deepCleanWhatsApp_iv">
 
                         <TextView
-                            android:textColor="@color/colorTextOne"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Whats app data clean"
+                            android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
                         <TextView
@@ -270,20 +274,22 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:layout_marginTop="5dp"
                         android:id="@+id/linearLayout5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:gravity="center|start"
                         android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/deepCleanImagesNext_iv"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/deepCleanImages_iv"
                         app:layout_constraintTop_toBottomOf="@+id/deepCleanImages_iv">
 
                         <TextView
-                            android:textColor="@color/colorTextOne"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Images"
+                            android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
                         <TextView
@@ -314,6 +320,7 @@
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         android:weightSum="3"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -440,15 +447,17 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/deepCleanVideosNext_iv"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/deepCleanVideos_iv"
                         app:layout_constraintTop_toBottomOf="@+id/deepCleanVideos_iv">
 
                         <TextView
-                            android:textColor="@color/colorTextOne"
                             android:id="@+id/textView38"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Videos"
+                            android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
                         <TextView
@@ -634,6 +643,8 @@
                         android:layout_marginBottom="5dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/deepCleanAudiosNext_iv"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/deepCleanAudios_iv"
                         app:layout_constraintTop_toBottomOf="@+id/deepCleanAudios_iv">
 
@@ -711,11 +722,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/deeCleanAppDataNext_iv"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/deepCleanAppData_iv">
 
@@ -797,6 +810,8 @@
                         android:layout_margin="10dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/deepCleanLargeFilesNext_iv"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/deepCleanLargeFiles_iv">
 
@@ -875,11 +890,14 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="177dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/deepCleanInstallationPkgsNext_iv"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/deepCleanInstallationPkgs_iv">
 

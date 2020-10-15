@@ -22,6 +22,7 @@
         android:layout_weight="3"
         android:background="@android:color/white"
         android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline53">
 
         <LinearLayout
@@ -32,8 +33,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="6dp"
@@ -45,6 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -59,7 +61,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="MANUFACTURER"
+                            android:text="Manufacturer"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -68,15 +70,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="MANUFACTURER"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -89,6 +98,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -103,7 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="MODEL"
+                            android:text="Model"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -112,15 +122,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Model"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -133,6 +150,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -156,15 +174,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Nougat"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -177,6 +202,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -191,7 +217,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="SERIAL"
+                            android:text="Serial"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -200,15 +226,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="SERIAL NO"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -221,6 +254,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -235,7 +269,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="ID :"
+                            android:text="Id"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -244,15 +278,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="123"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -265,6 +306,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -279,7 +321,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="BRAND :"
+                            android:text="Brand"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -288,15 +330,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Brand"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -309,6 +358,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -323,7 +373,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="TYPE"
+                            android:text="Type"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -332,15 +382,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="type"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -353,6 +410,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -367,7 +425,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="USER"
+                            android:text="User"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -376,15 +434,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="user"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -397,6 +462,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -411,7 +477,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="INCREMENTAL"
+                            android:text="Incremental"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -420,15 +486,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="INCREMENTAL"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -441,6 +514,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -455,7 +529,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="SDK"
+                            android:text="Sdk"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -464,15 +538,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="SDK"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -485,11 +566,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
 
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -499,7 +582,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="BOARD"
+                            android:text="Board"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -508,15 +591,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="BOARD"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
@@ -529,6 +619,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -543,7 +634,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="HOST"
+                            android:text="Host"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -552,19 +643,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="HOST"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -573,6 +671,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/white">
@@ -587,7 +686,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="FINGERPRINT :"
+                            android:text="Fingerprint"
                             android:textColor="@color/colorTextOne"
                             android:textStyle="bold" />
 
@@ -596,10 +695,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="FINGERPRINT"
-                            android:textColor="@color/colorTextTwo" />
+                             android:textColor="@color/colorTextTwo" />
                     </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/black_bar_d"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>

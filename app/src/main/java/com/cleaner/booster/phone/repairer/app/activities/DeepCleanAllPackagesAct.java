@@ -1,18 +1,18 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanAdapter;
@@ -80,6 +80,12 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
                     if (!pathList.isEmpty()) {
                         dialog.show();
                     }
+                    else
+                    {
+                        Toast.makeText(DeepCleanAllPackagesAct.this, "No apk selected",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
 
                     no_ll.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -110,13 +116,12 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
             @Override
             public void onClick(View view) {
                 SelectAll selectAll = deepCleanAdapter.getSelectAll();
-                if (b) {
-                    selectAll.selectAll(false);
+                if (!b) {
+                    selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
-
                 }
             }
         });
@@ -127,10 +132,10 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
 
         if (isSelectAll) {
             selectAll_cb1.setChecked(true);
-            b = false;
+            b = true;
         } else {
             selectAll_cb1.setChecked(false);
-            b = true;
+            b = false;
         }
     }
 

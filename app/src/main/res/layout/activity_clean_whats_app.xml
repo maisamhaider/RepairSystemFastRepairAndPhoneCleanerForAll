@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
+    android:rotation="0"
     tools:context=".activities.CleanWhatsAppAct">
 
     <androidx.constraintlayout.widget.Guideline
@@ -21,8 +22,9 @@
         android:layout_height="0dp"
         android:background="@drawable/ic_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline45"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view2"
@@ -44,12 +46,13 @@
         android:id="@+id/imageView17"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/ic_app_cleanup_two"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_title2"
@@ -114,11 +117,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="back up conversation history "
-                        android:textStyle="bold"
                         android:textColor="@color/colorTextOne"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/back_up_conversation_history_dataSize_Tv"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/imageView5"
                         app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                        app:layout_constraintVertical_bias="0.0"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
@@ -127,9 +134,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="150MB"
-                        android:textSize="12sp"
                         android:textColor="@color/colorTextTwo"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView23"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView23"
                         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -138,22 +147,31 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/ic_backup_conversation_history" />
 
                     <ImageView
+                        android:id="@+id/imageView11"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginEnd="24dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                         app:layout_constraintBottom_toBottomOf="@+id/textView23"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView23"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView23"
                         app:srcCompat="@drawable/ic_arrow" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <View
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -190,8 +208,10 @@
                         android:layout_marginEnd="24dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                          app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView17"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView17"
                         app:srcCompat="@drawable/ic_arrow" />
 
@@ -201,11 +221,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Images "
-                        android:textStyle="bold"
                         android:textColor="@color/colorTextOne"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/images_dataSize_Tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/imageView7"
                         app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                        app:layout_constraintVertical_bias="0.0"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
@@ -214,9 +238,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="150MB"
-                        android:textSize="12sp"
                         android:textColor="@color/colorTextTwo"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView17"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView17"
                         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -225,11 +251,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/ic_images" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <View
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -266,7 +297,10 @@
                         android:layout_marginEnd="24dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/audio_dataSize_Tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView19"
                         app:srcCompat="@drawable/ic_arrow" />
 
@@ -274,13 +308,17 @@
                         android:id="@+id/textView19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Audio "
-                        android:textStyle="bold"
                         android:layout_marginTop="10dp"
+                        android:text="Audio "
                         android:textColor="@color/colorTextOne"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/audio_dataSize_Tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/imageView8"
                         app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                        app:layout_constraintVertical_bias="0.0"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
@@ -289,9 +327,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="150MB"
-                        android:textSize="12sp"
                         android:textColor="@color/colorTextTwo"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView19"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView19"
                         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -300,11 +340,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/ic_audio" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <View
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -333,28 +378,32 @@
                     android:id="@+id/video_CL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                     android:background="@drawable/white_stroke_curved_d">
+                    android:background="@drawable/white_stroke_curved_d">
 
                     <ImageView
+                        android:id="@+id/imageView19"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
+                        android:layout_marginEnd="24dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
-                        android:layout_marginEnd="24dp"
                         app:layout_constraintBottom_toBottomOf="@+id/textView24"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView24"
-                         app:srcCompat="@drawable/ic_arrow" />
+                        app:srcCompat="@drawable/ic_arrow" />
 
                     <TextView
                         android:id="@+id/textView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Videos"
-                        android:textStyle="bold"
                         android:layout_marginTop="10dp"
+                        android:text="Videos"
                         android:textColor="@color/colorTextOne"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/Videos_dataSize_Tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/imageView10"
                         app:layout_constraintTop_toBottomOf="@+id/imageView10"
                         app:layout_constraintVertical_chainStyle="packed" />
@@ -365,22 +414,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="150MB"
-                        android:textSize="12sp"
                         android:textColor="@color/colorTextTwo"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView24"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView24"
                         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
                     <ImageView
-                        android:layout_margin="8dp"
                         android:id="@+id/imageView10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                         app:layout_constraintStart_toStartOf="parent"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/ic_video" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <View
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -428,9 +484,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="Received file "
-                        android:textStyle="bold"
                         android:textColor="@color/colorTextOne"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/received_file_dataSize_Tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/imageView15"
                         app:layout_constraintTop_toBottomOf="@+id/imageView15"
                         app:layout_constraintVertical_chainStyle="packed" />
@@ -441,9 +500,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="150MB"
-                        android:textSize="12sp"
                         android:textColor="@color/colorTextTwo"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView25"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView25"
                         app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
@@ -452,11 +513,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/ic_received_file" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <View
                     android:layout_width="8dp"
                     android:layout_height="30dp"
@@ -476,9 +542,11 @@
         android:text="700"
         android:textColor="@color/colorTextOne"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView17"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:layout_width="0dp"
@@ -497,8 +565,7 @@
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/tv_total_size" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cleanWhatsApp_adView"
         android:layout_width="match_parent"
         android:layout_height="50dp"

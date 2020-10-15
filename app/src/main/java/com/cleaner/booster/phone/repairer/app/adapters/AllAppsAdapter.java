@@ -1,19 +1,15 @@
 package com.cleaner.booster.phone.repairer.app.adapters;
 
 import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,17 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.activities.MainActivity;
 import com.cleaner.booster.phone.repairer.app.activities.UnInstallAppAct;
+import com.cleaner.booster.phone.repairer.app.interfaces.TrueFalse;
 import com.cleaner.booster.phone.repairer.app.utils.AppUtility;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
-
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import bot.box.appusage.handler.Monitor;
 import bot.box.appusage.utils.UsageUtils;
 
 public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsHolder> implements Filterable {
@@ -44,14 +38,16 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
     private Context context;
     private AppUtility appUtility;
     private Utils utils;
+    TrueFalse trueFalse;
 
     @SuppressLint("NewApi")
-    public AllAppsAdapter(Context context) {
+    public AllAppsAdapter(Context context,TrueFalse trueFalse) {
 
         this.context = context;
         appUtility = new AppUtility(context);
         apps = new ArrayList<>();
         fullList = new ArrayList<>();
+        this.trueFalse = trueFalse;
 
     }
 
@@ -85,25 +81,11 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
         Glide.with(context).load(UsageUtils.parsePackageIcon(apps.get(position), R.mipmap.ic_launcher))
                 .transition(new DrawableTransitionOptions().crossFade()).into(holder.appImage_Iv);
 
-        if (Monitor.hasUsagePermission())
 
-
-            holder.allAppsMain_Rl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    PackageManager pm = context.getPackageManager();
-                    Intent intent = pm.getLaunchIntentForPackage(appPackage);
-                    if (intent != null) {
-                        context.startActivity(intent);
-                    }
-                }
-            });
-
-        holder.deleteAppImage_Iv.setOnClickListener(new View.OnClickListener() {
+        holder.allAppsMain_cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String packageName = apps.get(position);
-
 
                 if (appUtility.isSystemApp(packageName)) {
                     Toast.makeText(context, "Can not Uninstall system's application", Toast.LENGTH_SHORT).show();
@@ -138,13 +120,15 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
     class AllAppsHolder extends RecyclerView.ViewHolder {
         TextView appName_Tv;
         ImageView appImage_Iv, deleteAppImage_Iv;
-        ConstraintLayout allAppsMain_Rl;
+        ConstraintLayout allAppsMain_cl;
+        View itemView;
 
         public AllAppsHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
             appName_Tv = itemView.findViewById(R.id.allAppName_Tv);
             appImage_Iv = itemView.findViewById(R.id.allAppImage_Iv);
-            allAppsMain_Rl = itemView.findViewById(R.id.allAppsMain_Rl);
+            allAppsMain_cl = itemView.findViewById(R.id.allAppsMain_cl);
             deleteAppImage_Iv = itemView.findViewById(R.id.allAppSelected_deselect_Iv);
 
         }
@@ -179,6 +163,14 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             apps.clear();
             apps.addAll((Collection<? extends String>) filterResults.values);
+            if (apps.size() == 0)
+            {
+                trueFalse.isTrue(false);
+            }
+            else
+            {
+                trueFalse.isTrue(true);
+            }
             notifyDataSetChanged();
         }
     };

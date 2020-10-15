@@ -2,23 +2,20 @@ package com.cleaner.booster.phone.repairer.app.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.database.Db;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
-import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.AppUtility;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
@@ -80,7 +77,7 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
                 .transition(new DrawableTransitionOptions().crossFade()).into(holder.batterySavingAppImage_Iv);
 
 
-        holder.batterySavingApp_iv.setOnClickListener(new View.OnClickListener() {
+        holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String packageName = apps.get(position);
@@ -141,9 +138,10 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
     class AllAppsHolder extends RecyclerView.ViewHolder {
         TextView batterySavingAppName_Tv;
         ImageView batterySavingAppImage_Iv, batterySavingApp_iv;
-
+        ConstraintLayout constraintLayout;
         public AllAppsHolder(@NonNull View itemView) {
             super(itemView);
+            constraintLayout = itemView.findViewById(R.id.constraintLayout);
             batterySavingAppName_Tv = itemView.findViewById(R.id.batterySavingAppName_Tv);
             batterySavingAppImage_Iv = itemView.findViewById(R.id.batterySavingAppImage_Iv);
             batterySavingApp_iv = itemView.findViewById(R.id.batterySavingApp_iv);

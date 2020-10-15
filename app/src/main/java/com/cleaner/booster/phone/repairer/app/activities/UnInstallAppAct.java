@@ -1,13 +1,6 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.animation.ValueAnimator;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,29 +8,28 @@ import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import androidx.appcompat.widget.SearchView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.AllAppsAdapter;
 import com.cleaner.booster.phone.repairer.app.async.AllAppsTask;
+import com.cleaner.booster.phone.repairer.app.interfaces.TrueFalse;
 
 
-public class UnInstallAppAct extends AppCompatActivity {
+public class UnInstallAppAct extends AppCompatActivity implements TrueFalse {
 
     private ImageView uninstall_iv;
-    private TextView totalNumber_tv, msg_tv;
+    private TextView totalNumber_tv, msg_tv,no_data_tv;
     private AllAppsAdapter allAppsAdapter;
     private RecyclerView allAppsUnInstallApp_rv;
     EditText appsSearch_et;
@@ -57,6 +49,7 @@ public class UnInstallAppAct extends AppCompatActivity {
         appsSearch_et = findViewById(R.id.appsSearch_et);
         searchApps_iv = findViewById(R.id.searchApps_iv);
         cancel_iv = findViewById(R.id.cancel_iv);
+        no_data_tv = findViewById(R.id.no_data_tv);
         SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -65,7 +58,7 @@ public class UnInstallAppAct extends AppCompatActivity {
         appsSearch_et.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         appsSearch_et.setSingleLine();
 
-        allAppsAdapter = new AllAppsAdapter(this);
+        allAppsAdapter = new AllAppsAdapter(this,this::isTrue);
 
         loadData();
 
@@ -99,13 +92,14 @@ public class UnInstallAppAct extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 allAppsAdapter.getFilter().filter(editable);
+
             }
         });
         cancel_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 searchApps_iv.setVisibility(View.VISIBLE);
+                appsSearch_et.setText("");
                 appsSearch_et.setVisibility(View.GONE);
                 cancel_iv.setVisibility(View.GONE);
                 loadData();
@@ -150,4 +144,15 @@ public class UnInstallAppAct extends AppCompatActivity {
     }
 
 
+    @Override
+    public void isTrue(boolean isTrue) {
+        if (isTrue)
+        {
+            no_data_tv.setVisibility(View.GONE);
+        }
+        else
+        {
+            no_data_tv.setVisibility(View.VISIBLE);
+        }
+    }
 }

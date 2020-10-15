@@ -47,8 +47,12 @@
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/pgb_storage"
+                app:layout_constraintEnd_toStartOf="@+id/guideline23"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView12"
-                app:layout_constraintTop_toTopOf="@+id/imageView12" />
+                app:layout_constraintTop_toTopOf="@+id/imageView12"
+                app:layout_constraintVertical_bias="0.0" />
 
 
             <androidx.constraintlayout.widget.Guideline
@@ -56,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_begin="57dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline23"
@@ -108,10 +112,12 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/pgb_storage"
                 app:layout_constraintHorizontal_bias="0.515"
                 app:layout_constraintStart_toStartOf="@+id/pgb_storage"
-                app:layout_constraintTop_toBottomOf="@+id/pgb_storage" />
+                app:layout_constraintTop_toBottomOf="@+id/pgb_storage"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -152,11 +158,16 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:text="CPU Temperature"
+                android:maxEms="10"
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_num"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView13"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_num"
@@ -178,8 +189,12 @@
                 android:textColor="@color/standard_white"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_num"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/tv_num"
-                app:layout_constraintTop_toTopOf="@+id/guideline27" />
+                app:layout_constraintTop_toTopOf="@+id/guideline27"
+                app:layout_constraintVertical_bias="0.13" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -224,8 +239,12 @@
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/pgb_ram"
+                app:layout_constraintEnd_toStartOf="@+id/guideline29"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView14"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_ram_info"
@@ -236,9 +255,11 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/pgb_ram"
                 app:layout_constraintStart_toStartOf="@+id/pgb_ram"
-                app:layout_constraintTop_toBottomOf="@+id/pgb_ram" />
+                app:layout_constraintTop_toBottomOf="@+id/pgb_ram"
+                app:layout_constraintVertical_bias="0.0" />
 
             <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
                 android:id="@+id/pgb_ram"

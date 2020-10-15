@@ -41,10 +41,10 @@
                 app:layout_constraintGuide_percent="0.15" />
 
             <View
-                android:layout_margin="8dp"
                 android:id="@+id/view7"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_margin="8dp"
                 android:background="@drawable/orange_one_d"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
@@ -57,9 +57,11 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view7"
                 app:layout_constraintEnd_toEndOf="@+id/view7"
                 app:layout_constraintStart_toStartOf="@+id/view7"
                 app:layout_constraintTop_toTopOf="@+id/view7"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_repair__phone_white" />
 
 
@@ -70,8 +72,12 @@
                 android:text="Repair phone"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline18"
                 app:layout_constraintTop_toTopOf="@+id/view7"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -83,6 +89,7 @@
                 android:text="Make your android phone fast"
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/repair_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/repair_tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -142,9 +149,11 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view8"
                 app:layout_constraintEnd_toEndOf="@+id/view8"
                 app:layout_constraintStart_toStartOf="@+id/view8"
                 app:layout_constraintTop_toTopOf="@+id/view8"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_smart_charge_white" />
 
 
@@ -155,8 +164,12 @@
                 android:text="Smart Charge"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
                 app:layout_constraintTop_toTopOf="@+id/view8"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -168,7 +181,8 @@
                 android:text="Remind you charging state to avoid overcharging"
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
-                 app:layout_constraintStart_toStartOf="@+id/smartCharge_tv1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/smartCharge_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/smartCharge_tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,9 +242,11 @@
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
                 android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="@+id/view9"
                 app:layout_constraintEnd_toEndOf="@+id/view9"
                 app:layout_constraintStart_toStartOf="@+id/view9"
                 app:layout_constraintTop_toTopOf="@+id/view9"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_clean_whatsapp_white" />
 
 
@@ -241,8 +257,12 @@
                 android:text="Clean WhatsApp"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline20"
                 app:layout_constraintTop_toTopOf="@+id/view9"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -254,6 +274,7 @@
                 android:text="Delete useless file in WhatsApp"
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/cleanWhatsApp_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/cleanWhatsApp_tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -313,9 +334,11 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view10"
                 app:layout_constraintEnd_toEndOf="@+id/view10"
                 app:layout_constraintStart_toStartOf="@+id/view10"
                 app:layout_constraintTop_toTopOf="@+id/view10"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_smart_cleanup_white" />
 
 
@@ -326,8 +349,12 @@
                 android:text="Deep Clean"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline21"
                 app:layout_constraintTop_toTopOf="@+id/view10"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -339,6 +366,7 @@
                 android:text="Clean up files deeply to release more space"
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/visitToAppStore_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/visitToAppStore_tv1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -398,9 +426,11 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view11"
                 app:layout_constraintEnd_toEndOf="@+id/view11"
                 app:layout_constraintStart_toStartOf="@+id/view11"
                 app:layout_constraintTop_toTopOf="@+id/view11"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_internet_speed_white" />
 
 
@@ -411,8 +441,12 @@
                 android:text="Internet Speed"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline22"
                 app:layout_constraintTop_toTopOf="@+id/view11"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -424,6 +458,7 @@
                 android:text="You can test your internet speed "
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_s_internet"
                 app:layout_constraintTop_toBottomOf="@+id/tv_s_internet" />
         </androidx.constraintlayout.widget.ConstraintLayout>

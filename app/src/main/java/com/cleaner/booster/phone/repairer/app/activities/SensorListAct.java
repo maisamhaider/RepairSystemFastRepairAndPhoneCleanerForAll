@@ -1,20 +1,18 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cleaner.booster.phone.repairer.app.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SensorListAct extends AppCompatActivity {
@@ -49,6 +47,11 @@ public class SensorListAct extends AppCompatActivity {
 //            sSensList = " " + sSensList + tmp.getName() + "\n"; // Add the sensor name to the string of sensors available
 //            viewArrayList = new ArrayList<>(mSensorList.size());
                 View view = LayoutInflater.from(this).inflate(R.layout.sensor_item, null);
+            LinearLayout.LayoutParams params = new
+                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,10,0,10);
+            view.setLayoutParams(params);
                 TextView tvTitle = view.findViewById(R.id.tv_title);
                 tvTitle.setText(tmp.getName());
                 llSensor.addView(view);

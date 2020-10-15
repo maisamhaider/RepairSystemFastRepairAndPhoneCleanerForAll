@@ -4,8 +4,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.CommonAdapter;
@@ -47,12 +45,11 @@ public class WhatsAppImagesListAct extends WhatsAppBaseActivity implements Selec
             public void onClick(View view) {
                 SelectAll selectAll = commonAdapter.getSelectAll();
                 if (!b) {
-                    selectAll.selectAll(false);
+                    selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
-
                 }
             }
         });
@@ -60,15 +57,12 @@ public class WhatsAppImagesListAct extends WhatsAppBaseActivity implements Selec
     @Override
     public void selectAll(boolean isSelectAll) {
 
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
-            b = false;
-        }
-        else {
-            selectAll_cb1.setChecked(false);
             b = true;
-
+        } else {
+            selectAll_cb1.setChecked(false);
+            b = false;
         }
     }
 

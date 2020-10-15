@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="16dp"
+        android:gravity="center"
         android:text="Speaker Test"
         android:textColor="@color/colorTextOne"
         android:textStyle="bold"

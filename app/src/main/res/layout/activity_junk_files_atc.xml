@@ -81,7 +81,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/junkFileCache_cl"
+                    android:id="@+id/residualJunk_cl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                      android:background="@drawable/white_curved_ripple"
@@ -240,7 +240,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/junkFileCache_cl">
+                    app:layout_constraintTop_toBottomOf="@+id/residualJunk_cl">
 
                     <ImageView
                         android:id="@+id/installationPackages_iv"
@@ -304,6 +304,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
+                    android:id="@+id/junkFileEmptyFolderClear_cl"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/installationPackages_cl">
 
@@ -359,7 +360,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-             android:background="@drawable/black_ripple_flat_d"
+             android:background="@drawable/black_bg_white_ripple_flat_d"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent">

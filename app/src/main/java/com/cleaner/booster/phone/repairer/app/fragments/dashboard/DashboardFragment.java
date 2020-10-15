@@ -4,33 +4,25 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.activities.BaseActivity;
 import com.cleaner.booster.phone.repairer.app.activities.BatterySavingAct;
 import com.cleaner.booster.phone.repairer.app.activities.CleanWhatsAppAct;
 import com.cleaner.booster.phone.repairer.app.activities.CpuCooler;
 import com.cleaner.booster.phone.repairer.app.activities.DeepCleanAct;
 import com.cleaner.booster.phone.repairer.app.activities.InternetSpeedAct;
 import com.cleaner.booster.phone.repairer.app.activities.JunkFilesAct;
-import com.cleaner.booster.phone.repairer.app.activities.MainActivity;
 import com.cleaner.booster.phone.repairer.app.activities.PhoneBoostAct;
 import com.cleaner.booster.phone.repairer.app.activities.RepairAct;
 import com.cleaner.booster.phone.repairer.app.activities.SmartChargingAct;
@@ -131,7 +123,6 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         repair_cl.setOnClickListener(this);
 
         ramAndStorageFun();
-
 
     }
 

@@ -1,7 +1,5 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -10,7 +8,8 @@ import android.content.pm.FeatureInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cleaner.booster.phone.repairer.app.R;
 
@@ -30,12 +29,12 @@ public class FeaturesAct extends AppCompatActivity {
         wifiDirect_tv2 = findViewById(R.id.wifiDirect_tv2);
         bluetooth_tv2 = findViewById(R.id.bluetooth_tv2);
         bluetoothLE_tv2 = findViewById(R.id.bluetoothLE_tv2);
-         cameraFlash_tv2 = findViewById(R.id.cameraFlash_tv2);
+        cameraFlash_tv2 = findViewById(R.id.cameraFlash_tv2);
         cameraFront_tv = findViewById(R.id.cameraFront_tv);
         microphone_tv2 = findViewById(R.id.microphone_tv2);
         nFC_tv2 = findViewById(R.id.nFC_tv2);
         multitouch_tv2 = findViewById(R.id.multitouch_tv2);
-         consumerIR_tv2 = findViewById(R.id.consumerIR_tv2);
+        consumerIR_tv2 = findViewById(R.id.consumerIR_tv2);
         printing_tv2 = findViewById(R.id.printing_tv2);
         gSM_tv2 = findViewById(R.id.gSM_tv2);
         fingerprint_tv2 = findViewById(R.id.fingerprint_tv2);
@@ -45,7 +44,6 @@ public class FeaturesAct extends AppCompatActivity {
 
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(this, "Not Available", Toast.LENGTH_SHORT).show();
 
         }
         isWifiDirectSupported(this);
@@ -59,10 +57,10 @@ public class FeaturesAct extends AppCompatActivity {
         PackageManager pm = ctx.getPackageManager();
         FeatureInfo[] features = pm.getSystemAvailableFeatures();
 
-        ArrayList<String> fArrayList  = new ArrayList<>();
+        ArrayList<String> fArrayList = new ArrayList<>();
 
         for (FeatureInfo info : features) {
-            fArrayList.add(info.name );
+            fArrayList.add(info.name);
         }
 
         if (fArrayList.contains("android.hardware.wifi.direct")) {

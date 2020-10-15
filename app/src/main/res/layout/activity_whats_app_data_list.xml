@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/black_ripple_flat_d"
+        android:background="@drawable/black_bg_white_ripple_flat_d"
         android:text="@string/clean"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

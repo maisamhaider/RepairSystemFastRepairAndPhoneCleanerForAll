@@ -50,7 +50,7 @@ public class WhatsAppVideosListAct extends WhatsAppBaseActivity implements Selec
                     selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
 
                 }
@@ -60,13 +60,12 @@ public class WhatsAppVideosListAct extends WhatsAppBaseActivity implements Selec
 
     @Override
     public void selectAll(boolean isSelectAll) {
-
         if (isSelectAll) {
             selectAll_cb1.setChecked(true);
-            b = false;
+             b = true;
         } else {
             selectAll_cb1.setChecked(false);
-            b = true;
+             b = false;
         }
     }
 }

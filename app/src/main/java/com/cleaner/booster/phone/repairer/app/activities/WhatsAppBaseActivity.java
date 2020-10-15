@@ -19,7 +19,6 @@ import com.cleaner.booster.phone.repairer.app.adapters.CommonAdapter;
 import com.cleaner.booster.phone.repairer.app.async.WhatsAppCommonTask;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class WhatsAppBaseActivity extends AppCompatActivity {
@@ -71,7 +70,6 @@ public abstract class WhatsAppBaseActivity extends AppCompatActivity {
     public void cleanData() {
         File file;
         List<String> imagePathList = commonAdapter.getList();
-
 
             for (int i = 0; i < imagePathList.size(); i++) {
                 try {

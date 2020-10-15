@@ -214,7 +214,7 @@
                 android:id="@+id/startButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/black_ripple_flat_d"
+                android:background="@drawable/black_bg_white_ripple_flat_d"
                 android:gravity="center"
                 android:text="Begin"
                 android:textColor="@color/standard_white"

@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -48,7 +49,6 @@ public class CpuCooler extends AppCompatActivity {
         utils = new Utils(this);
         preferences = getSharedPreferences("myPref", Context.MODE_PRIVATE);
 
-
         cpuCoolerSecond_cl = findViewById(R.id.cpuCoolerSecond_cl);
         cpuCoolerApps_rv = findViewById(R.id.cpuCoolerApps_rv);
         cpuCoolBtn_ll = findViewById(R.id.cpuCoolBtn_ll);
@@ -73,7 +73,6 @@ public class CpuCooler extends AppCompatActivity {
 
         //analyzing apps
 
-
         Calendar current = Calendar.getInstance();
         if (preferences.getLong("lastCpuCooledTime", current.getTimeInMillis()) > current.getTimeInMillis()) {
             cpuCoolerSecond_cl.setVisibility(View.GONE);
@@ -88,14 +87,9 @@ public class CpuCooler extends AppCompatActivity {
             cpuTemp_tv.setText(temp2);
         }
 
-
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+      new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
-            public void run() {
-                cpuCoolingFirstScreenMain_cl.setVisibility(View.GONE);
-            }
+            public void run() {cpuCoolingFirstScreenMain_cl.setVisibility(View.GONE); }
         }, 4000);
 
 

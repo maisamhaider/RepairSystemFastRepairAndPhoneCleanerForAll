@@ -1,19 +1,18 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanVideosAdapter;
@@ -25,7 +24,7 @@ import com.cleaner.booster.phone.repairer.app.utils.Utils;
 import java.io.File;
 import java.util.List;
 
-public class DeepCleanAllVideosAct extends AppCompatActivity implements  SelectAll{
+public class DeepCleanAllVideosAct extends AppCompatActivity implements SelectAll {
 
     DeepCleanVideosAdapter deepCleanVideosAdapter;
     DeepCleanVideosTask deepCleanImagesTask;
@@ -35,8 +34,9 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements  SelectA
     File file;
     boolean isSend;
     public CheckBox selectAll_cb1;
-    public TextView noData_tv,select_tv;
+    public TextView noData_tv, select_tv;
     boolean b = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,32 +52,36 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements  SelectA
         select_tv = findViewById(R.id.select_tv);
 
         loadData();
-        isSend= getIntent().getBooleanExtra("isSend",false);
-        if (isSend)
-        {
+        isSend = getIntent().getBooleanExtra("isSend", false);
+        if (isSend) {
             deepCleanVideosCleanBtn_tv.setText("MOVE");
         }
         deepCleanVideosClean_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<String> pathList = deepCleanVideosAdapter.getList();
-                if (isSend)
-                {
-                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(),pathList,"Videos");
+                if (isSend) {
+                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext()
+                            , pathList, "Videos");
                     fileMoverTask.execute();
 
-                }else {
-                    View view = getLayoutInflater().inflate(R.layout.are_you_sure_to_delete_dialog_layout, null, false);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DeepCleanAllVideosAct.this);
+                } else {
+                    View view = getLayoutInflater()
+                            .inflate(R.layout.are_you_sure_to_delete_dialog_layout,
+                                    null, false);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(
+                            DeepCleanAllVideosAct.this);
                     LinearLayout no_ll = view.findViewById(R.id.no_ll);
                     LinearLayout yes_ll = view.findViewById(R.id.yes_ll);
 
                     builder.setView(view).setCancelable(true);
                     AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    if (!pathList.isEmpty())
-                    {
+                    if (!pathList.isEmpty()) {
                         dialog.show();
+                    } else {
+                        Toast.makeText(DeepCleanAllVideosAct.this, "No video selected",
+                                Toast.LENGTH_SHORT).show();
                     }
 
                     no_ll.setOnClickListener(new View.OnClickListener() {
@@ -108,33 +112,32 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements  SelectA
             @Override
             public void onClick(View view) {
                 SelectAll selectAll = deepCleanVideosAdapter.getSelectAll();
-                if (b) {
-                    selectAll.selectAll(false);
+                if (!b) {
+                    selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
 
                 }
             }
         });
     }
+
     @Override
     public void selectAll(boolean isSelectAll) {
 
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
+            b = true;
+        } else {
+            selectAll_cb1.setChecked(false);
             b = false;
         }
-        else {
-            selectAll_cb1.setChecked(false);
-            b = true;
-        }
     }
-    public void loadData()
-    {
-        deepCleanVideosAdapter = new DeepCleanVideosAdapter(this,this);
+
+    public void loadData() {
+        deepCleanVideosAdapter = new DeepCleanVideosAdapter(this, this);
         deepCleanImagesTask = new DeepCleanVideosTask(this, deepCleanVideosAdapter, deepCleanAllVideos_rv);
         deepCleanImagesTask.execute();
     }

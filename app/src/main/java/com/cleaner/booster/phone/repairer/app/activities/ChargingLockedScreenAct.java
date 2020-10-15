@@ -33,12 +33,9 @@ import com.cleaner.booster.phone.repairer.app.utils.LoadingDialog;
 import com.cleaner.booster.phone.repairer.app.utils.StorageUtils;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-
-import static com.cleaner.booster.phone.repairer.app.R.raw.notification_sound;
 
 public class ChargingLockedScreenAct extends AppCompatActivity implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener {
 
@@ -151,8 +148,6 @@ public class ChargingLockedScreenAct extends AppCompatActivity implements MediaP
                 }
             }
         }
-
-
     }
 
     public void cleanJunk() {

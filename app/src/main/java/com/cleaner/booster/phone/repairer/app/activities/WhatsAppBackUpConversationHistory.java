@@ -4,11 +4,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
-
-import androidx.constraintlayout.widget.Group;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.CommonAdapter;
@@ -57,10 +52,10 @@ public class WhatsAppBackUpConversationHistory extends WhatsAppBaseActivity impl
             public void onClick(View view) {
                 SelectAll selectAll = commonAdapter.getSelectAll();
                 if (!b) {
-                    selectAll.selectAll(false);
+                    selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
 
                 }
@@ -73,12 +68,12 @@ public class WhatsAppBackUpConversationHistory extends WhatsAppBaseActivity impl
         if (isSelectAll)
         {
             selectAll_cb1.setChecked(true);
-            b = false;
+            b = true;
 
         }
         else {
             selectAll_cb1.setChecked(false);
-            b = true;
+            b = false;
 
         }
     }

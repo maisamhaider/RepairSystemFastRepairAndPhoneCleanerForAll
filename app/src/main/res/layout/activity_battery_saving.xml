@@ -70,10 +70,12 @@
             android:text="30"
             android:textColor="@color/colorTextOne"
             android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline36" />
+            app:layout_constraintTop_toTopOf="@+id/guideline36"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,12 +103,14 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4">
 
         <TextView
-            android:layout_marginStart="16dp"
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="select/deselect"
             app:layout_constraintBottom_toTopOf="@+id/powerSavingApp_rv"
+            app:layout_constraintEnd_toStartOf="@+id/selectAll_cb"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -124,7 +128,7 @@
             android:id="@+id/powerSavingApp_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,11 +153,12 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-             android:background="@drawable/black_ripple_flat_d"
+            android:background="@drawable/black_bg_white_ripple_flat_d"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="16dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:layout_width="match_parent"
@@ -196,10 +201,12 @@
             android:gravity="center"
             android:text="No battery draining apps"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/noDrainingApp_iv" />
+            app:layout_constraintTop_toBottomOf="@+id/noDrainingApp_iv"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -225,10 +232,13 @@
 
 
     <include
-         layout="@layout/battery_savers_first_screen_layout" />
+        android:visibility="gone"
+
+        layout="@layout/battery_savers_first_screen_layout" />
 
     <include
-         layout="@layout/battery_savers_after_cleanclick_screen_layout" />
+        android:visibility="gone"
+        layout="@layout/battery_savers_after_cleanclick_screen_layout" />
 
     <include
         android:visibility="gone"

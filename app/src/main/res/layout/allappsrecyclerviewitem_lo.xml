@@ -14,7 +14,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:id="@+id/allAppsMain_Rl"
+        android:id="@+id/allAppsMain_cl"
+        android:background="@drawable/white_curved_ripple"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -26,18 +27,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:textStyle="bold"
-            android:textColor="@color/colorTextOne"
-            android:layout_marginBottom="15dp"
             android:id="@+id/allAppName_Tv"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:maxWidth="150dp"
+            android:layout_marginBottom="15dp"
+             android:maxWidth="150dp"
+            android:maxLength="20"
             android:maxLines="1"
             android:text="names"
+            android:textColor="@color/colorTextOne"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/allAppSelected_deselect_Iv"
             app:layout_constraintStart_toStartOf="@+id/allAppImage_Iv"
             app:layout_constraintTop_toBottomOf="@+id/allAppImage_Iv" />
 

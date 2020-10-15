@@ -1,14 +1,9 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -19,19 +14,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.fragments.dashboard.DashboardFragment;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.StorageUtils;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 
 import pl.droidsonroids.gif.GifImageView;
-
-import static java.lang.Compiler.disable;
 
 public class JunkFilesAct extends AppCompatActivity {
     private TextView trashCleanLast_tv;
@@ -62,6 +56,12 @@ public class JunkFilesAct extends AppCompatActivity {
 
         LinearLayout junkFileCleanBtn_ll = findViewById(R.id.junkFileCleanBtn_ll);
 
+        ConstraintLayout cacheJunkClear_cl = findViewById(R.id.cacheJunkClear_cl);
+        ConstraintLayout residualJunk_cl = findViewById(R.id.residualJunk_cl);
+        ConstraintLayout installationPackages_cl = findViewById(R.id.installationPackages_cl);
+        ConstraintLayout junkFileEmptyFolderClear_cl = findViewById(R.id.junkFileEmptyFolderClear_cl);
+
+
         ImageView cacheJunkClear_iv = findViewById(R.id.cacheJunkClear_iv);
         ImageView residualJunk_iv = findViewById(R.id.residualJunk_iv);
         ImageView installationPackages_iv = findViewById(R.id.installationPackages_iv);
@@ -76,78 +76,63 @@ public class JunkFilesAct extends AppCompatActivity {
         cacheJunkBin_cl.setVisibility(View.GONE);
         junkCollecting_giv.setVisibility(View.GONE);
 
-
-
-
             junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
             cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
             installationPackages_iv.setImageResource(R.drawable.ic_deselect);
             residualJunk_iv.setImageResource(R.drawable.ic_deselect);
 
-
         //junk File Empty Folder
-        junkFileEmptyFolderClear_iv.setOnClickListener(v -> {
+        junkFileEmptyFolderClear_cl.setOnClickListener(v -> {
             if (isEFolderClean) {
                 junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
                 isEFolderClean = false;
              } else {
                 junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_select);
-                isEFolderClean = true;
-            }
-        });
+                isEFolderClean = true; }});
 
         //cache junks
-        cacheJunkClear_iv.setOnClickListener(v -> {
+        cacheJunkClear_cl.setOnClickListener(v -> {
             if (isCacheJunkClean) {
                 cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
                 isCacheJunkClean = false;
             } else {
                 cacheJunkClear_iv.setImageResource(R.drawable.ic_select);
-                isCacheJunkClean = true;
-            }
-        });
+                isCacheJunkClean = true;}});
 
-        installationPackages_iv.setOnClickListener(v -> {
+        installationPackages_cl.setOnClickListener(v -> {
             if (isInstallationPkgClean) {
                 installationPackages_iv.setImageResource(R.drawable.ic_deselect);
                 isInstallationPkgClean= false;
             } else {
                 installationPackages_iv.setImageResource(R.drawable.ic_select);
-                isInstallationPkgClean= true;
-            }
-        });
+                isInstallationPkgClean= true; }});
 
 
-        residualJunk_iv.setOnClickListener(v -> {
-            if (isInstallationPkgClean) {
+        residualJunk_cl.setOnClickListener(v -> {
+            if (isResidualJunkClean) {
                 residualJunk_iv.setImageResource(R.drawable.ic_deselect);
-                isInstallationPkgClean = false;
+                isResidualJunkClean = false;
              } else {
                 residualJunk_iv.setImageResource(R.drawable.ic_select);
-                isInstallationPkgClean = true;
-            }
-        });
-
+                isResidualJunkClean = true;}});
 
         dirPath = String.valueOf(Environment.getExternalStorageDirectory());
         utils = new Utils(this);
 
 
-
-
-
         junkFileCleanBtn_ll.setOnClickListener(v -> {
             if (isEFolderClean || isCacheJunkClean || isInstallationPkgClean || isResidualJunkClean) {
                 new CacheClean().execute();
-            }
+                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
+                residualJunk_iv.setImageResource(R.drawable.ic_deselect);
+                installationPackages_iv.setImageResource(R.drawable.ic_deselect);
+                cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
+                isEFolderClean = false;
+                isCacheJunkClean = false;
+                isInstallationPkgClean= false;
+                isResidualJunkClean = false;}
             else
-            {
-                Toast.makeText(this, "Please select item first", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-
+            {Toast.makeText(this, "Please select item first", Toast.LENGTH_SHORT).show();}});
     }
 
     @Override

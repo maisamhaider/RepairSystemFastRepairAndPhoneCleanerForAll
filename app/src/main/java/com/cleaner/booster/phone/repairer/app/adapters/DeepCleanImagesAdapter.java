@@ -48,7 +48,8 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
     @NonNull
     @Override
     public WhatsAppStatusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.deep_clean_images_rv_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.deep_clean_images_rv_layout, parent, false);
         holder = new WhatsAppStatusHolder(view);
         return holder;
     }
@@ -80,6 +81,8 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
                     list.add(imageString);
                     if (list.size() == fileList.size()) {
                         selectAll.selectAll(true);
+                    } else {
+                        selectAll.selectAll(false);
                     }
                     holder.selectImage_iv.setImageResource(R.drawable.ic_select);
                 }

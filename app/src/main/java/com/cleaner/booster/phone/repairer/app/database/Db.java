@@ -3,13 +3,11 @@ package com.cleaner.booster.phone.repairer.app.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
-import java.util.List;
 
 public class Db extends SQLiteOpenHelper {
 
@@ -48,11 +46,15 @@ public class Db extends SQLiteOpenHelper {
 
     public boolean deletePkgPath(String pkgPath) {
         SQLiteDatabase db = getWritableDatabase();
-
         String[] args = new String[]{pkgPath};
         long isDeleted = db.delete(tableName, Db.pkgPath + "=?", args);
 
         return isDeleted != -1;
+    }
+
+    public void deletePkgAll() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("delete from " + tableName);
     }
 
     public Cursor getAllPkg() {
@@ -61,9 +63,32 @@ public class Db extends SQLiteOpenHelper {
 
     }
 
-    public Cursor getPkg(String pkgPath) {
+    public boolean isPkgAvail(String pkgPath) {
         SQLiteDatabase database = getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM "+tableName,null,null);
+        if (cursor.getCount() != 0) {
+
+            while (cursor.moveToNext()) {
+                String s = cursor.getString(1);
+                if (pkgPath.matches(s)) {
+                    return true;
+                }
+            }
+        }
+            return false;
+    }
+
+    public Cursor getPkg(String pkgPath) {
+
+        SQLiteDatabase database = getWritableDatabase();
+
         return database.rawQuery("select pkg_path from " + tableName + " WHERE pkg_path LIKE ?", new String[]{pkgPath});
     }
 
+    public long getProfilesCount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, tableName);
+        db.close();
+        return count;
+    }
 }

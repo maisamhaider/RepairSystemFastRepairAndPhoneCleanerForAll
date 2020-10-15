@@ -11,11 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
-import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,17 +87,20 @@ public class DeepCleanAdapter extends
         holder.pkgAdapter_cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!list.contains(pkgString)) {
+                if (list.contains(pkgString)) {
+                    list.remove(pkgString);
+                    selectAll.selectAll(false);
+                    holder.selectPkg_iv.setImageResource(R.drawable.ic_deselect);
+
+                } else {
                     list.add(pkgString);
                     if (list.size() == fileList.size()) {
                         selectAll.selectAll(true);
                     }
-                    holder.selectPkg_iv.setImageResource(R.drawable.ic_select);
-                } else {
-                    list.remove(position);
+                    else {
                         selectAll.selectAll(false);
-                        holder.selectPkg_iv.setImageResource(R.drawable.ic_deselect);
-
+                    }
+                    holder.selectPkg_iv.setImageResource(R.drawable.ic_select);
                 }
             }
         });

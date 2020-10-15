@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="16dp"
@@ -42,8 +43,12 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_app_uninstall" />
 
 
@@ -55,8 +60,12 @@
                 android:text="App uninstall"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/smartCharge_iv"
                 app:layout_constraintTop_toBottomOf="@+id/smartCharge_iv"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
@@ -68,8 +77,11 @@
                 android:text="Rapidly uninstall useless apps"
                 android:textColor="@color/colorTextTwo"
                 android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/smartCharge_tv1"
-                app:layout_constraintTop_toBottomOf="@+id/smartCharge_tv1" />
+                app:layout_constraintTop_toBottomOf="@+id/smartCharge_tv1"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView21"
@@ -78,7 +90,10 @@
                 android:layout_marginEnd="24dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/smartCharge_tv2"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/smartCharge_tv1"
                 app:layout_constraintTop_toTopOf="@+id/smartCharge_tv1"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -119,8 +134,12 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_hardware_info" />
 
 
@@ -132,18 +151,22 @@
                 android:text="Hardware Info"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:maxLines="1"
                 android:text="See your android hardware information"
                 android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView13"
                 app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -151,12 +174,13 @@
                 android:id="@+id/imageView23"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView14"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
                 app:layout_constraintTop_toTopOf="@+id/textView13"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -198,8 +222,12 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_root_checker" />
 
 
@@ -211,31 +239,38 @@
                 android:text="Root Checker"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView33"
                 app:layout_constraintTop_toBottomOf="@+id/imageView33"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView34"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:maxLines="1"
                 android:text="Check your android device is rooted"
                 android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView33"
-                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+                app:layout_constraintTop_toBottomOf="@+id/textView33"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView29"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView34"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView33"
                 app:layout_constraintTop_toTopOf="@+id/textView33"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -277,8 +312,12 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_processor" />
 
             <TextView
@@ -289,31 +328,38 @@
                 android:text="Processor"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView59"
                 app:layout_constraintTop_toBottomOf="@+id/imageView59"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView54"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:maxLines="1"
                 android:text="Check your processor detail"
                 android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView53"
-                app:layout_constraintTop_toBottomOf="@+id/textView53" />
+                app:layout_constraintTop_toBottomOf="@+id/textView53"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView53"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView54"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView53"
                 app:layout_constraintTop_toTopOf="@+id/textView53"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -355,8 +401,12 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_sensor_list" />
 
             <TextView
@@ -367,31 +417,39 @@
                 android:text="Sensor List"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView39"
                 app:layout_constraintTop_toBottomOf="@+id/imageView39"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView44"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:maxLines="1"
                 android:text="You can see all sensor of device"
                 android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView43"
-                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+                app:layout_constraintTop_toBottomOf="@+id/textView43"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView35"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView44"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/textView43"
                 app:layout_constraintTop_toTopOf="@+id/textView43"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -433,8 +491,12 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_harassment_filter" />
 
             <TextView
@@ -445,31 +507,38 @@
                 android:text="Harassment Filter"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/iv_haras"
                 app:layout_constraintTop_toBottomOf="@+id/iv_haras"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/tv_d_haras"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:maxLines="1"
                 android:text="Away from harassment"
                 android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_h_haras"
-                app:layout_constraintTop_toBottomOf="@+id/tv_h_haras" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_h_haras"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView25"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_d_haras"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_h_haras"
                 app:layout_constraintTop_toTopOf="@+id/tv_h_haras"
                 app:srcCompat="@drawable/ic_arrow" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -510,8 +579,12 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_margin="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/ic_hardware_test" />
 
                 <TextView
@@ -522,31 +595,38 @@
                     android:text="Hardware Test"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/hrdTest_iv"
                     app:layout_constraintTop_toBottomOf="@+id/hrdTest_iv"
+                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
                     android:id="@+id/hrdTestSmall_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:maxLines="1"
                     android:text="You can test hardware "
                     android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/hrdTest_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/hrdTest_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/hrdTest_tv"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/hrdNext_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/hrdTestSmall_tv"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/hrdTest_tv"
                     app:layout_constraintTop_toTopOf="@+id/hrdTest_tv"
                     app:srcCompat="@drawable/ic_arrow" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -586,8 +666,12 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_margin="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/ic_bluetooth_info" />
 
 
@@ -599,31 +683,38 @@
                     android:text="Bluetooth Information"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/blueIcon_iv"
                     app:layout_constraintTop_toBottomOf="@+id/blueIcon_iv"
+                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
                     android:id="@+id/blueSmall_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:maxLines="1"
                     android:text="You can get Bluetooth Information"
                     android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/blueName_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/blueName_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/blueName_tv"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/blueNext_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/blueSmall_tv"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/blueName_tv"
                     app:layout_constraintTop_toTopOf="@+id/blueName_tv"
                     app:srcCompat="@drawable/ic_arrow" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -665,8 +756,12 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_margin="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:srcCompat="@drawable/ic_features" />
 
 
@@ -678,31 +773,38 @@
                     android:text="Features"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/deviceFeaturesSmall_tvIcon_iv"
                     app:layout_constraintTop_toBottomOf="@+id/deviceFeaturesSmall_tvIcon_iv"
+                    app:layout_constraintVertical_bias="0.0"
                     app:layout_constraintVertical_chainStyle="packed" />
 
                 <TextView
                     android:id="@+id/deviceFeaturesSmall_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:maxLines="1"
                     android:text="You can get Bluetooth Information"
                     android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/deviceFeaturesName_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/deviceFeaturesName_tv" />
+                    app:layout_constraintTop_toBottomOf="@+id/deviceFeaturesName_tv"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/deviceFeaturesNext_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/deviceFeaturesSmall_tv"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/deviceFeaturesName_tv"
                     app:layout_constraintTop_toTopOf="@+id/deviceFeaturesName_tv"
                     app:srcCompat="@drawable/ic_arrow" />
             </androidx.constraintlayout.widget.ConstraintLayout>

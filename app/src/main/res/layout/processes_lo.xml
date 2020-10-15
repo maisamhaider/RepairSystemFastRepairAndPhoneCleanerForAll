@@ -28,11 +28,10 @@
             <TextView
                 android:id="@+id/processesName_Tv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
-                android:layout_marginBottom="-2dp"
-                android:gravity="center"
-                android:maxWidth="150dp"
+                 android:maxWidth="150dp"
+                android:maxLength="27"
                 android:maxLines="1"
 
                 android:text="names" />
@@ -49,15 +48,13 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:checked="true"
             android:id="@+id/processes_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp" />
+            android:layout_marginEnd="12dp"
+            android:checked="true" />
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

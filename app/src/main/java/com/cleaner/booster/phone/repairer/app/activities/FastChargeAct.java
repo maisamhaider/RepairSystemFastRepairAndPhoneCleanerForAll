@@ -1,30 +1,31 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
- import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.FastChargeAllAppsAdapter;
- import com.cleaner.booster.phone.repairer.app.async.FastAllAppsTask;
+import com.cleaner.booster.phone.repairer.app.async.FastAllAppsTask;
 import com.cleaner.booster.phone.repairer.app.database.Db;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
-public class FastChargeAct extends AppCompatActivity implements SelectAll{
+public class FastChargeAct extends AppCompatActivity implements SelectAll {
 
     FastAllAppsTask allAppsTask;
     FastChargeAllAppsAdapter adapter;
     Db db;
     RecyclerView fastCharge_rv;
     CheckBox selectAll_cb1;
-TextView select_tv;
+    TextView select_tv,doneDtn;
+    boolean b = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,42 +35,49 @@ TextView select_tv;
         fastCharge_rv = findViewById(R.id.fastCharge_rv);
         selectAll_cb1 = findViewById(R.id.selectAll_cb1);
         select_tv = findViewById(R.id.select_tv);
+        doneDtn = findViewById(R.id.doneDtn);
 
         db = new Db(this);
-        adapter = new FastChargeAllAppsAdapter(this,this);
+        adapter = new FastChargeAllAppsAdapter(this, this);
 
         allAppsTask = new FastAllAppsTask(this, adapter, fastCharge_rv, db);
         allAppsTask.execute();
         Utils utils = new Utils(this);
-        if ( utils.GetAllInstalledApkInfo().isEmpty())
-        {
+        if (utils.GetAllInstalledApkInfo().isEmpty()) {
             select_tv.setVisibility(View.GONE);
             selectAll_cb1.setVisibility(View.GONE);
         }
-        selectAll_cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        selectAll_cb1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onClick(View view) {
                 SelectAll selectAll = adapter.getSelectAll();
-                if (b)
-                {
+                if (!b) {
                     selectAll.selectAll(true);
-                }
-                else
-                {
+                    b = true;
+                } else {
                     selectAll.selectAll(false);
+                    b = false;
                 }
             }
         });
+        doneDtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FastChargeAct.this.finish();
+             }
+        });
+
     }
+
     @Override
     public void selectAll(boolean isSelectAll) {
-
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
-        }
-        else {
+            b = true;
+        } else {
             selectAll_cb1.setChecked(false);
+            b = false;
         }
+
     }
 }

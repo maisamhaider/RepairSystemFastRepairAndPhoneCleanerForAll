@@ -164,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/black_ripple_flat_d"
+            android:background="@drawable/black_bg_white_ripple_flat_d"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"

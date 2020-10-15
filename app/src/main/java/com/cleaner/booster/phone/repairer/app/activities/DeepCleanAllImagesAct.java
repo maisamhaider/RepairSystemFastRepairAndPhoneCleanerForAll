@@ -1,26 +1,22 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanAdapter;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanImagesAdapter;
-import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanVideosAdapter;
 import com.cleaner.booster.phone.repairer.app.async.DeepCleanImagesTask;
-import com.cleaner.booster.phone.repairer.app.async.DeepCleanVideosTask;
 import com.cleaner.booster.phone.repairer.app.async.FileMoverTask;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
@@ -83,6 +79,8 @@ public class DeepCleanAllImagesAct extends AppCompatActivity implements SelectAl
                 {
                     dialog.show();
                 }
+                else
+                {Toast.makeText(this, "No image selected", Toast.LENGTH_SHORT).show();}
 
                 no_ll.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -102,7 +100,8 @@ public class DeepCleanAllImagesAct extends AppCompatActivity implements SelectAl
                             }
                         }
                         dialog.dismiss();
-                        loadData();                    }
+                        loadData();
+                    }
                 });
             }
         });
@@ -111,10 +110,10 @@ public class DeepCleanAllImagesAct extends AppCompatActivity implements SelectAl
             public void onClick(View view) {
                 SelectAll selectAll = deepCleanImagesAdapter.getSelectAll();
                 if (!b) {
-                    selectAll.selectAll(false);
+                    selectAll.selectAll(true);
                     b = true;
                 } else {
-                    selectAll.selectAll(true);
+                    selectAll.selectAll(false);
                     b = false;
 
                 }
@@ -128,12 +127,12 @@ public class DeepCleanAllImagesAct extends AppCompatActivity implements SelectAl
         if (isSelectAll)
         {
             selectAll_cb1.setChecked(true);
-            b = false;
-        }
-        else {
-            selectAll_cb1.setChecked(false);
             b = true;
         }
+        else
+            {
+            selectAll_cb1.setChecked(false);
+            b = false; }
     }
     public void loadData()
     {
