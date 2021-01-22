@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/white_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:elevation="5dp"
     android:orientation="vertical">
+
 
 
     <LinearLayout
@@ -13,22 +16,18 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary">
-
             <TextView
+                android:background="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:padding="6sp"
+                android:padding="16sp"
                 android:text="@string/exit_dialog"
                 android:textColor="@color/standard_white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,14 +43,14 @@
                 android:gravity="center"
                 android:layout_margin="20dp"
                 android:text="@string/exit_text"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="17sp"
+                 android:textSize="17sp"
                 android:textStyle="normal" />
 
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_marginBottom="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -67,9 +66,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/b_bg"
-                android:textColor="@color/standard_white"
-                android:text="Yes"
+                android:background="@drawable/white_curved_ripple"
+                 android:text="Yes"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textSize="15sp"
                 tools:ignore="ButtonStyle" />
@@ -82,7 +80,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/b_bg"
+                android:background="@drawable/curved_white_ripple_sky_blue_bg_d"
                 android:textColor="@color/standard_white"
                 android:text="@string/no"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -99,7 +97,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/b_bg"
+                android:background="@drawable/curved_white_ripple_sky_blue_bg_d"
                 android:textColor="@color/standard_white"
                 android:text="@string/rateus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -112,4 +110,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</androidx.cardview.widget.CardView>

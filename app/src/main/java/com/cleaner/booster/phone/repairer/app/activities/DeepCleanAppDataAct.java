@@ -55,6 +55,7 @@ public class DeepCleanAppDataAct extends AppCompatActivity implements SelectAll 
     private RecyclerView appData_rv;
     private ImageView appRvLayoutBack_iv;
     private LinearLayout appDataClean_ll;
+    private TextView noData_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class DeepCleanAppDataAct extends AppCompatActivity implements SelectAll 
 
 
         facebook_cl = findViewById(R.id.facebook_cl);
+        noData_tv = findViewById(R.id.noData_tv);
         facebookSavedImages_cl = findViewById(R.id.facebookSavedImages_cl);
 
         messenger_cl = findViewById(R.id.messenger_cl);
@@ -270,6 +272,15 @@ public class DeepCleanAppDataAct extends AppCompatActivity implements SelectAll 
             instagram_cl.setVisibility(View.GONE);
         }
 
+        if (InstagramFolder.exists() && messengerFolder.exists() && facebookFolder.exists())
+        {
+            noData_tv.setVisibility(View.GONE);
+        }
+        else
+        {
+            noData_tv.setVisibility(View.VISIBLE);
+
+        }
         float instagramSavedImagesSize = utils.getAllSize(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Instagram");
         float instagramSavedVideosSize = utils.getAllSize(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Movies/Instagram");
 
@@ -351,7 +362,7 @@ public class DeepCleanAppDataAct extends AppCompatActivity implements SelectAll 
         appDataClean_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> pathList;
+                List<CommonModel> pathList;
                 if (isImages) {
                     pathList = imagesAdapter.getList();
                 } else {
@@ -379,7 +390,7 @@ public class DeepCleanAppDataAct extends AppCompatActivity implements SelectAll 
 
                         for (int i = 0; i < pathList.size(); i++) {
                             try {
-                                file = new File(pathList.get(i));
+                                file = new File(pathList.get(i).getPath());
                                 file.delete();
                                 appRvMain_rl.setVisibility(View.GONE);
                             } catch (Exception e) {

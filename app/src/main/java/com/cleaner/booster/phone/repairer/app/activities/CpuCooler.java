@@ -1,15 +1,16 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -72,7 +73,6 @@ public class CpuCooler extends AppCompatActivity {
         cpuCoolerMain_cl.setVisibility(View.GONE);
 
         //analyzing apps
-
         Calendar current = Calendar.getInstance();
         if (preferences.getLong("lastCpuCooledTime", current.getTimeInMillis()) > current.getTimeInMillis()) {
             cpuCoolerSecond_cl.setVisibility(View.GONE);
@@ -95,66 +95,53 @@ public class CpuCooler extends AppCompatActivity {
 
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class KillAppsTask extends AsyncTask<Void, Integer, String> {
+
+    public void startCleaning() {
         List<String> packageName;
         ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            packageName = allAppsAdapter.getCheckList();
-            coolingMain_cl.setVisibility(View.VISIBLE);
-            cooling_pb.setMax(packageName.size());
+        packageName = allAppsAdapter.getCheckList();
+        coolingMain_cl.setVisibility(View.VISIBLE);
+        cooling_pb.setMax(packageName.size());
 
-        }
+        for (int i = 0; i < packageName.size(); i++) {
+            am.killBackgroundProcesses(packageName.get(i));
+         }
+        startAnimation(packageName.size());
 
-        @Override
-        protected String doInBackground(Void... voids) {
-            for (int i = 0; i < packageName.size(); i++) {
-                am.killBackgroundProcesses(packageName.get(i));
-                publishProgress(i);
-            }
-            return null;
-        }
+    }
 
+    private void startAnimation(int setLevel) {
+        ValueAnimator animator = ValueAnimator.ofInt(0, setLevel);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setStartDelay(0);
+        animator.setDuration(5000);
+        animator.addUpdateListener(valueAnimator -> {
 
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-            cooling_pb.setProgress(values[0]);
+            int value = (int) valueAnimator.getAnimatedValue();
+             cooling_pb.setProgress(value );
 
+            if (value == setLevel) {
+                coolingMain_cl.setVisibility(View.GONE);
+                cpuCoolerSecond_cl.setVisibility(View.GONE);
+                cpuCoolerMain_cl.setVisibility(View.VISIBLE);
+                Calendar nextTime = Calendar.getInstance();
+                nextTime.add(Calendar.MINUTE, 5);
+                SharedPreferences.Editor editor = preferences.edit();
 
-        }
-
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            coolingMain_cl.setVisibility(View.GONE);
-            cpuCoolerSecond_cl.setVisibility(View.GONE);
-            cpuCoolerMain_cl.setVisibility(View.VISIBLE);
-            Calendar nextTime = Calendar.getInstance();
-            nextTime.add(Calendar.MINUTE, 5);
-            SharedPreferences.Editor editor = preferences.edit();
-
-            editor.putLong("lastCpuCooledTime", nextTime.getTimeInMillis()).commit();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
+                editor.putLong("lastCpuCooledTime", nextTime.getTimeInMillis()).commit();
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
                     @SuppressLint("DefaultLocale") String temp4 = String.format("%.1f", utils.cpuTemperature());
                     cpuTemp_tv.setText(temp4);
                     cpuCoolerMain_cl.setVisibility(View.GONE);
                     cpuCooled_cl.setVisibility(View.VISIBLE);
 
-                }
-            }, 2000);
-
-
-        }
+                }, 2000);
+            }
+        });
+        animator.start();
     }
-
 
     protected void onResume() {
         super.onResume();
@@ -176,25 +163,15 @@ public class CpuCooler extends AppCompatActivity {
                 }
                 else
                 {
-                    KillAppsTask appsTask = new KillAppsTask();
-                    appsTask.execute();
+                    startCleaning();
                 }
-
-
             }
         });
         selectAll_cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SelectAll selectAll = allAppsAdapter.getSelectAll();
-                if (b)
-                {
-                    selectAll.selectAll(true);
-                }
-                else
-                {
-                    selectAll.selectAll(false);
-                }
+                selectAll.selectAll(b);
             }
         });
 

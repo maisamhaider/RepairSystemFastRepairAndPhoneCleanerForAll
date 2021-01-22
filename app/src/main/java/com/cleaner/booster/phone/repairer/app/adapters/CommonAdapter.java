@@ -21,7 +21,8 @@ import com.cleaner.booster.phone.repairer.app.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppStatusHolder> implements SelectAll {
+public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppStatusHolder>
+        implements SelectAll {
     Context context;
     List<CommonModel> fileList;
     List<String> list;
@@ -65,7 +66,8 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppSt
     @NonNull
     @Override
     public WhatsAppStatusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_rv_layout, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.common_rv_layout,
+                parent, false);
         holder = new WhatsAppStatusHolder(view);
         return new WhatsAppStatusHolder(view);
     }
@@ -78,18 +80,19 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppSt
         utils = new Utils(context);
 
         if (list.contains(pathString)) {
-            holder.selection_iv.setImageResource(R.drawable.ic_select);
+            holder.selection_iv.setImageResource(R.drawable.ic_selected);
         } else {
-            holder.selection_iv.setImageResource(R.drawable.ic_deselect);
-        }
+            holder.selection_iv.setImageBitmap(null);
+
+         }
         holder.commonFileName_tv.setText(name);
 
         if (fileType == VIDEO || fileType == IMAGE) {
             Glide.with(context).load(pathString).into(holder.commonFileRv_iv);
         } else if (fileType == AUDIO) {
-            holder.commonFileRv_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_audio));
+            holder.commonFileRv_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_music));
         } else if (fileType == DOCUMENT) {
-            holder.commonFileRv_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_received_file));
+            holder.commonFileRv_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_file));
         } else if (fileType == BACKUP) {
             holder.commonFileRv_iv.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_backup_conversation_history));
         }
@@ -100,18 +103,14 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppSt
                 String pathString = fileList.get(position).getPath();
                 if (list.contains(pathString)) {
                     list.remove(pathString);
-                    holder.selection_iv.setImageResource(R.drawable.ic_deselect);
+                    holder.selection_iv.setImageBitmap(null);
 
                     selectAll.selectAll(false);
 
                 } else {
                     list.add(pathString);
-                    if (list.size() == fileList.size()) {
-                        selectAll.selectAll(true);
-                    } else {
-                        selectAll.selectAll(false);
-                    }
-                    holder.selection_iv.setImageResource(R.drawable.ic_select);
+                    selectAll.selectAll(list.size() == fileList.size());
+                    holder.selection_iv.setImageResource(R.drawable.ic_selected);
                 }
 
 
@@ -131,7 +130,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppSt
         }
         for (CommonModel path : fileList) {
             list.add(path.getPath());
-            holder.selection_iv.setImageResource(R.drawable.ic_select);
+            holder.selection_iv.setImageResource(R.drawable.ic_selected);
             notifyDataSetChanged();
         }
     }
@@ -139,7 +138,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.WhatsAppSt
     private void clearList() {
         if (!list.isEmpty()) {
             list.clear();
-            holder.selection_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selection_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
 

@@ -48,11 +48,7 @@ public class DeviceInfoAct extends AppCompatActivity {
 
             try {
                 fieldValue = field.getInt( new Object() );
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (NullPointerException e) {
+            } catch (IllegalArgumentException | IllegalAccessException | NullPointerException e) {
                 e.printStackTrace();
             }
             if (fieldValue == Build.VERSION.SDK_INT) {

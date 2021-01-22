@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -9,39 +10,61 @@
     android:layout_marginBottom="6dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
-    android:background="@drawable/white_stroke_curved_d">
+    android:background="@drawable/search_curved_d">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:id="@+id/allAppsMain_cl"
-        android:background="@drawable/white_curved_ripple"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/white_curved_ripple">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_blue_black"
+            android:scaleY="1.14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/allAppImage_Iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_margin="8dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.52" />
 
         <TextView
             android:id="@+id/allAppName_Tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
              android:maxWidth="150dp"
             android:maxLength="20"
+            android:ellipsize="end"
             android:maxLines="1"
+            android:layout_margin="10dp"
             android:text="names"
             android:textColor="@color/colorTextOne"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/allAppSelected_deselect_Iv"
-            app:layout_constraintStart_toStartOf="@+id/allAppImage_Iv"
-            app:layout_constraintTop_toBottomOf="@+id/allAppImage_Iv" />
+            app:layout_constraintStart_toStartOf="@+id/guideline18"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
@@ -50,19 +73,11 @@
             android:layout_height="25dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_delete"
+            android:src="@drawable/ic_bin"
             app:layout_constraintBottom_toBottomOf="@+id/allAppName_Tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/allAppName_Tv" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <View
-        android:layout_width="8dp"
-        android:layout_height="30dp"
-        android:layout_gravity="right|top"
-        android:background="@drawable/black_bar_d"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.cardview.widget.CardView>
+  </androidx.cardview.widget.CardView>

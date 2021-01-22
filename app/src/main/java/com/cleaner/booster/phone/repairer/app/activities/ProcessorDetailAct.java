@@ -17,40 +17,41 @@ import java.io.InputStream;
 
 public class ProcessorDetailAct extends AppCompatActivity {
 
-    TextView textView ;
+    TextView textView;
     ProcessBuilder processBuilder;
     String holder = "";
     String[] DATA = {"/system/bin/cat", "/proc/cpuinfo"};
     InputStream inputStream;
-    Process process ;
+    Process process;
     byte[] byteArray;
-    private int counter=0;
+    private int counter = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_processor_detail);
-        setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         LinearLayout llSensor = findViewById(R.id.ll_sensor);
+        LinearLayout llSensor1 = findViewById(R.id.ll_sensor1);
 
         byteArray = new byte[1024];
-        try{
+        try {
             processBuilder = new ProcessBuilder(DATA);
             process = processBuilder.start();
             inputStream = process.getInputStream();
-            while(inputStream.read(byteArray) != -1){
+            while (inputStream.read(byteArray) != -1) {
                 holder = holder + new String(byteArray);
             }
             inputStream.close();
-        } catch(IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         String[] infoList = holder.split("\n");
         for (int i = 0; i < infoList.length; i++) {
-            if (infoList[i].contains("Hardware")){
-                counter = i+1;
+            if (infoList[i].contains("Hardware")) {
+                counter = i + 1;
                 break;
             }
         }
@@ -61,19 +62,31 @@ public class ProcessorDetailAct extends AppCompatActivity {
             LinearLayout.LayoutParams params = new
                     LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0,10,0,10);
+            params.setMargins(0, 10, 0, 10);
             view.setLayoutParams(params);
 
             TextView tvTitle = view.findViewById(R.id.tv_title);
             TextView tvDesc = view.findViewById(R.id.tv_desc);
 
-            try {
-                String[] titleDetail = infoList[i].split(":");
-                tvTitle.setText(titleDetail[0]);
-                tvDesc.setText(titleDetail[1]);
-                llSensor.addView(view);
-            } catch (Exception e) {
-                e.printStackTrace();
+
+            if (i % 2 == 0) {
+                try {
+                    String[] titleDetail = infoList[i].split(":");
+                    tvTitle.setText(titleDetail[0]);
+                    tvDesc.setText(titleDetail[1]);
+                    llSensor.addView(view);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    String[] titleDetail = infoList[i].split(":");
+                    tvTitle.setText(titleDetail[0]);
+                    tvDesc.setText(titleDetail[1]);
+                    llSensor1.addView(view);
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
             }
         }
 

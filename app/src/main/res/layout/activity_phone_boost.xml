@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/standard_white"
+    android:background="@color/colorBackground"
     tools:context=".activities.PhoneBoostAct">
 
     <androidx.constraintlayout.widget.Guideline
@@ -18,47 +18,28 @@
         android:id="@+id/view15"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_background"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="25dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/white_stroke_curved_d"
+        android:background="@drawable/bellow_curved_sky_blue_bg"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline38">
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_phone_booster_two"
-            app:layout_constraintBottom_toTopOf="@+id/guideline40"
+            android:id="@+id/imageView13"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_rocket_two"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline40"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline39"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.44" />
-
 
         <TextView
             android:id="@+id/phoneBoostUsedPercent_tv"
@@ -66,48 +47,39 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="30.3"
-            android:textColor="@color/colorTextOne"
-            android:textSize="30sp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline39" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="%"
-            android:textColor="@color/colorTextOne"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneBoostUsedPercent_tv"
             app:layout_constraintStart_toEndOf="@+id/phoneBoostUsedPercent_tv"
-            app:layout_constraintTop_toTopOf="@+id/guideline40" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView13"
+            app:layout_constraintVertical_bias="0.8" />
 
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Used"
-            android:textColor="@color/colorTextOne"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phoneBoostUsedPercent_tv"
-            app:layout_constraintVertical_bias="0.769" />
 
         <TextView
             android:id="@+id/phoneBoostRamDetail_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginBottom="10dp"
             android:text=""
-            android:textColor="@color/colorTextOne"
+            android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView39" />
+            app:layout_constraintTop_toBottomOf="@+id/phoneBoostUsedPercent_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,22 +101,22 @@
             app:layout_constraintVertical_bias="0.498">
 
             <TextView
-                android:layout_marginStart="16dp"
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:text="select/deselect"
                 app:layout_constraintBottom_toTopOf="@+id/phoneBoostApps_rv"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
-                android:checked="true"
-                android:layout_marginEnd="16dp"
                 android:id="@+id/selectAll_cb"
                 android:layout_width="wrap_content"
-                android:buttonTint="@color/checkbox_selector"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:buttonTint="@color/checkbox_selector"
+                android:checked="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,21 +125,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/selectAll_cb"
-              />
+                app:layout_constraintTop_toBottomOf="@+id/selectAll_cb" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-
             android:id="@+id/phoneBoostBtn_ll"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/black_bg_white_ripple_flat_d"
+            android:layout_margin="10dp"
+            android:background="@drawable/white_curved_ripple"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
@@ -176,7 +148,7 @@
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:text="BOOST"
-                android:textColor="@color/standard_white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="11dp"
                 tools:layout_editor_absoluteY="594dp" />
@@ -228,12 +200,13 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
-        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PHONE BOOSTER"
         android:textColor="@color/standard_white"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
         app:layout_constraintEnd_toEndOf="parent"
@@ -242,13 +215,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-         layout="@layout/phone_boost_after_boosclick_screen_layout"
-         />
+        layout="@layout/phone_boost_after_boosclick_screen_layout"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
-         layout="@layout/phone_boost_last_screen_layout"
-         />
-
+        layout="@layout/phone_boost_last_screen_layout"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

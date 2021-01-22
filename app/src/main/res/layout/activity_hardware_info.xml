@@ -16,13 +16,23 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
-    <ScrollView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@android:color/white"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline53">
 
         <LinearLayout
@@ -31,687 +41,747 @@
             android:background="@android:color/white"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                 android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:gravity="center|start"
+                        android:orientation="vertical"
+                       android:layout_margin="10dp">
 
                         <TextView
+                            android:id="@+id/textView59"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Manufacturer"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view26"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/manufactureName_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                            android:layout_marginEnd="5dp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/textView59"
+                            app:layout_constraintTop_toBottomOf="@+id/textView59" />
 
-                    <LinearLayout
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/manufactureName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/manufactureName_Tv" />
+
+                        <View
+                            android:id="@+id/view26"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            
+                            app:layout_constraintBottom_toBottomOf="@+id/textView59"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView59" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Model"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                             android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView70"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView70" />
 
                         <TextView
-                            android:id="@+id/modelName_Tv"
+                            android:id="@+id/textView70"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Android Version"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/androidVersion_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                            android:layout_marginEnd="5dp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/textView70"
+                            app:layout_constraintTop_toBottomOf="@+id/textView70" />
 
-                    <LinearLayout
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/androidVersion_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/androidVersion_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Serial"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                        <View
+                            android:id="@+id/view27"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            
+                            app:layout_constraintBottom_toBottomOf="@+id/textView71"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView71" />
 
                         <TextView
-                            android:id="@+id/serialNo_Tv"
+                            android:id="@+id/textView71"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Id"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view27"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/idNo_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                            android:layout_marginEnd="5dp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView71"
+                            app:layout_constraintTop_toBottomOf="@+id/textView71" />
 
-                    <LinearLayout
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/idNo_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/idNo_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Brand"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                        <View
+                            android:id="@+id/view28"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            
+                            app:layout_constraintBottom_toBottomOf="@+id/textView72"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView72" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/typeName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/typeName_Tv" />
 
                         <TextView
-                            android:id="@+id/brandName_Tv"
+                            android:id="@+id/textView72"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Type"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view28"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/typeName_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                            android:layout_marginEnd="5dp"
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView72"
+                            app:layout_constraintTop_toBottomOf="@+id/textView72" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <LinearLayout
+
+ 
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:gravity="center|start"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="User"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                        <View
+                            android:id="@+id/view29"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                             app:layout_constraintBottom_toBottomOf="@+id/textView73"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView73" />
 
                         <TextView
-                            android:id="@+id/userName_Tv"
+                            android:id="@+id/textView73"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Incremental"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view29"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/INCREMENTALNo_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView73"
+                            app:layout_constraintTop_toBottomOf="@+id/textView73" />
 
-                    <LinearLayout
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/INCREMENTALNo_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/INCREMENTALNo_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+
+
+    
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:gravity="center|start"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Sdk"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                        <View
+                            android:id="@+id/view31"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                             app:layout_constraintBottom_toBottomOf="@+id/textView74"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView74" />
 
                         <TextView
-                            android:id="@+id/SDKName_Tv"
+                            android:id="@+id/textView74"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Board"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view31"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/BOARDNo_Tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                            android:layout_marginEnd="5dp"
 
-            <androidx.cardview.widget.CardView
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView74"
+                            app:layout_constraintTop_toBottomOf="@+id/textView74" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/BOARDNo_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/BOARDNo_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:gravity="center|start"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Host"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/HOSTName_Tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
                 <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    android:id="@+id/view38"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/black_circle_d"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView83"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView83" />
+
+                <TextView
+                    android:id="@+id/textView83"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Fingerprint"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/view38"
                     app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="10dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/FINGERPRINTName_Tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
 
-                <LinearLayout
-                    android:padding="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/white">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView83"
+                    app:layout_constraintTop_toBottomOf="@+id/textView83" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Fingerprint"
-                            android:textColor="@color/colorTextOne"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/FINGERPRINTName_Tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                             android:textColor="@color/colorTextTwo" />
-                    </LinearLayout>
-                </LinearLayout>
                 <View
-                    android:layout_width="8dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|top"
-                    android:background="@drawable/black_bar_d"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline8"
-                    app:layout_constraintEnd_toEndOf="@+id/cardView"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorBackground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/FINGERPRINTName_Tv"
+                    app:layout_constraintTop_toBottomOf="@+id/FINGERPRINTName_Tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@android:color/white"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toTopOf="@+id/guideline53"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view32"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView75"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView75" />
+
+                        <TextView
+                            android:id="@+id/textView75"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Model"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view32"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/modelName_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView75"
+                            app:layout_constraintTop_toBottomOf="@+id/textView75" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/modelName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/modelName_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view33"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView76"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView76" />
+
+                        <TextView
+                            android:id="@+id/textView76"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Serial"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view33"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/serialNo_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView76"
+                            app:layout_constraintTop_toBottomOf="@+id/textView76" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/serialNo_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/serialNo_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view34"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView78"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView78" />
+
+                        <TextView
+                            android:id="@+id/textView78"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Brand"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view34"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/brandName_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView78"
+                            app:layout_constraintTop_toBottomOf="@+id/textView78" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/brandName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/brandName_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view35"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView79"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView79" />
+
+                        <TextView
+                            android:id="@+id/textView79"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="User"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view35"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/userName_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView79"
+                            app:layout_constraintTop_toBottomOf="@+id/textView79" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/userName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/userName_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:gravity="center|start"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view36"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView81"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView81" />
+
+                        <TextView
+                            android:id="@+id/textView81"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Sdk"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view36"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/SDKName_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView81"
+                            app:layout_constraintTop_toBottomOf="@+id/textView81" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/SDKName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/SDKName_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|start"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/view37"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/black_circle_d"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView82"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView82" />
+
+                        <TextView
+                            android:id="@+id/textView82"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Host"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/view37"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/HOSTName_Tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView82"
+                            app:layout_constraintTop_toBottomOf="@+id/textView82" />
+
+                        <View
+                            android:layout_marginTop="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="2dp"
+                            android:background="@color/colorBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/HOSTName_Tv"
+                            app:layout_constraintTop_toBottomOf="@+id/HOSTName_Tv" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+         </LinearLayout>
+    </ScrollView>
+
     <TextView
-        android:background="@drawable/ic_background"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/hardwareTesting_tv1"
         android:layout_width="match_parent"
         android:layout_height="0dp"

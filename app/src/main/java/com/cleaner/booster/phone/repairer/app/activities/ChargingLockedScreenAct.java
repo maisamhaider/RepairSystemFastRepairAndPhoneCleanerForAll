@@ -37,7 +37,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-public class ChargingLockedScreenAct extends AppCompatActivity implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener {
+public class ChargingLockedScreenAct extends AppCompatActivity implements
+        MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener {
 
     private ProgressBar pbBattery;
     private TextView tvCharging, tvPercentage;
@@ -124,8 +125,11 @@ public class ChargingLockedScreenAct extends AppCompatActivity implements MediaP
                 vHead.setBackground(getResources().getDrawable(R.drawable.bg_head));
             }
         });
+
+
         animator.start();
     }
+
 
     private void playOrVibrate() {
 

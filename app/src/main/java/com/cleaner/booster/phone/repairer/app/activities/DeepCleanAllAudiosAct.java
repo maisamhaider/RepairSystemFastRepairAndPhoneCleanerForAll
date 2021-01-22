@@ -17,17 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanAdapter;
 import com.cleaner.booster.phone.repairer.app.async.DeepCleanAudiosTask;
-import com.cleaner.booster.phone.repairer.app.async.FileMoverTask;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
+import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
 import java.util.List;
 
-public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectAll{
+public class DeepCleanAllAudiosAct extends AppCompatActivity implements SelectAll {
 
     DeepCleanAdapter deepCleanAdapter;
-    DeepCleanAudiosTask deepCleanAudiosTask;
     RecyclerView deepCleanAllAudio_rv;
 
     Utils utils;
@@ -35,7 +34,8 @@ public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectA
     boolean isSend;
     public CheckBox selectAll_cb1;
     public TextView noData_tv, select_tv;
-     boolean b = false;
+    boolean b = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +58,10 @@ public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectA
         deepCleanAudiosClean_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> pathList = deepCleanAdapter.getList();
+                List<CommonModel> pathList = deepCleanAdapter.getList();
                 if (isSend) {
-                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(), pathList, "Audios");
-                    fileMoverTask.execute();
+//                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(), pathList, "Audios");
+//                    fileMoverTask.execute();
 
                 } else {
                     View view = getLayoutInflater().inflate(R.layout.are_you_sure_to_delete_dialog_layout, null, false);
@@ -74,9 +74,7 @@ public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectA
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     if (!pathList.isEmpty()) {
                         dialog.show();
-                    }
-                    else
-                    {
+                    } else {
                         Toast.makeText(DeepCleanAllAudiosAct.this, "No Audio selected", Toast.LENGTH_SHORT).show();
                     }
                     no_ll.setOnClickListener(new View.OnClickListener() {
@@ -90,14 +88,14 @@ public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectA
                         public void onClick(View v) {
                             for (int i = 0; i < pathList.size(); i++) {
                                 try {
-                                    file = new File(pathList.get(i));
-                                    utils.scanaddedFile(pathList.get(i));
+                                    file = new File(pathList.get(i).getPath());
+                                    utils.scanaddedFile(pathList.get(i).getPath());
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                             dialog.dismiss();
-                            loadData();
+                            deepCleanAdapter.removeDeleted();
                         }
                     });
                 }
@@ -118,23 +116,22 @@ public class DeepCleanAllAudiosAct extends AppCompatActivity  implements SelectA
             }
         });
     }
+
     @Override
     public void selectAll(boolean isSelectAll) {
 
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
             b = true;
-        }
-        else {
+        } else {
             selectAll_cb1.setChecked(false);
-            b = false ;
+            b = false;
         }
     }
-    public void loadData()
-    {
-        deepCleanAdapter = new DeepCleanAdapter(this,this,1);
-        deepCleanAudiosTask = new DeepCleanAudiosTask(this, deepCleanAdapter, deepCleanAllAudio_rv);
-        deepCleanAudiosTask.execute();
+
+    public void loadData() {
+        deepCleanAdapter = new DeepCleanAdapter(this, this, 1);
+        new DeepCleanAudiosTask(this, deepCleanAdapter, deepCleanAllAudio_rv);
+        deepCleanAdapter.notifyDataSetChanged();
     }
 }

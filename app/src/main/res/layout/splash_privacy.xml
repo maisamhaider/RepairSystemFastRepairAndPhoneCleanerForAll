@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/colorBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,7 +64,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/white_ripple_orange_bg_d"
+                android:background="@drawable/white_ripple_sky_blue_bg_d"
                 android:text="Decline"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
@@ -83,7 +84,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/white_ripple_orange_bg_d"
+                android:background="@drawable/white_ripple_sky_blue_bg_d"
                 android:text="Accept"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"

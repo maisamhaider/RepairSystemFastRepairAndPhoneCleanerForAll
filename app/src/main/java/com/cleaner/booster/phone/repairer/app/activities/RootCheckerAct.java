@@ -1,19 +1,13 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.utils.DeviceRooted;
-
-import java.util.List;
 
 public class RootCheckerAct extends AppCompatActivity {
 
@@ -25,9 +19,9 @@ public class RootCheckerAct extends AppCompatActivity {
 
         TextView tvRooted = findViewById(R.id.tv_rooted);
         if (DeviceRooted.isRooted()) {
-            tvRooted.setText("Device is rooted ");
+            tvRooted.setText("Your device is rooted ");
         } else {
-            tvRooted.setText("Device is not rooted ");
+            tvRooted.setText("Your device is not rooted ");
         }
 //        Toast.makeText(this, "Device is rooted "+DeviceRooted.isRooted(), Toast.LENGTH_SHORT).show();
     }

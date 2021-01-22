@@ -4,51 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragments.StatusImagesFrag">
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:id="@+id/statusImages_rl"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statusImages_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/standard_white">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/statusImages_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/saveStatusImages_ll"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp" />
+        android:layout_height="0dp"
+        android:layout_above="@+id/saveStatusImages_ll"
+        android:layout_alignParentTop="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveStatusImages_ll"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/saveStatusImages_ll"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
+        android:layout_margin="10dp"
+        android:background="@drawable/white_curved_ripple"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="YES,SAVE WHATS APP IMAGES STATUS"
-            android:textColor="@color/standard_white" />
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="SAVE"
+            android:textStyle="bold" />
 
     </LinearLayout>
-    </RelativeLayout>
+
     <TextView
-        android:text="No status image"
         android:id="@+id/statusNoImage_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="No status image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

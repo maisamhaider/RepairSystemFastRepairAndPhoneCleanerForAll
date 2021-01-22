@@ -1,7 +1,6 @@
 package com.cleaner.booster.phone.repairer.app.utils;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -15,8 +14,6 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.MediaStore;
 import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 
@@ -41,6 +38,7 @@ public class Utils {
     String destinationPath;
     File folder;
     float docSize = 0;
+    float audioSize = 0;
     float size = 0;
 
     public Utils(Context context) {
@@ -63,8 +61,7 @@ public class Utils {
                         if (f.getAbsolutePath().endsWith(".jpeg") ||
                                 f.getAbsolutePath().endsWith(".jpg") ||
                                 f.getAbsolutePath().endsWith(".png") ||
-                                f.getName().endsWith("mp4"))
-                        {
+                                f.getName().endsWith("mp4")) {
                             if (f.getName().contains("p_repair")) {
                                 data.setName(f.getName());
                                 data.setPath(f.getPath());
@@ -108,14 +105,6 @@ public class Utils {
         return docList;
     }
 
-    public static boolean externalMemoryAvailable(Activity context) {
-        File[] storages = ContextCompat.getExternalFilesDirs(context, null);
-        if (storages.length > 1 && storages[0] != null && storages[1] != null)
-            return true;
-        else
-            return false;
-
-    }
 
     //get specific data
     public List<CommonModel> getListFiles(File parentDir, String forWhat) {
@@ -169,24 +158,55 @@ public class Utils {
 
     public float getTotalStorage() {
         long totalStorage;
+        long totalStorage1;
 
-        StatFs statFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+        String p1 = Environment.getExternalStorageDirectory().getPath();
+        String p2 =  Environment.getRootDirectory().getPath();
+         StatFs statFs = new StatFs(p1);
+         StatFs statFs1 = new StatFs(p2);
+         totalStorage = (statFs.getBlockSizeLong() * statFs.getBlockCountLong());
+        totalStorage1 = (statFs1.getBlockSizeLong() * statFs1.getBlockCountLong());
+
+
+        return totalStorage+totalStorage1;
+    }
+
+    public float getTotalStorage(String file) {
+        long totalStorage;
+
+        StatFs statFs = new StatFs(file);
         totalStorage = (statFs.getBlockSizeLong() * statFs.getBlockCountLong());
 
-        return totalStorage;//in Mbs
+        return totalStorage;
     }
 
 
-    public static long getAvailableStorage() {
+    public long getAvailableStorage(String file) {
         long megAvailable;
 
-        StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+        StatFs stat = new StatFs(file);
         long bytesAvailable;
 
         bytesAvailable = stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
         megAvailable = bytesAvailable;
         return megAvailable;
     }
+
+    public static long getAvailableStorage() {
+        long megAvailable;
+
+        String path1 = Environment.getExternalStorageDirectory().getPath();
+//        String path2 = Environment.getDataDirectory().getPath();
+        StatFs stat = new StatFs(path1);
+//        StatFs stat1 = new StatFs(path2);
+
+        long bytesAvailable;
+
+        bytesAvailable = stat.getAvailableBlocksLong() * stat.getBlockSizeLong();
+        megAvailable = bytesAvailable;
+        return megAvailable;
+    }
+
 
 //
 
@@ -255,6 +275,7 @@ public class Utils {
 
             if (applicationInfo != null) {
 
+
                 Name = (String) packageManager.getApplicationLabel(applicationInfo);
 
             }
@@ -318,12 +339,9 @@ public class Utils {
 
 
         if (!folder.exists()) {
-            boolean isCreate = folder.mkdirs();
-            if (isCreate) {
-//                Toast.makeText(context, "created", Toast.LENGTH_SHORT).show();
-            } else {
-//                Toast.makeText(context, "not created", Toast.LENGTH_SHORT).show();
-            }
+            folder.mkdirs();
+            //                Toast.makeText(context, "created", Toast.LENGTH_SHORT).show();
+            //                Toast.makeText(context, "not created", Toast.LENGTH_SHORT).show();
 
         }
         File sourceFile = new File(sourcePath);
@@ -334,7 +352,7 @@ public class Utils {
 
     }
 
-    public static ArrayList<String> getExternalMounts() {
+    public ArrayList<String> getExternalMounts() {
         final ArrayList<String> out = new ArrayList<>();
         String reg = "(?i).*vold.*(vfat|ntfs|exfat|fat32|ext3|ext4).*rw.*";
         String s = "";
@@ -369,11 +387,43 @@ public class Utils {
         return out;
     }
 
+    public static boolean externalMemoryAvailable() {
+        return android.os.Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED);
+    }
+
+    public long getAvailableExternalMemorySize() {
+        if (externalMemoryAvailable()) {
+            File path = Environment.getExternalStorageDirectory();
+            StatFs stat = new StatFs(path.getPath());
+            long blockSize = stat.getBlockSizeLong();
+            long availableBlocks = stat.getAvailableBlocksLong();
+//            return formatSize(availableBlocks * blockSize);
+            return availableBlocks * blockSize;
+        } else {
+            return 0;
+        }
+    }
+
+    public long getTotalExternalMemorySize() {
+        if (externalMemoryAvailable()) {
+            File path = Environment.getExternalStorageDirectory();
+            StatFs stat = new StatFs(path.getPath());
+            long blockSize = stat.getBlockSizeLong();
+            long totalBlocks = stat.getBlockCountLong();
+//            return formatSize(totalBlocks * blockSize);
+            return totalBlocks * blockSize;
+        } else {
+            return 0;
+        }
+    }
+
+
     public void copyFileOrDirectory(String srcDir) {
 
         try {
             File src = new File(srcDir);
-            File dst = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+
+            File dst = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
                     "/DCIM/phone_repair/p_repair" + src.getName());
 
             if (src.isDirectory()) {
@@ -390,7 +440,7 @@ public class Utils {
             } else {
                 copyFile(src, dst);
                 context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                        Uri.fromFile(new File(dst .getAbsolutePath()))));
+                        Uri.fromFile(new File(dst.getAbsolutePath()))));
                 Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
 
             }
@@ -649,6 +699,26 @@ public class Utils {
         return docSize;
     }
 
+    public float getAudioSize(String path) {
+
+        File fold = new File(path);
+        File[] mlist = fold.listFiles();
+        File[] mFilelist = fold.listFiles(new AllAudioFilter());
+        if (mlist != null) {
+            for (File f : mlist) {
+                if (f.isDirectory()) {
+                    getAllDocSize(f.getAbsolutePath());
+                }
+            }
+        }
+        if (mFilelist != null) {
+            for (File f : mFilelist) {
+                audioSize = audioSize + f.length();
+            }
+        }
+        return audioSize;
+    }
+
     public float getAllPkgsSize(String path) {
         File fold = new File(path);
         File[] mlist = fold.listFiles();
@@ -669,26 +739,42 @@ public class Utils {
         return size;
     }
 
+
     // return images audio videos size
     @SuppressLint("Recycle")
     public float getAllIAAsSize(String forWhat) {
         Uri uri = null;
         Cursor cursor = null;
-
+        String[] projection = new String[0];
         float size = 0;
         if (forWhat.matches("videos")) {
             uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+            projection = new String[]{
+                    MediaStore.Video.Media._ID,
+                    MediaStore.Video.Media.DISPLAY_NAME,
+                    MediaStore.Video.Media.SIZE
+            };
         } else if (forWhat.matches("images")) {
             uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            projection = new String[]{
+                    MediaStore.Images.Media._ID,
+                    MediaStore.Images.Media.DISPLAY_NAME,
+                    MediaStore.Images.Media.SIZE
+            };
 
         } else if (forWhat.matches("audios")) {
             uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+            projection = new String[]{
+                    MediaStore.Audio.Media._ID,
+                    MediaStore.Audio.Media.DISPLAY_NAME,
+                    MediaStore.Audio.Media.SIZE
+            };
 
         }
 
         String sortOrder = MediaStore.MediaColumns.DATE_MODIFIED + " DESC";
         if (uri != null) {
-            cursor = context.getContentResolver().query(uri, null, null,
+            cursor = context.getContentResolver().query(uri, projection, null,
                     null, sortOrder);
         }
         assert cursor != null;
@@ -698,6 +784,7 @@ public class Utils {
         }
         return size;
     }
+
 
     //delete file taken from media store
     public void scanaddedFile(String path) {
@@ -817,6 +904,8 @@ public class Utils {
     }
 
     public float cpuTemperature() {
+
+
         Process process;
         try {
             process = Runtime.getRuntime().exec("cat sys/class/thermal/thermal_zone0/temp");
@@ -825,18 +914,24 @@ public class Utils {
             String line = reader.readLine();
             if (line != null) {
                 float temp = Float.parseFloat(line);
-                return getFahrenheitToCelsius(temp / 1000.0f);
+                return getCelsius(temp / 1000.0f);
             } else {
-                return getFahrenheitToCelsius(51.0f);
+                return getCelsius(51.0f);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return getFahrenheitToCelsius(0.0f);
+            return getCelsius(0.0f);
         }
+
     }
 
-    public float getFahrenheitToCelsius(float fahren) {
-        return (fahren - 32) * 5 / 9;
+    public float getCelsius(float fahren) {
+        return (fahren - 32) / (1.8f);
+
+    }
+
+    public float getFahrenheit(float cel) {
+        return (cel * 1.8f) + 32;
 
     }
 
@@ -853,6 +948,63 @@ public class Utils {
             }
         }
         return finalSize;
+    }
+
+    public int memoryFun(int total)
+    {
+        if (total<=2)
+        {
+            return 2;
+        }
+        else
+        if (total >2 && total<4)
+        {
+            return 4;
+
+        }
+        else
+        if (total>4 && total <8)
+        {
+            return 8;
+        }
+        else
+        if (total>10 && total <16)
+        {
+
+            return 16;
+
+        }
+        else
+        if (total>16 && total <32)
+        {
+            return 32;
+
+        }
+        else
+        if (total>32 && total <64)
+        {
+
+            return 64;
+
+        } else if (total > 64 && total < 128) {
+            return 128;
+
+
+        }else if (total > 128 && total < 256) {
+
+            return 256;
+
+        }
+        else if (total > 256 && total < 512) {
+
+            return 512;
+
+        }else if (total > 512 && total < 1024) {
+            return 1024;
+
+        }
+        return 0;
+
     }
 
 

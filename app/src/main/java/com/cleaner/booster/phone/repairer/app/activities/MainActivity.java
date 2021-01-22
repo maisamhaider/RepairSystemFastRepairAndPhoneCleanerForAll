@@ -1,47 +1,43 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.cleaner.booster.phone.repairer.app.BuildConfig;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.cleaner.booster.phone.repairer.app.R;
+import com.cleaner.booster.phone.repairer.app.fragments.MaintenanceFrag;
 import com.cleaner.booster.phone.repairer.app.fragments.dashboard.DashboardFragment;
 import com.cleaner.booster.phone.repairer.app.fragments.me.AboutUsFragment;
 import com.cleaner.booster.phone.repairer.app.fragments.tools.ToolsFragment;
+import com.cleaner.booster.phone.repairer.app.permission.Permissions;
 import com.cleaner.booster.phone.repairer.app.services.SmartChargeService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView home_nav_iv, tools_nav_iv, me_nav_iv;
-    private TextView home_nav_tv, tools_nav_tv, me_nav_tv;
-    private ConstraintLayout home_nav_cl, tools_nav_cl, me_nav_cl;
+
     SharedPreferences preferences;
-    int fragInt = 0;
+     BottomNavigationView mainBnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         preferences = getSharedPreferences("myPref", Context.MODE_PRIVATE);
-
-        home_nav_iv = findViewById(R.id.home_nav_iv);
-        tools_nav_iv = findViewById(R.id.tools_nav_iv);
-        me_nav_iv = findViewById(R.id.me_nav_iv);
-
-        home_nav_tv = findViewById(R.id.home_nav_tv);
-        tools_nav_tv = findViewById(R.id.tools_nav_tv);
-        me_nav_tv = findViewById(R.id.me_nav_tv);
-
-        home_nav_cl = findViewById(R.id.home_nav_cl);
-        tools_nav_cl = findViewById(R.id.tools_nav_cl);
-        me_nav_cl = findViewById(R.id.me_nav_cl);
+        mainBnv = findViewById(R.id.mainBnv);
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -72,25 +57,31 @@ public class MainActivity extends AppCompatActivity {
                 startService(new Intent(MainActivity.this, SmartChargeService.class));
             }
         }
+        loadFragment(new DashboardFragment());
+        mainBnv.setSelectedItemId(R.id.navigation_home);
+        mainBnv.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    loadFragment(new DashboardFragment());
+                    break;
+                case R.id.navigation_tool:
+                    loadFragment(new ToolsFragment());
+                    break;
+                case R.id.navigation_maintenance:
+                    loadFragment(new MaintenanceFrag());
+                    break;
+                case R.id.navigation_me:
+                    loadFragment(new AboutUsFragment());
+                    break;
+            }
+            return true;
+        });
 
-        home_nav_cl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navFun(v);
-            }
-        });
-        tools_nav_cl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navFun(v);
-            }
-        });
-        me_nav_cl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navFun(v);
-            }
-        });
+    }
+
+    public void dashboard()
+    {
+        mainBnv.setSelectedItemId(R.id.navigation_home);
     }
 
     @Override
@@ -120,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setView(dialogView);
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             yes.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
@@ -153,84 +145,57 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (fragInt == 0) {
-            homeSelected();
-        } else if (fragInt == 1) {
-            toolSelected();
-        } else if (fragInt == 2) {
-            aboutSelected();
-        }
-    }
-
-    public void navFun(View view) {
-        switch (view.getId()) {
-            case R.id.home_nav_cl:
-                homeSelected();
-                break;
-            case R.id.tools_nav_cl:
-                toolSelected();
-
-                break;
-            case R.id.me_nav_cl:
-                aboutSelected();
-                break;
-        }
-    }
-
-    public void homeSelected() {
-        loadFragment(new DashboardFragment());
-        fragInt = 0;
-        home_nav_iv.setImageResource(R.drawable.ic_select_home);
-        tools_nav_iv.setImageResource(R.drawable.ic_tools);
-        me_nav_iv.setImageResource(R.drawable.ic_more);
-
-        home_nav_tv.setVisibility(View.VISIBLE);
-        tools_nav_tv.setVisibility(View.GONE);
-        me_nav_tv.setVisibility(View.GONE);
-
-        home_nav_cl.setBackground(getDrawable(R.drawable.orange_two_d));
-        tools_nav_cl.setBackgroundColor(Color.WHITE);
-        me_nav_cl.setBackgroundColor(Color.WHITE);
-
-    }
-
-    public void toolSelected() {
-        loadFragment(new ToolsFragment());
-        fragInt = 1;
-        home_nav_iv.setImageResource(R.drawable.ic_home);
-        tools_nav_iv.setImageResource(R.drawable.ic_select_tools);
-        me_nav_iv.setImageResource(R.drawable.ic_more);
-
-        home_nav_tv.setVisibility(View.GONE);
-        tools_nav_tv.setVisibility(View.VISIBLE);
-        me_nav_tv.setVisibility(View.GONE);
-
-        home_nav_cl.setBackgroundColor(Color.WHITE);
-        tools_nav_cl.setBackground(getDrawable(R.drawable.orange_two_d));
-        me_nav_cl.setBackgroundColor(Color.WHITE);
-
-
-    }
-
-    public void aboutSelected() {
-        fragInt = 2;
-        loadFragment(new AboutUsFragment());
-        home_nav_iv.setImageResource(R.drawable.ic_home);
-        tools_nav_iv.setImageResource(R.drawable.ic_tools);
-        me_nav_iv.setImageResource(R.drawable.ic_select_more);
-
-        home_nav_tv.setVisibility(View.GONE);
-        tools_nav_tv.setVisibility(View.GONE);
-        me_nav_tv.setVisibility(View.VISIBLE);
-
-        home_nav_cl.setBackgroundColor(Color.WHITE);
-        tools_nav_cl.setBackgroundColor(Color.WHITE);
-        me_nav_cl.setBackground(getDrawable(R.drawable.orange_two_d));
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+    public void finishApp()
+    {
+       this.finishAffinity();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1111)
+        {
+            if ( grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                    grantResults[1] == PackageManager.PERMISSION_GRANTED)
+            {
+               dashboard();
+            }
+            else
+            {
+                exitOrAllow();
+            }
+        }
+    }
+    public  void exitOrAllow()
+    {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this)
+                .setTitle("Permission").setMessage("Storage permission is required to"
+                        +" run application.with out permission main"+
+                        " graphs that show storage information do not work")
+                .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Permissions permissions = new Permissions(MainActivity.this);
+                        permissions.permission();
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("Decline", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                      finishApp();
+                    }
+                });
+        android.app.AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

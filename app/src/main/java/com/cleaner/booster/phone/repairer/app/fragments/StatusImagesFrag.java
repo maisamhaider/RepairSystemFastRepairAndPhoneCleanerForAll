@@ -1,28 +1,24 @@
 package com.cleaner.booster.phone.repairer.app.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.activities.MainActivity;
 import com.cleaner.booster.phone.repairer.app.adapters.WhatsAppStatusAdapter;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.permission.Permissions;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,8 +38,7 @@ public class StatusImagesFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_status_images, container, false);
         Utils utils = new Utils(getContext());
 
-        RelativeLayout statusImages_rl = view.findViewById(R.id.statusImages_rl);
-        RecyclerView statusImages_rv = view.findViewById(R.id.statusImages_rv);
+         RecyclerView statusImages_rv = view.findViewById(R.id.statusImages_rv);
         LinearLayout saveStatusImages_ll = view.findViewById(R.id.saveStatusImages_ll);
         TextView statusNoImage_tv = view.findViewById(R.id.statusNoImage_tv);
         statusNoImage_tv.setVisibility(View.GONE);
@@ -53,11 +48,9 @@ public class StatusImagesFrag extends Fragment {
 
         if (list.size() == 0) {
             statusNoImage_tv.setVisibility(View.VISIBLE);
-            statusImages_rl.setVisibility(View.GONE);
 
         } else {
             statusNoImage_tv.setVisibility(View.GONE);
-            statusImages_rl.setVisibility(View.VISIBLE);
             statusImages_rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
             WhatsAppStatusAdapter statusAdapter = new WhatsAppStatusAdapter(getContext(), list, false);
             statusImages_rv.setAdapter(statusAdapter);

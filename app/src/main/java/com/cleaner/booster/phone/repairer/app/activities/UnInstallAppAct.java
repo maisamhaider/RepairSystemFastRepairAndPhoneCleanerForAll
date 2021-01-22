@@ -29,7 +29,7 @@ import com.cleaner.booster.phone.repairer.app.interfaces.TrueFalse;
 public class UnInstallAppAct extends AppCompatActivity implements TrueFalse {
 
     private ImageView uninstall_iv;
-    private TextView totalNumber_tv, msg_tv,no_data_tv;
+    private TextView totalNumber_tv, msg_tv, no_data_tv;
     private AllAppsAdapter allAppsAdapter;
     private RecyclerView allAppsUnInstallApp_rv;
     EditText appsSearch_et;
@@ -58,7 +58,7 @@ public class UnInstallAppAct extends AppCompatActivity implements TrueFalse {
         appsSearch_et.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         appsSearch_et.setSingleLine();
 
-        allAppsAdapter = new AllAppsAdapter(this,this::isTrue);
+        allAppsAdapter = new AllAppsAdapter(this, this::isTrue);
 
         loadData();
 
@@ -119,8 +119,7 @@ public class UnInstallAppAct extends AppCompatActivity implements TrueFalse {
     }
 
     public void loadData() {
-        AllAppsTask allAppsTsk = new AllAppsTask(this, allAppsAdapter, allAppsUnInstallApp_rv);
-        allAppsTsk.execute();
+        new AllAppsTask(this, allAppsAdapter, allAppsUnInstallApp_rv);
         totalNumber_tv.setText(String.valueOf(allAppsAdapter.getApps().size()));
 //        startAnimation();
     }
@@ -146,12 +145,9 @@ public class UnInstallAppAct extends AppCompatActivity implements TrueFalse {
 
     @Override
     public void isTrue(boolean isTrue) {
-        if (isTrue)
-        {
+        if (isTrue) {
             no_data_tv.setVisibility(View.GONE);
-        }
-        else
-        {
+        } else {
             no_data_tv.setVisibility(View.VISIBLE);
         }
     }

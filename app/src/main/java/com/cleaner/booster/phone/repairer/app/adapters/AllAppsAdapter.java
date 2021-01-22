@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,8 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
     @NonNull
     @Override
     public AllAppsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.allappsrecyclerviewitem_lo, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.allappsrecyclerviewitem_lo, parent, false);
         return new AllAppsHolder(view);
     }
 
@@ -78,8 +80,15 @@ public class AllAppsAdapter extends RecyclerView.Adapter<AllAppsAdapter.AllAppsH
 
         holder.appName_Tv.setText(appName);
 
-        Glide.with(context).load(UsageUtils.parsePackageIcon(apps.get(position), R.mipmap.ic_launcher))
-                .transition(new DrawableTransitionOptions().crossFade()).into(holder.appImage_Iv);
+        try
+        {
+
+            Glide.with(context).load(UsageUtils.parsePackageIcon(apps.get(position), R.mipmap.ic_launcher))
+                    .transition(new DrawableTransitionOptions().crossFade()).into(holder.appImage_Iv);
+        }catch (Exception e)
+        {
+            Log.e("glide crash",e.getMessage());
+        }
 
 
         holder.allAppsMain_cl.setOnClickListener(new View.OnClickListener() {

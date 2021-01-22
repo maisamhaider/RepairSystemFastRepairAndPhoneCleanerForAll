@@ -6,22 +6,34 @@
     android:layout_height="match_parent"
     android:background="@color/standard_white">
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/noData_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@drawable/ic_background"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:id="@+id/appDataBack_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_arrow_back_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,8 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="App Data"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/appDataBack_iv"
             app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/facebookArrow_iv"
@@ -93,10 +105,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/facebookArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_keyboard_arrow_down"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Saved images"
-                    android:textColor="@color/colorTextTwo"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -128,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/facebookSavedImagesArrow_iv"
@@ -136,10 +148,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/facebookSavedImagesArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_navigate_next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -181,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/messengerArrow_iv"
@@ -189,10 +201,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/messengerArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_keyboard_arrow_down"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Saved images"
-                    android:textColor="@color/colorTextTwo"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -224,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/messengerSavedImagesArrow_iv"
@@ -232,10 +244,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/messengerSavedImagesArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_navigate_next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -255,7 +267,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Saved videos"
-                    android:textColor="@color/colorTextTwo"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -267,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/messengerSavedVideosArrow_iv"
@@ -275,10 +287,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/messengerSavedVideosArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_navigate_next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -320,7 +332,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/instagramArrow_iv"
@@ -328,10 +340,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/instagramArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_keyboard_arrow_down"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -351,7 +363,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Saved images"
-                    android:textColor="@color/colorTextTwo"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -363,7 +375,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/instagramSavedImagesArrow_iv"
@@ -371,10 +383,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/instagramSavedImagesArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_navigate_next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -394,7 +406,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Saved videos"
-                    android:textColor="@color/colorTextTwo"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -406,7 +418,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:text="12.22 MB"
-                    android:textColor="@color/colorTextTwo"
+
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/instagramSavedVideosArrow_iv"
@@ -414,10 +426,10 @@
                     app:layout_constraintVertical_bias="0.513" />
 
                 <ImageView
-                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:id="@+id/instagramSavedVideosArrow_iv"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_baseline_navigate_next"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -428,8 +440,8 @@
     </ScrollView>
 
     <include
-        android:visibility="gone"
-        layout="@layout/app_data_rv_layout" />
+        layout="@layout/app_data_rv_layout"
+        android:visibility="gone" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

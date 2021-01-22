@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanAdapter;
 import com.cleaner.booster.phone.repairer.app.async.DeepCleanDocsTask;
-import com.cleaner.booster.phone.repairer.app.async.FileMoverTask;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
+import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
@@ -27,15 +27,15 @@ import java.util.List;
 public class DeepCleanAllDocsAct extends AppCompatActivity implements SelectAll {
 
     DeepCleanAdapter deepCleanAdapter;
-    DeepCleanDocsTask deepCleanDocsTask;
     RecyclerView DeepCleanAllDocs_rv;
 
     Utils utils;
     File file;
     boolean isSend;
     public CheckBox selectAll_cb1;
-    public TextView noData_tv,select_tv;
-    boolean b= false;
+    public TextView noData_tv, select_tv;
+    boolean b = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,26 +53,21 @@ public class DeepCleanAllDocsAct extends AppCompatActivity implements SelectAll 
 
 
         loadData();
-        isSend= getIntent().getBooleanExtra("isSend",false);
-        if (isSend)
-        {
+        isSend = getIntent().getBooleanExtra("isSend", false);
+        if (isSend) {
             deepCleanDocCleanBtn_tv.setText("MOVE");
-        }
-        else
-        {
-            Toast.makeText(this, "No Document selected", Toast.LENGTH_SHORT).show();
+        } else {
         }
 
         deepCleanDocs_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> pathList = deepCleanAdapter.getList();
-                if (isSend)
-                {
-                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(),pathList,"Files");
-                    fileMoverTask.execute();
+                List<CommonModel> pathList = deepCleanAdapter.getList();
+                if (isSend) {
+//                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(), pathList, "Files");
+//                    fileMoverTask.execute();
 
-                }else {
+                } else {
                     View view = getLayoutInflater().inflate(R.layout.are_you_sure_to_delete_dialog_layout, null, false);
                     AlertDialog.Builder builder = new AlertDialog.Builder(DeepCleanAllDocsAct.this);
                     LinearLayout no_ll = view.findViewById(R.id.no_ll);
@@ -81,9 +76,13 @@ public class DeepCleanAllDocsAct extends AppCompatActivity implements SelectAll 
                     builder.setView(view).setCancelable(true);
                     AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    if (!pathList.isEmpty())
-                    {
+                    if (!pathList.isEmpty()) {
                         dialog.show();
+                    }
+                    else
+                    {
+                        Toast.makeText(DeepCleanAllDocsAct.this, "No file selected",
+                                Toast.LENGTH_SHORT).show();
                     }
                     no_ll.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -97,15 +96,15 @@ public class DeepCleanAllDocsAct extends AppCompatActivity implements SelectAll 
 
                             for (int i = 0; i < pathList.size(); i++) {
                                 try {
-                                    file = new File(pathList.get(i));
+                                    file = new File(pathList.get(i).getPath());
                                     file.delete();
-                                    finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                             dialog.dismiss();
-                            loadData();                        }
+                            deepCleanAdapter.removeDeleted();
+                        }
                     });
                 }
             }
@@ -125,23 +124,22 @@ public class DeepCleanAllDocsAct extends AppCompatActivity implements SelectAll 
             }
         });
     }
+
     @Override
     public void selectAll(boolean isSelectAll) {
 
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
             b = true;
-        }
-        else {
+        } else {
             selectAll_cb1.setChecked(false);
             b = false;
         }
     }
-    public void loadData()
-    {
-        deepCleanAdapter = new DeepCleanAdapter(this,this,2);
-        deepCleanDocsTask = new DeepCleanDocsTask(this, deepCleanAdapter, DeepCleanAllDocs_rv);
-        deepCleanDocsTask.execute();
+
+    public void loadData() {
+        deepCleanAdapter = new DeepCleanAdapter(this, this, 2);
+        new DeepCleanDocsTask(this, deepCleanAdapter, DeepCleanAllDocs_rv);
+        deepCleanAdapter.notifyDataSetChanged();
     }
 }

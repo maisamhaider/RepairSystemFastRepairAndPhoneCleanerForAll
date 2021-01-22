@@ -1,7 +1,8 @@
 package com.cleaner.booster.phone.repairer.app.async;
 
 import android.content.Context;
-import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FastAllAppsTask extends AsyncTask<Void, Integer, String> {
+public class FastAllAppsTask  {
 
     Context context;
     private FastChargeAllAppsAdapter appsAdapter;
@@ -31,17 +32,10 @@ public class FastAllAppsTask extends AsyncTask<Void, Integer, String> {
         this.context = context;
         this.appsAdapter = appsAdapter;
         this.recyclerView = recyclerView;
-        this.linearLayoutManager = linearLayoutManager;
         this.list = new ArrayList<>();
         utils = new Utils(context);
         loadingDialog = new LoadingDialog(context);
         this.db = db;
-
-
-    }
-
-    @Override
-    protected void onPreExecute() {
         linearLayoutManager = new LinearLayoutManager(context);
         try {
             loadingDialog.show();
@@ -49,27 +43,20 @@ public class FastAllAppsTask extends AsyncTask<Void, Integer, String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+        list = utils.GetAllInstalledApkInfo();
 
-
-    @Override
-    protected String doInBackground(Void... voids) {
-
-            list = utils.GetAllInstalledApkInfo();
-
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        recyclerView.setLayoutManager(linearLayoutManager);
-        appsAdapter.setList(list,db);
-        recyclerView.setAdapter(appsAdapter);
-        appsAdapter.notifyDataSetChanged();
-        loadingDialog.dismiss();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.setLayoutManager(linearLayoutManager);
+                appsAdapter.setList(list,db);
+                recyclerView.setAdapter(appsAdapter);
+                appsAdapter.notifyDataSetChanged();
+                loadingDialog.dismiss();
+            }
+        },2500);
 
 
     }
-
 
 }

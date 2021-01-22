@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -43,8 +42,7 @@ public class StatusVideosFrag extends Fragment {
 
         Utils utils = new Utils(getContext());
 
-        RelativeLayout statusVideos_rl = view.findViewById(R.id.statusVideos_rl);
-        RecyclerView statusVideos_rv = view.findViewById(R.id.statusVideos_rv);
+         RecyclerView statusVideos_rv = view.findViewById(R.id.statusVideos_rv);
         LinearLayout saveStatusVideos_ll = view.findViewById(R.id.saveStatusVideos_ll);
         TextView statusNoVideo_tv = view.findViewById(R.id.statusNoVideo_tv);
         statusNoVideo_tv.setVisibility(View.GONE);
@@ -54,11 +52,12 @@ public class StatusVideosFrag extends Fragment {
         list = utils.getListFiles(file1, "videos");
         if (list.size() == 0) {
             statusNoVideo_tv.setVisibility(View.VISIBLE);
-            statusVideos_rl.setVisibility(View.GONE);
+            saveStatusVideos_ll.setVisibility(View.GONE);
 
         } else {
             statusNoVideo_tv.setVisibility(View.GONE);
-            statusVideos_rl.setVisibility(View.VISIBLE);
+            saveStatusVideos_ll.setVisibility(View.VISIBLE);
+
             statusVideos_rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
             WhatsAppStatusAdapter statusAdapter = new WhatsAppStatusAdapter(getContext(), list, false);
             statusVideos_rv.setAdapter(statusAdapter);

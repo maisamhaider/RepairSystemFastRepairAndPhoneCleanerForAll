@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -13,31 +14,47 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <View
+        android:id="@+id/view30"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView2"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/gifImageView11"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/phone_boosting"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/view30"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/repair" />
+
+    <TextView
+        android:id="@+id/progress_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/gifImageView11"
+        app:layout_constraintEnd_toEndOf="@+id/gifImageView11"
+        app:layout_constraintStart_toStartOf="@+id/gifImageView11"
+        app:layout_constraintTop_toTopOf="@+id/gifImageView11" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/repair_phone"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -49,12 +66,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/analyzing_apps"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/pb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gifImageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/gifImageView11" />
 
 
     <ProgressBar
@@ -68,34 +86,25 @@
         android:progressDrawable="@drawable/customprogress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <TextView
+        android:layout_margin="10dp"
         android:id="@+id/tv_package"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingStart="5dp"
         android:text="@string/analyzing_apps"
         android:textColor="#fff"
         android:textStyle="bold"
-        android:paddingStart="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/pb"
         app:layout_constraintEnd_toEndOf="@+id/pb"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_app_icon"
+        app:layout_constraintStart_toStartOf="@+id/pb"
         app:layout_constraintTop_toTopOf="@+id/pb"
         app:layout_constraintVertical_bias="0.469" />
 
-    <ImageView
-        android:id="@+id/iv_app_icon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_package"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/pb"
-        app:layout_constraintTop_toTopOf="@+id/tv_package"
-        app:srcCompat="@drawable/ic_app_data" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

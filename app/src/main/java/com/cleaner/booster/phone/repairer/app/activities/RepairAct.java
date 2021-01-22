@@ -4,33 +4,26 @@ import android.animation.ValueAnimator;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.util.List;
 
-import bot.box.appusage.utils.UsageUtils;
-
 public class RepairAct extends AppCompatActivity {
 
-    View vRepairOne,repair_two;
+    View vRepairOne, repair_two;
     private ProgressBar pb;
-    private ImageView ivAppIcon;
-    private Utils untils;
-    private TextView tvPackge;
+     private Utils untils;
+    private TextView tvPackge,progress_tv;
     private List<String> packageName;
     private boolean enabledBackPress = false;
 
@@ -46,46 +39,28 @@ public class RepairAct extends AppCompatActivity {
     private void init() {
         vRepairOne = findViewById(R.id.repair_one);
         repair_two = findViewById(R.id.repair_two);
+        progress_tv = findViewById(R.id.progress_tv);
         pb = findViewById(R.id.pb);
-        ivAppIcon = findViewById(R.id.iv_app_icon);
-        tvPackge = findViewById(R.id.tv_package);
+         tvPackge = findViewById(R.id.tv_package);
         untils = new Utils(RepairAct.this);
-        new KillAppsTask().execute();
+        startRepairing();
 
 
     }
 
-
-    class KillAppsTask extends AsyncTask<Void, Integer, String> {
-
+    public void startRepairing() {
         ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            packageName = untils.getActiveApps();
-            vRepairOne.setVisibility(View.VISIBLE);
-            pb.setMax(packageName.size());
-            pb.setProgress(0);
-            startAnimation();
-        }
+        packageName = untils.getActiveApps();
+        vRepairOne.setVisibility(View.VISIBLE);
+        pb.setMax(100);
+        pb.setProgress(0);
 
-        @Override
-        protected String doInBackground(Void... voids) {
-            for (int i = 0; i < packageName.size(); i++) {
-                am.killBackgroundProcesses(packageName.get(i));
-                publishProgress(i); }
-            return null;
+        for (int i = 0; i < packageName.size(); i++) {
+            am.killBackgroundProcesses(packageName.get(i));
         }
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-        }
+        startAnimation();
 
-
-        @Override
-        protected void onPostExecute(String s)
-        { super.onPostExecute(s); }
     }
 
 
@@ -93,7 +68,7 @@ public class RepairAct extends AppCompatActivity {
 
         vRepairOne.setVisibility(View.VISIBLE);
         enabledBackPress = false;
-        ValueAnimator animator = ValueAnimator.ofInt(0, packageName.size() - 1);
+        ValueAnimator animator = ValueAnimator.ofInt(0, 100);
         animator.setInterpolator(new LinearInterpolator());
         animator.setStartDelay(0);
         animator.setDuration(30_000);
@@ -102,24 +77,20 @@ public class RepairAct extends AppCompatActivity {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 int value = (int) valueAnimator.getAnimatedValue();
                 pb.setProgress(value);
+                progress_tv.setText(value + "%");
                 tvPackge.setText(packageName.get(value));
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Glide.with(RepairAct.this).load(UsageUtils.parsePackageIcon(packageName.get(value), R.mipmap.ic_launcher))
-                                .transition(new DrawableTransitionOptions().crossFade()).into(ivAppIcon);
-                    }
-                },500);
 
-                if ((packageName.size() - 1) == value) {
+                if ((100 - 1) == value) {
                     vRepairOne.setVisibility(View.GONE);
                     repair_two.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void run()
-                        { finish(); }
-                    },2000);
-                } }
+                        public void run() {
+                            finish();
+                        }
+                    }, 2000);
+                }
+            }
         });
         animator.start();
     }

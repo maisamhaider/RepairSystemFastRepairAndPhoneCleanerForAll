@@ -20,13 +20,11 @@ import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
 
 import com.cleaner.booster.phone.repairer.app.R;
 
@@ -48,7 +46,7 @@ public class HardwareTest extends AppCompatActivity implements View.OnClickListe
         setContentView( R.layout.activity_hardware_test);
          setRequestedOrientation( ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
 
-        LinearLayout vibration_ll, simCard_ll, displayTst_ll, tuchSensor_ll, speakerTst_ll, checkHdPhne_ll, checkBlotoooth_ll;
+        ConstraintLayout vibration_ll, simCard_ll, displayTst_ll, tuchSensor_ll, speakerTst_ll, checkHdPhne_ll, checkBlotoooth_ll;
         simCardVal_tv = findViewById( R.id.simCrdTstVal_tv);
         headphone_tv = findViewById( R.id.isHdphne_tv);
         bluetoothSate_tv = findViewById( R.id.blotooothState_tv);

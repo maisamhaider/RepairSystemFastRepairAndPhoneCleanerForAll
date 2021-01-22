@@ -31,8 +31,8 @@ public class WhatsAppImagesListAct extends WhatsAppBaseActivity implements Selec
 
         type = "images";
         commonAdapter = new CommonAdapter(this, CommonAdapter.IMAGE,this);
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
-        whatsAppCommonTask.execute();
+          new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
+
 
         whatsAppImagesList_btn.setOnClickListener(new View.OnClickListener() {
             @Override

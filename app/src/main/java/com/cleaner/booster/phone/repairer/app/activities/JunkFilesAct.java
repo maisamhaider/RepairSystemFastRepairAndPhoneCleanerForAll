@@ -1,14 +1,15 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import android.annotation.SuppressLint;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.StorageUtils;
@@ -25,11 +27,9 @@ import com.cleaner.booster.phone.repairer.app.utils.Utils;
 import java.io.File;
 import java.util.List;
 
-import pl.droidsonroids.gif.GifImageView;
-
 public class JunkFilesAct extends AppCompatActivity {
     private TextView trashCleanLast_tv;
-    private GifImageView junkCollecting_giv, junkBinDone_giv;
+    ImageView junkBinDone_iv;
     private ConstraintLayout cacheJunkBin_cl;
     private List<CommonModel> pkg;
     private Utils utils;
@@ -41,7 +41,8 @@ public class JunkFilesAct extends AppCompatActivity {
     boolean isEFolderClean = false;
     boolean isCacheJunkClean = false;
     boolean isInstallationPkgClean = false;
-    boolean isResidualJunkClean =false;
+    boolean isResidualJunkClean = false;
+   LottieAnimationView lottie_av;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,51 +71,57 @@ public class JunkFilesAct extends AppCompatActivity {
         cacheJunkBin_cl = findViewById(R.id.cacheJunkBin_cl);
 
         trashCleanLast_tv = findViewById(R.id.trashCleanLast_tv);
-        junkCollecting_giv = findViewById(R.id.junkCollecting_giv);
-        junkBinDone_giv = findViewById(R.id.junkBinDone_giv);
+        junkBinDone_iv = findViewById(R.id.junkBinDone_iv);
+        lottie_av = findViewById(R.id.lottie_av);
 
-        cacheJunkBin_cl.setVisibility(View.GONE);
-        junkCollecting_giv.setVisibility(View.GONE);
 
-            junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
-            cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
-            installationPackages_iv.setImageResource(R.drawable.ic_deselect);
-            residualJunk_iv.setImageResource(R.drawable.ic_deselect);
+        junkFileEmptyFolderClear_iv.setImageResource(R.drawable.group_47);
+        cacheJunkClear_iv.setImageResource(R.drawable.group_47);
+        installationPackages_iv.setImageResource(R.drawable.group_47);
+        residualJunk_iv.setImageResource(R.drawable.group_47);
 
         //junk File Empty Folder
         junkFileEmptyFolderClear_cl.setOnClickListener(v -> {
             if (isEFolderClean) {
-                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
+                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.group_47);
                 isEFolderClean = false;
-             } else {
-                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_select);
-                isEFolderClean = true; }});
+            } else {
+                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_selected);
+                isEFolderClean = true;
+            }
+        });
 
         //cache junks
         cacheJunkClear_cl.setOnClickListener(v -> {
             if (isCacheJunkClean) {
-                cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
+                cacheJunkClear_iv.setImageResource(R.drawable.group_47);
                 isCacheJunkClean = false;
             } else {
-                cacheJunkClear_iv.setImageResource(R.drawable.ic_select);
-                isCacheJunkClean = true;}});
+                cacheJunkClear_iv.setImageResource(R.drawable.ic_selected);
+                isCacheJunkClean = true;
+            }
+        });
 
         installationPackages_cl.setOnClickListener(v -> {
             if (isInstallationPkgClean) {
-                installationPackages_iv.setImageResource(R.drawable.ic_deselect);
-                isInstallationPkgClean= false;
+                installationPackages_iv.setImageResource(R.drawable.group_47);
+                isInstallationPkgClean = false;
             } else {
-                installationPackages_iv.setImageResource(R.drawable.ic_select);
-                isInstallationPkgClean= true; }});
+                installationPackages_iv.setImageResource(R.drawable.ic_selected);
+                isInstallationPkgClean = true;
+            }
+        });
 
 
         residualJunk_cl.setOnClickListener(v -> {
             if (isResidualJunkClean) {
-                residualJunk_iv.setImageResource(R.drawable.ic_deselect);
+                residualJunk_iv.setImageResource(R.drawable.group_47);
                 isResidualJunkClean = false;
-             } else {
-                residualJunk_iv.setImageResource(R.drawable.ic_select);
-                isResidualJunkClean = true;}});
+            } else {
+                residualJunk_iv.setImageResource(R.drawable.ic_selected);
+                isResidualJunkClean = true;
+            }
+        });
 
         dirPath = String.valueOf(Environment.getExternalStorageDirectory());
         utils = new Utils(this);
@@ -122,84 +129,46 @@ public class JunkFilesAct extends AppCompatActivity {
 
         junkFileCleanBtn_ll.setOnClickListener(v -> {
             if (isEFolderClean || isCacheJunkClean || isInstallationPkgClean || isResidualJunkClean) {
-                new CacheClean().execute();
-                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.ic_deselect);
-                residualJunk_iv.setImageResource(R.drawable.ic_deselect);
-                installationPackages_iv.setImageResource(R.drawable.ic_deselect);
-                cacheJunkClear_iv.setImageResource(R.drawable.ic_deselect);
+                junkCleaning();
+                junkFileEmptyFolderClear_iv.setImageResource(R.drawable.group_47);
+                residualJunk_iv.setImageResource(R.drawable.group_47);
+                installationPackages_iv.setImageResource(R.drawable.group_47);
+                cacheJunkClear_iv.setImageResource(R.drawable.group_47);
                 isEFolderClean = false;
                 isCacheJunkClean = false;
-                isInstallationPkgClean= false;
-                isResidualJunkClean = false;}
-            else
-            {Toast.makeText(this, "Please select item first", Toast.LENGTH_SHORT).show();}});
+                isInstallationPkgClean = false;
+                isResidualJunkClean = false;
+            } else {
+                Toast.makeText(this, "Please select item first", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        new JunkCleanerTask().execute();
-    }
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                pkg = utils.getAllPackages(dirPath);
+            }
+        });
+     }
 
 
     public void lastView() {
-        junkCollecting_giv.setVisibility(View.GONE);
-        junkBinDone_giv.setVisibility(View.VISIBLE);
-        junkBinDone_giv.setImageResource(R.drawable.junk_bin);
+        lottie_av.setVisibility(View.INVISIBLE);
+        junkBinDone_iv.setVisibility(View.VISIBLE);
+        junkBinDone_iv.setImageResource(R.drawable.ic_bin_sky_blue);
         trashCleanLast_tv.setText("CLEANING FINISHED");
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            cacheJunkBin_cl.setVisibility(View.GONE);
-            junkBinDone_giv.setVisibility(View.GONE);
+            cacheJunkBin_cl.setVisibility(View.INVISIBLE);
+            junkBinDone_iv.setVisibility(View.INVISIBLE);
         }, 2000);
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class JunkCleanerTask extends AsyncTask<Void, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            pkg = utils.getAllPackages(dirPath);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
-    }
-
-
-    class CacheClean extends AsyncTask<Void, Integer, String> {
-        String p = Environment.getExternalStorageDirectory().getAbsolutePath();
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            cacheJunkBin_cl.setVisibility(View.VISIBLE);
-            junkCollecting_giv.setVisibility(View.VISIBLE);
-            junkCollecting_giv.setFreezesAnimation(true);
-            trashCleanLast_tv.setText("CLEANING");
-
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            cleanOrFinishFun(true, p);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            Handler handler = new Handler();
-            handler.postDelayed(() -> lastView(), 3000);
-        }
-    }
 
     public void cleanOrFinishFun(boolean isClean, String p) {
         if (isClean) {
@@ -231,5 +200,45 @@ public class JunkFilesAct extends AppCompatActivity {
             finish();
         }
     }
+
+    public void junkCleaning() {
+        String p = Environment.getExternalStorageDirectory().getAbsolutePath();
+        cacheJunkBin_cl.setVisibility(View.VISIBLE);
+        lottie_av.setVisibility(View.VISIBLE);
+        trashCleanLast_tv.setText("CLEANING");
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cleanOrFinishFun(true, p);
+            }
+        },2000);
+
+        startAnimation(100);
+
+
+
+    }
+
+    private void startAnimation(int setLevel) {
+        ValueAnimator animator = ValueAnimator.ofInt(0, setLevel);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setStartDelay(0);
+        animator.setDuration(2_000);
+        animator.addUpdateListener(valueAnimator -> {
+
+            int value = (int) valueAnimator.getAnimatedValue();
+             if (value >= setLevel-5) {
+
+
+                new Handler(Looper.getMainLooper())
+                        .postDelayed(() -> {
+                            lastView();
+                        }, 3000);
+            }
+        });
+        animator.start();
+    }
+
 
 }

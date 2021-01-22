@@ -25,7 +25,8 @@ import java.util.List;
 
 import bot.box.appusage.utils.UsageUtils;
 
-public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAllAppsAdapter.AllAppsHolder> implements SelectAll {
+public class FastChargeAllAppsAdapter extends
+        RecyclerView.Adapter<FastChargeAllAppsAdapter.AllAppsHolder> implements SelectAll {
 
     private List<String> apps;
     private List<String> fullList;
@@ -78,11 +79,12 @@ public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAll
 
 
         if (db.isPkgAvail(appPackage)) {
-            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_select);
+            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_selected);
         } else {
-            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_deselect);
-
+            holder.fastChargeAllApp_iv.setImageBitmap(null);
         }
+        selectAll.selectAll((int) db.getProfilesCount() == apps.size());
+
 
         holder.fastChargeAllAppName_Tv.setText(appName);
         Glide.with(context).load(UsageUtils.parsePackageIcon(apps.get(position), R.mipmap.ic_launcher))
@@ -99,7 +101,7 @@ public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAll
                             selectAll.selectAll(true);
                         }
 
-                        holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_select);
+                        holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_selected);
 
                     }
 
@@ -109,7 +111,7 @@ public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAll
                         boolean isDeleted = db.deletePkgPath(packageName);
                         if (isDeleted) {
                             selectAll.selectAll(false);
-                            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_deselect);
+                            holder.fastChargeAllApp_iv.setImageBitmap(null);
 
                         }
                     }
@@ -135,7 +137,7 @@ public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAll
         }
         for (String path : apps) {
             db.insertPkgPath(path);
-            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_select);
+            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_selected);
             notifyDataSetChanged();
         }
     }
@@ -143,7 +145,7 @@ public class FastChargeAllAppsAdapter extends RecyclerView.Adapter<FastChargeAll
     private void clearList() {
         if (db.getProfilesCount() != 0) {
             db.deletePkgAll();
-            holder.fastChargeAllApp_iv.setImageResource(R.drawable.ic_deselect);
+            holder.fastChargeAllApp_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
     }

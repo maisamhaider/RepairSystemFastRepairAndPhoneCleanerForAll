@@ -26,6 +26,7 @@ public class SensorListAct extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         LinearLayout llSensor = findViewById(R.id.ll_sensor);
+        LinearLayout llSensor1 = findViewById(R.id.ll_sensor1);
 //        TextView mSensorAvailables  = findViewById(R.id.);
 
         // Get the SensorManager
@@ -42,7 +43,6 @@ public class SensorListAct extends AppCompatActivity {
         Sensor tmp;
         int x, i;
         for (i = 0; i < mSensorList.size(); i++) {
-
             tmp = mSensorList.get(i);
 //            sSensList = " " + sSensList + tmp.getName() + "\n"; // Add the sensor name to the string of sensors available
 //            viewArrayList = new ArrayList<>(mSensorList.size());
@@ -50,11 +50,21 @@ public class SensorListAct extends AppCompatActivity {
             LinearLayout.LayoutParams params = new
                     LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0,10,0,10);
+            params.setMargins(0,0,0,0);
             view.setLayoutParams(params);
                 TextView tvTitle = view.findViewById(R.id.tv_title);
                 tvTitle.setText(tmp.getName());
-                llSensor.addView(view);
+
+                if (i%2==0)
+                {
+
+                    llSensor.addView(view);
+                }
+                else
+                {
+
+                    llSensor1.addView(view);
+                }
 
         }
     }

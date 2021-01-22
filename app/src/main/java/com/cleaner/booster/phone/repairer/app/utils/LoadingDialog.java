@@ -25,12 +25,12 @@ public class LoadingDialog {
                 .setCancelable(false)
                 .setSpinnerClockwise(false)
                 .setMessageContentGravity(Gravity.END)
-                .setBackgroundColor(context.getResources().getColor(R.color.colorPrimary))
                 .setMessageColor(context.getResources().getColor(R.color.standard_white))
                 .setMessageContent("Loading Data")
                 .build();
     }
-    public LoadingDialog(Context context,String msg) {
+
+    public LoadingDialog(Context context, String msg) {
         iosDialog = new IOSDialog.Builder(context)
                 .setCancelable(false)
                 .setSpinnerClockwise(false)

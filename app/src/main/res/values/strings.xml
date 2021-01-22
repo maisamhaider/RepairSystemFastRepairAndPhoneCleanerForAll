@@ -3,14 +3,14 @@
     <string name="clean">Clean</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-        <string name="app_id">ca-app-pub-8589419510089723~2498820693</string>
+    <string name="app_id">ca-app-pub-8589419510089723~2498820693</string>
     <string name="banner">ca-app-pub-8589419510089723/5476337829</string>
     <string name="interstial">ca-app-pub-8589419510089723/8681085668</string>
 
 
     //test ids
-<!--             <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
-<!--            <string name="interstial">ca-app-pub-3940256099942544/1033173712</string>-->
+    <!--    <string name="banner">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--    <string name="interstial">ca-app-pub-3940256099942544/1033173712</string>-->
 
     <string name="images">Images</string>
     <string name="videos">Videos</string>
@@ -25,6 +25,7 @@
     <string name="enable_now">ENABLE NOW</string>
     <string name="title_home">Home</string>
     <string name="title_tool">Tools</string>
+    <string name="title_maintenance">Maintenance</string>
     <string name="title_setting">Setting</string>
     <string name="title_me">About us</string>
     <string name="junk_files"><b>Junk</b> Files</string>
@@ -37,7 +38,7 @@
     <string name="analyzing_usage">ANALYZING USAGE</string>
     <string name="uninstall_apps">Uninstall apps</string>
 
-    <string name="exit_dialog">Exit.</string>
+    <string name="exit_dialog">Exit</string>
     <string name="exit_text">Thank you for using our app. Are you sure you want to exit?</string>
     <string name="rateus">Rate us</string>
 
@@ -46,7 +47,9 @@
     <string name="P_desc">\t\n1. Storage permission is required to get memory usage status.\n\n2. Network state permission is required to access internet data usage information.\n\n3. Contact permission is required to get phone number for blocking purpose.\n\n4. Phone State permission is required to get information about applications.\n\n5. Access wifi state is required to check wifi on/off state </string>
     <string name="accepting">By accepting you are agree to our <u><b>Terms and Conditions</b></u> </string>
     <string name="repair_phone">Repair Phone</string>
-    <string name="analyzing_apps">Analyzing Apps</string>
+    <string name="analyzing_apps">Repairing</string>
     <string name="no">No</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

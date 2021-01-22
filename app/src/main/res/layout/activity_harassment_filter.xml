@@ -17,7 +17,7 @@
         android:id="@+id/view23"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_background"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/guideline52"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,37 +39,41 @@
 
 
     <Button
+        android:ellipsize="end"
         android:id="@+id/block_unBlock_btn"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/copyContact_btn"
-        android:layout_margin="10dp"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
+        android:layout_margin="20dp"
+        android:background="@drawable/curved_white_ripple_sky_blue_bg_d"
         android:padding="8dp"
         android:text="Block/Unblock"
-        android:textColor="#ffffff"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/copyContact_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view23"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:ellipsize="end"
+        android:id="@+id/copyContact_btn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/curved_white_ripple_sky_blue_bg_d"
+        android:padding="8dp"
+        android:text="select Contact"
+        android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/harassmentFilter_adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline52" />
-
-    <Button
-        android:id="@+id/copyContact_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
-        android:padding="8dp"
-        android:text="select Contact"
-        android:textColor="#ffffff"
-        android:layout_margin="10dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/block_unBlock_btn" />
 

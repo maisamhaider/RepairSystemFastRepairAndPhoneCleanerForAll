@@ -1,26 +1,26 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.BatterySavingAllAppsAdapter;
@@ -34,7 +34,8 @@ public class PhoneBoostAct extends AppCompatActivity {
     Utils utils;
     ProgressBar phoneBoosting_pb;
     private BatterySavingAllAppsAdapter allAppsAdapter;
-    ConstraintLayout phoneBoostSecond_cl, phoneBoostedLastMain_cl, phoneBoostedMain1_cl, BoostingMain_cl;
+    ConstraintLayout phoneBoostSecond_cl, phoneBoostedLastMain_cl,
+            phoneBoostedMain1_cl, BoostingMain_cl;
     TextView phoneBoostUsedPercent_tv, phoneBoostRamDetail_tv;
     SharedPreferences preferences;
     CheckBox selectAll_cb;
@@ -104,7 +105,7 @@ public class PhoneBoostAct extends AppCompatActivity {
             phoneBoostRamDetail_tv.setText(utils.getCalculatedDataSize(usedRam4) + "/" + utils.getCalculatedDataSize(totalRam4));
             String percent4 = (String.format("%.0f", utils.getPercentage(totalRam4, usedRam4)));
             phoneBoostUsedPercent_tv.setText(percent4);
-         }
+        }
 
         allAppsAdapter = new BatterySavingAllAppsAdapter(this, list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -117,12 +118,9 @@ public class PhoneBoostAct extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SelectAll selectAll = allAppsAdapter.getSelectAll();
-                if (b)
-                {
+                if (b) {
                     selectAll.selectAll(true);
-                }
-                else
-                {
+                } else {
                     selectAll.selectAll(false);
                 }
             }
@@ -133,15 +131,12 @@ public class PhoneBoostAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (allAppsAdapter.getCheckList().isEmpty())
-                {
+                if (allAppsAdapter.getCheckList().isEmpty()) {
                     Toast.makeText(PhoneBoostAct.this,
                             "Please select app first", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    KillAppsTask appsTask = new KillAppsTask();
-                    appsTask.execute();
+                } else {
+
+                    startBoosting();
                 }
 
 
@@ -151,64 +146,59 @@ public class PhoneBoostAct extends AppCompatActivity {
 
     }
 
-    class KillAppsTask extends AsyncTask<Void, Integer, String> {
+    public void startBoosting() {
         List<String> packageName;
         ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            packageName = allAppsAdapter.getCheckList();
-            BoostingMain_cl.setVisibility(View.VISIBLE);
-            phoneBoosting_pb.setMax(packageName.size());
+        packageName = allAppsAdapter.getCheckList();
+        BoostingMain_cl.setVisibility(View.VISIBLE);
+        phoneBoosting_pb.setMax(packageName.size());
 
+        for (int i = 0; i < packageName.size(); i++) {
+            am.killBackgroundProcesses(packageName.get(i));
         }
+        startAnimation(packageName.size());
 
-        @Override
-        protected String doInBackground(Void... voids) {
-            for (int i = 0; i < packageName.size(); i++) {
-                am.killBackgroundProcesses(packageName.get(i));
-                publishProgress(i);
+
+
+    }
+
+    private void startAnimation(int setLevel) {
+        ValueAnimator animator = ValueAnimator.ofInt(0, setLevel);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setStartDelay(0);
+        animator.setDuration(2_000);
+        animator.addUpdateListener(valueAnimator -> {
+
+            int value = (int) valueAnimator.getAnimatedValue();
+            phoneBoosting_pb.setProgress(value);
+            String bValue = value + "%";
+             if (value == setLevel) {
+                BoostingMain_cl.setVisibility(View.GONE);
+                phoneBoostSecond_cl.setVisibility(View.GONE);
+                phoneBoostedLastMain_cl.setVisibility(View.VISIBLE);
+                Calendar nextTime = Calendar.getInstance();
+                nextTime.add(Calendar.MINUTE, 5);
+                SharedPreferences.Editor editor = preferences.edit();
+
+                float totalRam2 = memoryInfo.totalMem;
+                float freeRam2 = memoryInfo.availMem;
+                float usedRam1 = totalRam2 - freeRam2;
+                editor.putLong("lastPhoneBoostTime", nextTime.getTimeInMillis()).commit();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        phoneBoostUsedPercent_tv.setText(String.format("%.0f", utils.getPercentage(totalRam2, usedRam1)));
+                        phoneBoostRamDetail_tv.setText(utils.getCalculatedDataSize(usedRam1) + "/" + utils.getCalculatedDataSize(totalRam2));
+                        phoneBoostedLastMain_cl.setVisibility(View.GONE);
+                        phoneBoostedMain1_cl.setVisibility(View.VISIBLE);
+
+                    }
+                }, 3000);
             }
-            return null;
-        }
-
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-            phoneBoosting_pb.setProgress(values[0]);
-        }
-
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            BoostingMain_cl.setVisibility(View.GONE);
-            phoneBoostSecond_cl.setVisibility(View.GONE);
-            phoneBoostedLastMain_cl.setVisibility(View.VISIBLE);
-            Calendar nextTime = Calendar.getInstance();
-            nextTime.add(Calendar.MINUTE, 5);
-            SharedPreferences.Editor editor = preferences.edit();
-
-            float totalRam2 = memoryInfo.totalMem;
-            float freeRam2 = memoryInfo.availMem;
-            float usedRam1 = totalRam2 - freeRam2;
-            editor.putLong("lastPhoneBoostTime", nextTime.getTimeInMillis()).commit();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    phoneBoostUsedPercent_tv.setText(String.format("%.0f", utils.getPercentage(totalRam2, usedRam1)));
-                    phoneBoostRamDetail_tv.setText(utils.getCalculatedDataSize(usedRam1) + "/" + utils.getCalculatedDataSize(totalRam2));
-                    phoneBoostedLastMain_cl.setVisibility(View.GONE);
-                    phoneBoostedMain1_cl.setVisibility(View.VISIBLE);
-
-                }
-            }, 3000);
-
-
-        }
+        });
+        animator.start();
     }
 
 

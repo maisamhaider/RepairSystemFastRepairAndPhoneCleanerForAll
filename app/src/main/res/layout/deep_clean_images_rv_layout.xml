@@ -5,40 +5,37 @@
     android:layout_width="match_parent"
     app:cardCornerRadius="5dp"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/imageAdapter_cl"
-    android:background="@drawable/white_curved_ripple"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_margin="8dp"
+    >
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:layout_margin="10dp"
-        android:id="@+id/deepCleanRv_iv"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imageAdapter_cl"
+        android:background="@drawable/white_curved_ripple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+             android:id="@+id/deepCleanRv_iv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/selectImage_iv"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/ic_deselect"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/deepCleanRv_iv"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/selectImage_iv"
+            android:layout_width="20dp"
+            android:layout_margin="5dp"
+            android:layout_height="20dp"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="@+id/deepCleanRv_iv"
+            app:layout_constraintTop_toTopOf="@+id/deepCleanRv_iv" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

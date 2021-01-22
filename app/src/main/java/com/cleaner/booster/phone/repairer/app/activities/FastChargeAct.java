@@ -18,12 +18,11 @@ import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 public class FastChargeAct extends AppCompatActivity implements SelectAll {
 
-    FastAllAppsTask allAppsTask;
     FastChargeAllAppsAdapter adapter;
     Db db;
     RecyclerView fastCharge_rv;
     CheckBox selectAll_cb1;
-    TextView select_tv,doneDtn;
+    TextView select_tv, doneDtn;
     boolean b = false;
 
     @Override
@@ -40,8 +39,8 @@ public class FastChargeAct extends AppCompatActivity implements SelectAll {
         db = new Db(this);
         adapter = new FastChargeAllAppsAdapter(this, this);
 
-        allAppsTask = new FastAllAppsTask(this, adapter, fastCharge_rv, db);
-        allAppsTask.execute();
+        new FastAllAppsTask(this, adapter, fastCharge_rv, db);
+
         Utils utils = new Utils(this);
         if (utils.GetAllInstalledApkInfo().isEmpty()) {
             select_tv.setVisibility(View.GONE);
@@ -64,7 +63,7 @@ public class FastChargeAct extends AppCompatActivity implements SelectAll {
             @Override
             public void onClick(View v) {
                 FastChargeAct.this.finish();
-             }
+            }
         });
 
     }

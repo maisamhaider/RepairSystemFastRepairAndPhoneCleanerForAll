@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanVideosAdapter;
 import com.cleaner.booster.phone.repairer.app.async.DeepCleanVideosTask;
-import com.cleaner.booster.phone.repairer.app.async.FileMoverTask;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
+import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
@@ -27,7 +27,6 @@ import java.util.List;
 public class DeepCleanAllVideosAct extends AppCompatActivity implements SelectAll {
 
     DeepCleanVideosAdapter deepCleanVideosAdapter;
-    DeepCleanVideosTask deepCleanImagesTask;
     RecyclerView deepCleanAllVideos_rv;
 
     Utils utils;
@@ -59,11 +58,11 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements SelectAl
         deepCleanVideosClean_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> pathList = deepCleanVideosAdapter.getList();
+                List<CommonModel> pathList = deepCleanVideosAdapter.getList();
                 if (isSend) {
-                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext()
-                            , pathList, "Videos");
-                    fileMoverTask.execute();
+//                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext()
+//                            , pathList.get(), "Videos");
+//                    fileMoverTask.execute();
 
                 } else {
                     View view = getLayoutInflater()
@@ -93,17 +92,18 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements SelectAl
                     yes_ll.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
                             for (int i = 0; i < pathList.size(); i++) {
                                 try {
-                                    file = new File(pathList.get(i));
-                                    utils.scanaddedFile(pathList.get(i));
-                                } catch (Exception e) {
+                                    file = new File(pathList.get(i).getPath());
+                                    utils.scanaddedFile(pathList.get(i).getPath());
+                                  } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                             dialog.dismiss();
-                            loadData();
-                        }
+                            deepCleanVideosAdapter.removeDeleted();
+                         }
                     });
                 }
             }
@@ -138,7 +138,8 @@ public class DeepCleanAllVideosAct extends AppCompatActivity implements SelectAl
 
     public void loadData() {
         deepCleanVideosAdapter = new DeepCleanVideosAdapter(this, this);
-        deepCleanImagesTask = new DeepCleanVideosTask(this, deepCleanVideosAdapter, deepCleanAllVideos_rv);
-        deepCleanImagesTask.execute();
+        new DeepCleanVideosTask(this, deepCleanVideosAdapter, deepCleanAllVideos_rv);
+        deepCleanVideosAdapter.notifyDataSetChanged();
+
     }
 }

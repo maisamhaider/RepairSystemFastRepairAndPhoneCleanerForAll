@@ -13,7 +13,7 @@ import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
 
-public class WhatsAppAudioListAct extends WhatsAppBaseActivity implements  SelectAll{
+public class WhatsAppAudioListAct extends WhatsAppBaseActivity implements SelectAll {
 
     String[] fileNames;
     Utils utils;
@@ -34,9 +34,9 @@ public class WhatsAppAudioListAct extends WhatsAppBaseActivity implements  Selec
         selectAll_cb1 = findViewById(R.id.selectAll_cb1);
 
         type = "audios";
-        commonAdapter = new CommonAdapter(this, CommonAdapter.AUDIO,this);
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
-        whatsAppCommonTask.execute();
+        commonAdapter = new CommonAdapter(this, CommonAdapter.AUDIO, this);
+        new WhatsAppCommonTask(this,
+                commonAdapter, rvCleanWhatsApp, type);
         whatsAppAudioList_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,12 +62,10 @@ public class WhatsAppAudioListAct extends WhatsAppBaseActivity implements  Selec
     @Override
     public void selectAll(boolean isSelectAll) {
 
-        if (isSelectAll)
-        {
+        if (isSelectAll) {
             selectAll_cb1.setChecked(true);
             b = true;
-        }
-        else {
+        } else {
             selectAll_cb1.setChecked(false);
             b = false;
 

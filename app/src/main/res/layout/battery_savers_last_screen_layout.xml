@@ -5,7 +5,7 @@
     android:id="@+id/powerSavingLastScreenMain_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background">
+    android:background="@color/colorPrimaryDark">
 
 
     <TextView
@@ -20,11 +20,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/gifImageView6"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/ic_no_draining"
+        android:src="@drawable/ic_battery_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

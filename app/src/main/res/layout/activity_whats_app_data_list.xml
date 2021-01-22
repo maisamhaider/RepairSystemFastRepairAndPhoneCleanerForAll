@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".activities.WhatsAppAudioListAct">
 
     <TextView
-        android:textColor="@android:color/black"
         android:id="@+id/select_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/selectAll_cb1"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:gravity="center"
         android:text="select/deselect"
-        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/whatsApp_rv"
+        app:layout_constraintEnd_toStartOf="@+id/selectAll_cb1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,13 +58,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:layout_margin="10dp"
         android:id="@+id/clean_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
+        android:background="@drawable/white_curved_ripple"
         android:text="@string/clean"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

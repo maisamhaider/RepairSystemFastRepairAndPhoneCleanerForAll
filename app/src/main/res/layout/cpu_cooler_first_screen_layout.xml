@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cpuCoolingFirstScreenMain_cl"
     android:layout_width="match_parent"
-    android:background="@drawable/ic_background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView8"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/scanning_gif"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView86"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView31"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/scan" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline55"
@@ -27,9 +29,10 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <TextView
+        android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         android:text="CPU COOLING"
+        android:text="CPU COOLING"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -46,6 +49,7 @@
         app:layout_constraintGuide_percent="0.8" />
 
     <TextView
+        android:id="@+id/textView86"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SCANNING THE CPU..."

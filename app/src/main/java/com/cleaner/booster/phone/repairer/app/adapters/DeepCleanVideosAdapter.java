@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,36 +20,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeepCleanVideosAdapter extends
-        RecyclerView.Adapter<DeepCleanVideosAdapter.WhatsAppStatusHolder>  implements SelectAll {
+        RecyclerView.Adapter<DeepCleanVideosAdapter.WhatsAppStatusHolder> implements SelectAll {
     Context context;
     List<CommonModel> fileList;
-    List<String> list;
+    List<CommonModel> list;
     WhatsAppStatusHolder holder;
     SelectAll selectAll;
-    public DeepCleanVideosAdapter(Context context,SelectAll selectAll) {
+
+    public DeepCleanVideosAdapter(Context context, SelectAll selectAll) {
         this.context = context;
         list = new ArrayList<>();
-        this.selectAll =  selectAll;
+        this.selectAll = selectAll;
 
     }
 
 
     public void setFileList(List<CommonModel> fileList) {
-        this.fileList = fileList;
-    }
+         this.fileList = fileList;
+     }
 
-    public List<String> getList() {
+    public List<CommonModel> getList() {
         return list;
     }
 
-    public void setList(List<String> list) {
+    public void removeDeleted(){
+        for (int i = 0; i < list.size(); i++) {
+            if (fileList.contains(list.get(i))){
+                fileList.remove(list.get(i));
+            }
+        }
+        notifyDataSetChanged();
+        list.clear();
+    }
+
+    public void setList(List<CommonModel> list) {
         this.list = list;
     }
 
     @NonNull
     @Override
     public WhatsAppStatusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.deep_clean_videos_rv_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.deep_clean_videos_rv_layout,
+                parent, false);
         holder = new WhatsAppStatusHolder(view);
         return holder;
     }
@@ -56,45 +69,33 @@ public class DeepCleanVideosAdapter extends
     @Override
     public void onBindViewHolder(@NonNull WhatsAppStatusHolder holder, int position) {
 
-        final String videoString = fileList.get(position).getPath();
+        final CommonModel videoString = fileList.get(position);
 
-        if (list.contains(videoString))
-        {
-
-            holder.selectVideo_iv.setImageResource(R.drawable.ic_select);
-        }else
-        {
-            holder.selectVideo_iv.setImageResource(R.drawable.ic_deselect);
+        if (list.contains(videoString)) {
+            holder.selectVideo_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                    , R.drawable.ic_selected, null));
+        } else {
+            holder.selectVideo_iv.setImageBitmap(null);
         }
         Glide.with(context)
-                .load(videoString)
+                .load(videoString.getPath())
                 .into(holder.deepCleanVideosRv_iv);
 
 
         holder.videoAdapter_cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!list.contains(videoString))
-                {
+                if (!list.contains(videoString)) {
                     list.add(videoString);
-                    if (list.size()== fileList.size())
-                    {
+                    if (list.size() == fileList.size()) {
                         selectAll.selectAll(true);
                     }
-                    holder.selectVideo_iv.setImageResource(R.drawable.ic_select);
-                }
-                else
-                {
+                    holder.selectVideo_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                            , R.drawable.ic_selected, null));
+                } else {
                     list.remove(videoString);
-                    if (list.size()== fileList.size())
-                    {
-                        selectAll.selectAll(true);
-                    }
-                    else
-                    {
-                        selectAll.selectAll(false);
-                    }
-                    holder.selectVideo_iv.setImageResource(R.drawable.ic_deselect);
+                    selectAll.selectAll(list.size() == fileList.size());
+                    holder.selectVideo_iv.setImageBitmap(null);
 
                 }
             }
@@ -106,27 +107,27 @@ public class DeepCleanVideosAdapter extends
     public int getItemCount() {
         return fileList.size();
     }
-    public SelectAll getSelectAll()
-    {
+
+    public SelectAll getSelectAll() {
         return this;
     }
+
     private void selectAll() {
-        if(!list.isEmpty())
-        {
+        if (!list.isEmpty()) {
             list.clear();
         }
         for (CommonModel path : fileList) {
-            list.add(path.getPath());
-            holder.selectVideo_iv.setImageResource(R.drawable.ic_select);
+            list.add(path);
+            holder.selectVideo_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                    ,R.drawable.ic_selected,null));
             notifyDataSetChanged();
         }
     }
 
     private void clearList() {
-        if(!list.isEmpty())
-        {
+        if (!list.isEmpty()) {
             list.clear();
-            holder.selectVideo_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selectVideo_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
     }
@@ -139,10 +140,12 @@ public class DeepCleanVideosAdapter extends
             clearList();
         }
     }
+
     class WhatsAppStatusHolder extends RecyclerView.ViewHolder {
 
-        ImageView deepCleanVideosRv_iv,selectVideo_iv;
+        ImageView deepCleanVideosRv_iv, selectVideo_iv;
         ConstraintLayout videoAdapter_cl;
+
         public WhatsAppStatusHolder(@NonNull View itemView) {
             super(itemView);
 

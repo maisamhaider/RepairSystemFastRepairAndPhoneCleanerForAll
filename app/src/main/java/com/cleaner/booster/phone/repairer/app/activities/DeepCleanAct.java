@@ -1,7 +1,5 @@
 package com.cleaner.booster.phone.repairer.app.activities;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,14 +7,14 @@ import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.permission.Permissions;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
@@ -26,8 +24,7 @@ public class DeepCleanAct extends BaseActivity {
     private Permissions permissions;
     private ConstraintLayout deepCleanWhatsApp_cl, deeCleanImages_cl, deeCleanVideos_cl, deeCleanAudios_cl, deeCleanAppData_cl, deepCleanLargeFiles_cl, deeCleanInstallationPkg_cl;
     private ImageView deepCleanWhatsAppNext_iv, deepCleanImagesNext_iv, deepCleanVideosNext_iv, deepCleanAudiosNext_iv,deepCleanLargeFilesNext_iv, deepCleanAppDataNext_iv, deepCleanInstallationPkgsNext_iv;
-    ImageView deepCleanImage_iv1, deepCleanImage_iv2, deepCleanImage_iv3, deepCleanVideos_iv1, deepCleanVideos_iv2, deepCleanVideos_iv3;
-    TextView deepCleanWhatsAppDataSize_tv, deepCleanImagesSize_tv, deepCleanVideosSize_tv,
+     TextView deepCleanWhatsAppDataSize_tv, deepCleanImagesSize_tv, deepCleanVideosSize_tv,
             deepCleanAudiosDataSize_tv,deepCleanAppDataSize_tv, deepCleanLargeFileSize_tv, deepCleanInstallationPkgseSize_tv
             ,deepCleanDetail_tv,deepCleanMainTotalDataSize_tv;
     ProgressBar deepClean_pb;
@@ -59,13 +56,6 @@ public class DeepCleanAct extends BaseActivity {
         deepCleanLargeFilesNext_iv = findViewById(R.id.deepCleanLargeFilesNext_iv);
         deepCleanInstallationPkgsNext_iv = findViewById(R.id.deepCleanInstallationPkgsNext_iv);
 
-        deepCleanImage_iv1 = findViewById(R.id.deepCleanImage_iv1);
-        deepCleanImage_iv2 = findViewById(R.id.deepCleanImage_iv2);
-        deepCleanImage_iv3 = findViewById(R.id.deepCleanImage_iv3);
-
-        deepCleanVideos_iv1 = findViewById(R.id.deepCleanVideos_iv1);
-        deepCleanVideos_iv2 = findViewById(R.id.deepCleanVideos_iv2);
-        deepCleanVideos_iv3 = findViewById(R.id.deepCleanVideos_iv3);
 
 
 
@@ -208,48 +198,6 @@ public class DeepCleanAct extends BaseActivity {
 
             });
             animatorText.start();
-
-
-            if (utils.getAllImagePaths().size()  - 1 >= 0)
-            {
-                Glide.with(getBaseContext())
-                        .load(utils.getAllImagePaths().get(utils.getAllImagePaths().size() - 1).getPath())
-                        .into(deepCleanImage_iv1);
-
-            } if (utils.getAllImagePaths().size()  - 2 >= 0)
-            {
-
-                Glide.with(getApplicationContext())
-                        .load(utils.getAllImagePaths().get(utils.getAllImagePaths().size() - 2).getPath())
-                        .into(deepCleanImage_iv2);
-            } if (utils.getAllImagePaths().size()  - 3 >= 0)
-            {
-                Glide.with(getApplicationContext())
-                        .load(utils.getAllImagePaths().get(utils.getAllImagePaths().size() - 3).getPath())
-                        .into(deepCleanImage_iv3);
-            }
-
-            if (utils.getAllVideosPaths().size() - 1 >= 0)
-            {
-                Glide.with(getApplicationContext())
-                        .load(utils.getAllVideosPaths().get(utils.getAllVideosPaths().size() - 1).getPath())
-                        .into(deepCleanVideos_iv1);
-
-            }
-            if (utils.getAllVideosPaths().size() - 2 >= 0)
-            {
-                Glide.with(getApplicationContext())
-                        .load(utils.getAllVideosPaths().get(utils.getAllVideosPaths().size() - 2).getPath())
-                        .into(deepCleanVideos_iv2);
-            }
-            if (utils.getAllVideosPaths().size() - 3 >= 0)
-            {
-                Glide.with(getApplicationContext())
-                        .load(utils.getAllVideosPaths().get(utils.getAllVideosPaths().size() - 3).getPath())
-                        .into(deepCleanVideos_iv3);
-            }
-
-
 
             super.onPostExecute(s);
         }

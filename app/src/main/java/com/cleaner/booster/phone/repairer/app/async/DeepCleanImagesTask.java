@@ -1,13 +1,13 @@
 package com.cleaner.booster.phone.repairer.app.async;
 
 import android.content.Context;
-import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cleaner.booster.phone.repairer.app.activities.DeepCleanAllDocsAct;
 import com.cleaner.booster.phone.repairer.app.activities.DeepCleanAllImagesAct;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanImagesAdapter;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DeepCleanImagesTask extends AsyncTask<Void, Integer, String> {
+public class DeepCleanImagesTask {
 
     Context context;
     private DeepCleanImagesAdapter deepCleanImagesAdapter;
@@ -36,44 +36,38 @@ public class DeepCleanImagesTask extends AsyncTask<Void, Integer, String> {
         utils = new Utils(context);
         loadingDialog = new LoadingDialog(context);
 
-
-    }
-
-    @Override
-    protected void onPreExecute() {
         try {
             loadingDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    protected String doInBackground(Void... voids) {
         list = utils.getAllImagePaths();
-    return null;
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.setLayoutManager(new GridLayoutManager(context,3));
+                deepCleanImagesAdapter.setFileList(list);
+                recyclerView.setAdapter(deepCleanImagesAdapter);
+                deepCleanImagesAdapter.notifyDataSetChanged();
+                loadingDialog.dismiss();
+                if (list.isEmpty())
+                {
+                    ((DeepCleanAllImagesAct)context).selectAll_cb1.setVisibility(View.GONE);
+                    ((DeepCleanAllImagesAct)context).select_tv.setVisibility(View.GONE);
+                    ((DeepCleanAllImagesAct)context).noData_tv.setVisibility(View.VISIBLE);
+
+                }
+                else
+                {
+                    ((DeepCleanAllImagesAct)context).selectAll_cb1.setVisibility(View.VISIBLE);
+                    ((DeepCleanAllImagesAct)context).select_tv.setVisibility(View.VISIBLE);
+                    ((DeepCleanAllImagesAct)context).noData_tv.setVisibility(View.GONE);
+                }
+            }
+        },2500);
+
+
     }
 
-    @Override
-    protected void onPostExecute(String s) {
-        recyclerView.setLayoutManager(new GridLayoutManager(context,3));
-        deepCleanImagesAdapter.setFileList(list);
-        recyclerView.setAdapter(deepCleanImagesAdapter);
-        deepCleanImagesAdapter.notifyDataSetChanged();
-            loadingDialog.dismiss();
-        if (list.isEmpty())
-        {
-            ((DeepCleanAllImagesAct)context).selectAll_cb1.setVisibility(View.GONE);
-            ((DeepCleanAllImagesAct)context).select_tv.setVisibility(View.GONE);
-            ((DeepCleanAllImagesAct)context).noData_tv.setVisibility(View.VISIBLE);
-
-        }
-        else
-        {
-            ((DeepCleanAllImagesAct)context).selectAll_cb1.setVisibility(View.VISIBLE);
-            ((DeepCleanAllImagesAct)context).select_tv.setVisibility(View.VISIBLE);
-            ((DeepCleanAllImagesAct)context).noData_tv.setVisibility(View.GONE);
-        }
-        }
 }

@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.activities.OnImageVideoAct;
 import com.cleaner.booster.phone.repairer.app.models.CommonModel;
-import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +43,8 @@ public class WhatsAppStatusAdapter extends RecyclerView.Adapter<WhatsAppStatusAd
     @NonNull
     @Override
     public WhatsAppStatusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.whats_app_saver_rv_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.whats_app_saver_rv_layout, parent, false);
 
         return new WhatsAppStatusHolder(view);
     }
@@ -56,13 +56,11 @@ public class WhatsAppStatusAdapter extends RecyclerView.Adapter<WhatsAppStatusAd
             if (sendList.contains(imageVideoString))
             {
                 Glide.with(context)
-                        .load(R.drawable.ic_select)
+                        .load(R.drawable.ic_selected)
                         .into(holder.select_deselected_iv);
             }else
             {
-                Glide.with(context)
-                        .load(R.drawable.ic_deselect)
-                        .into(holder.select_deselected_iv);
+                holder.select_deselected_iv.setImageBitmap(null);
             }
 
         if (imageVideoString.endsWith("mp4"))
@@ -103,27 +101,42 @@ public class WhatsAppStatusAdapter extends RecyclerView.Adapter<WhatsAppStatusAd
                     context.startActivity(intent);
 
                 }
+
             }
         });
-
-        holder.select_deselected_iv.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
+
+
+
                     if (!sendList.contains(imageVideoString))
                     {
-                      sendList.add(imageVideoString);
+
+                        sendList.add(imageVideoString);
                         Glide.with(context)
-                                .load(R.drawable.ic_select)
+                                .load(R.drawable.ic_selected)
                                 .into(holder.select_deselected_iv);
                     }else
                     {
                         sendList.remove(imageVideoString);
-                        Glide.with(context)
-                                .load(R.drawable.ic_deselect)
-                                .into(holder.select_deselected_iv);
+                        holder.select_deselected_iv.setImageBitmap(null);
 
                     }
 
+                return true;
+            }
+        });
+        holder.isVideo_iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, OnImageVideoAct.class);
+                if (isSaved)
+                {
+                    intent.putExtra("isSaved",true);
+                }
+                intent.putExtra("imageOrVideoPath",imageVideoString);
+                context.startActivity(intent);
             }
         });
 
@@ -136,7 +149,7 @@ public class WhatsAppStatusAdapter extends RecyclerView.Adapter<WhatsAppStatusAd
 
     class WhatsAppStatusHolder extends RecyclerView.ViewHolder {
 
-        CircularImageView imageView;
+        ImageView imageView;
         ImageView isVideo_iv,select_deselected_iv;
 
         public WhatsAppStatusHolder(@NonNull View itemView) {

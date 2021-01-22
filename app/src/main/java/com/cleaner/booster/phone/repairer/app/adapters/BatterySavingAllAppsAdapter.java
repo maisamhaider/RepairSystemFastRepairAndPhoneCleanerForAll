@@ -52,7 +52,8 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
     @NonNull
     @Override
     public AllAppsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.battery_saving_apps_lo, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.battery_saving_apps_lo,
+                parent, false);
        holder = new AllAppsHolder(view);
         return holder;
     }
@@ -65,9 +66,9 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
         final String appPackage = apps.get(position);
 
         if (checkList.contains(appPackage)) {
-            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_select);
+            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_selected);
         } else {
-            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_deselect);
+            holder.batterySavingApp_iv.setImageBitmap(null);
         }
 
 
@@ -84,10 +85,10 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
 
                 if (checkList.contains(packageName)) {
                     checkList.remove(packageName);
-                    holder.batterySavingApp_iv.setImageResource(R.drawable.ic_deselect);
+                    holder.batterySavingApp_iv.setImageBitmap(null);
                 } else {
                         checkList.add(packageName);
-                        holder.batterySavingApp_iv.setImageResource(R.drawable.ic_select);
+                        holder.batterySavingApp_iv.setImageResource(R.drawable.ic_selected);
                 }
 //                notifyDataSetChanged();
             }
@@ -110,7 +111,7 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
         }
         for (String path : apps) {
             checkList.add(path);
-            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_select);
+            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_selected);
             notifyDataSetChanged();
         }
     }
@@ -119,7 +120,7 @@ public class BatterySavingAllAppsAdapter extends RecyclerView.Adapter<BatterySav
         if(!checkList.isEmpty())
         {
             checkList.clear();
-            holder.batterySavingApp_iv.setImageResource(R.drawable.ic_deselect);
+            holder.batterySavingApp_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
 

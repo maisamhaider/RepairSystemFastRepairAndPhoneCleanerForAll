@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_1_improve_your_charging_process"
-            android:textColor="@color/colorTextTwo"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_2_real_time_reminder_to_help_you_avoid_overcharging"
-            android:textColor="@color/colorTextTwo"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/white_ripple_orange_bg_d"
+        android:background="@drawable/white_ripple_sky_blue_bg_d"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/white_ripple_orange_bg_d"
+            android:background="@drawable/white_ripple_sky_blue_bg_d"
             android:gravity="center"
             android:text="@string/enable_now"
             android:textColor="@color/standard_white"

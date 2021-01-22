@@ -31,7 +31,6 @@ public abstract class WhatsAppBaseActivity extends AppCompatActivity {
     CheckBox selectAll_cb1;
     boolean b = false;
 
-
     public void alertDialog() {
         View view = getLayoutInflater().inflate(R.layout.are_you_sure_to_delete_dialog_layout, null, false);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -85,9 +84,8 @@ public abstract class WhatsAppBaseActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
         }
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
-        whatsAppCommonTask.execute();
-        commonAdapter.notifyDataSetChanged();
+     new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
+         commonAdapter.notifyDataSetChanged();
     }
     public void toggleVisibility(boolean isRvVisible) {
         if (isRvVisible){

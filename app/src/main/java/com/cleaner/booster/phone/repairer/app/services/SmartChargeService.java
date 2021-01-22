@@ -11,18 +11,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.cleaner.booster.phone.repairer.app.R;
-import com.cleaner.booster.phone.repairer.app.activities.MainActivity;
 import com.cleaner.booster.phone.repairer.app.receivers.FastChargingChargerReceiver;
 
 import java.util.Calendar;
@@ -44,7 +39,8 @@ public class SmartChargeService extends Service {
     private String createNotificationChannel(NotificationManager notificationManager) {
         String channelId = "my_service_channelid";
         String channelName = "My Foreground Service";
-        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_MIN);
+        NotificationChannel channel = new NotificationChannel(channelId, channelName,
+                NotificationManager.IMPORTANCE_MIN);
         // omitted the LED color
         channel.setImportance(NotificationManager.IMPORTANCE_NONE);
         channel.setLockscreenVisibility(Notification.VISIBILITY_SECRET);
@@ -56,15 +52,19 @@ public class SmartChargeService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? createNotificationChannel(notificationManager) : "Phone Repair";
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId).setSmallIcon(R.drawable.ic_launcher_foreground)
+            NotificationManager notificationManager = (NotificationManager)
+                    getSystemService(Context.NOTIFICATION_SERVICE);
+            String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ?
+                    createNotificationChannel(notificationManager) : "Phone Repair";
+            NotificationCompat.Builder notificationBuilder = new
+                    NotificationCompat.Builder(this, channelId).setSmallIcon(R.drawable.ic_launcher_foreground)
                     .setContentTitle("Phone Repair")
                     .setContentText("Apps service run to perform function correctly.")
                     .setStyle(new NotificationCompat.BigTextStyle()
                             .bigText("Apps service run to perform function correctly"))
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-            Notification notification = notificationBuilder.setOngoing(true).setSmallIcon(R.drawable.ic_launcher_foreground)
+            Notification notification = notificationBuilder.setOngoing(true)
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
                     .setContentInfo(" ")
                     .setCategory(NotificationCompat.CATEGORY_SERVICE).build();
             startForeground(100, notification);
@@ -115,8 +115,10 @@ public class SmartChargeService extends Service {
                 PendingIntent.FLAG_ONE_SHOT);
 
         //Restart the service once it has been killed android
-        AlarmManager alarmService = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-        alarmService.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 100, restartServicePI);
+        AlarmManager alarmService = (AlarmManager)
+                getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        alarmService.set(AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + 100, restartServicePI);
 
     }
 

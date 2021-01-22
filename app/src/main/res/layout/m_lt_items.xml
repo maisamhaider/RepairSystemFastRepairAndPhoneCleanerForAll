@@ -6,8 +6,9 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
     android:elevation="8dp"
-    android:paddingBottom="12dp"
     android:orientation="vertical"
+    android:background="@color/colorBackground"
+    android:paddingBottom="12dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView11">
@@ -15,7 +16,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
@@ -38,30 +39,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <View
+                android:scaleY="1.14"
+                android:background="@drawable/ic_blue_black"
                 android:id="@+id/view7"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/orange_one_d"
-                app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline18"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/repair_iv"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view7"
-                app:layout_constraintEnd_toEndOf="@+id/view7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline18"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/view7"
-                app:layout_constraintTop_toTopOf="@+id/view7"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_repair__phone_white" />
 
 
@@ -69,45 +68,49 @@
                 android:id="@+id/repair_tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="Repair phone"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/repair_tv2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline18"
-                app:layout_constraintTop_toTopOf="@+id/view7"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/repair_tv2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:maxLines="1"
                 android:text="Make your android phone fast"
-                android:textColor="@color/colorTextTwo"
+                android:ellipsize="end"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
                 app:layout_constraintStart_toStartOf="@+id/repair_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/repair_tv1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/ic_arrow_next"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
@@ -130,76 +133,81 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <View
-                android:layout_margin="8dp"
                 android:id="@+id/view8"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/orange_one_d"
+                android:scaleY="1.14"
+                android:background="@drawable/ic_blue_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline19"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/smartCharge_iv"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_margin="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/view8"
                 app:layout_constraintEnd_toEndOf="@+id/view8"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/view8"
                 app:layout_constraintTop_toTopOf="@+id/view8"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_smart_charge_white" />
 
 
             <TextView
+                android:layout_marginStart="10dp"
                 android:id="@+id/smartCharge_tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Smart Charge"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/smartCharge_tv2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline19"
-                app:layout_constraintTop_toTopOf="@+id/view8"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.50"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/smartCharge_tv2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:maxLines="1"
+                android:layout_marginEnd="8dp"
                 android:text="Remind you charging state to avoid overcharging"
-                android:textColor="@color/colorTextTwo"
+                android:ellipsize="end"
+
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/smartCharge_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/smartCharge_tv1" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
@@ -222,31 +230,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <View
-                android:layout_margin="8dp"
                 android:id="@+id/view9"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/orange_one_d"
+                android:scaleY="1.14"
+                android:background="@drawable/ic_blue_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline20"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/cleanWhatsApp_iv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="8dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:scaleType="center"
                 app:layout_constraintBottom_toBottomOf="@+id/view9"
                 app:layout_constraintEnd_toEndOf="@+id/view9"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/view9"
                 app:layout_constraintTop_toTopOf="@+id/view9"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_clean_whatsapp_white" />
 
 
@@ -254,45 +261,50 @@
                 android:id="@+id/cleanWhatsApp_tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="Clean WhatsApp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/cleanWhatsApp_tv2"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView5"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline20"
-                app:layout_constraintTop_toTopOf="@+id/view9"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/cleanWhatsApp_tv2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:maxLines="1"
                 android:text="Delete useless file in WhatsApp"
-                android:textColor="@color/colorTextTwo"
+                android:ellipsize="end"
+
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView5"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/cleanWhatsApp_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/cleanWhatsApp_tv1" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
@@ -315,76 +327,79 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <View
-                android:layout_margin="8dp"
                 android:id="@+id/view10"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/orange_one_d"
+                android:scaleY="1.14"
+                android:background="@drawable/ic_blue_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline21"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/visitToAppStore_iv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="8dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/view10"
                 app:layout_constraintEnd_toEndOf="@+id/view10"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/view10"
                 app:layout_constraintTop_toTopOf="@+id/view10"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_smart_cleanup_white" />
 
 
             <TextView
+                android:layout_marginStart="10dp"
                 android:id="@+id/visitToAppStore_tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Deep Clean"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/visitToAppStore_tv2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline21"
-                app:layout_constraintTop_toTopOf="@+id/view10"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/visitToAppStore_tv2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:maxLines="1"
                 android:text="Clean up files deeply to release more space"
-                android:textColor="@color/colorTextTwo"
+                android:ellipsize="end"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView4"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/visitToAppStore_tv1"
                 app:layout_constraintTop_toBottomOf="@+id/visitToAppStore_tv1" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
@@ -407,30 +422,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.18" />
 
             <View
-                android:layout_margin="8dp"
                 android:id="@+id/view11"
                 android:layout_width="0dp"
+                android:scaleY="1.14"
                 android:layout_height="0dp"
-                android:background="@drawable/orange_one_d"
+                android:background="@drawable/ic_blue_black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline22"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_s_internet"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="8dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/view11"
                 app:layout_constraintEnd_toEndOf="@+id/view11"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/view11"
                 app:layout_constraintTop_toTopOf="@+id/view11"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/ic_internet_speed_white" />
 
 
@@ -441,36 +455,40 @@
                 android:text="Internet Speed"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_d_internet"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline22"
-                app:layout_constraintTop_toTopOf="@+id/view11"
-                app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/tv_d_internet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:maxLines="1"
                 android:text="You can test your internet speed "
-                android:textColor="@color/colorTextTwo"
+                android:ellipsize="end"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView3"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/tv_s_internet"
                 app:layout_constraintTop_toBottomOf="@+id/tv_s_internet" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_next" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

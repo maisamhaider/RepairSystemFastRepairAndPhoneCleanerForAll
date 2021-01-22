@@ -5,15 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:background="@android:color/white">
-
+    android:background="@color/colorBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,151 +28,220 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView12"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="@android:color/white"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/storage" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+
                 android:id="@+id/textView29"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="10dp"
                 android:text="Storage"
-                android:textColor="@android:color/white"
-                android:textSize="10sp"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/pgb_storage"
-                app:layout_constraintEnd_toStartOf="@+id/guideline23"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView12"
-                app:layout_constraintTop_toTopOf="@+id/imageView12"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="57dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline23"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <TextView
-                android:id="@+id/storageProPercent_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12%"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/pgb_storage"
-                app:layout_constraintEnd_toEndOf="@+id/pgb_storage"
-                app:layout_constraintStart_toStartOf="@+id/pgb_storage"
-                app:layout_constraintTop_toTopOf="@+id/pgb_storage" />
-
-
-            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
-                android:id="@+id/pgb_storage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                app:direction="clockwise"
-                app:drawDot="false"
-                app:enableProgressAnimation="true"
-                app:fillBackground="false"
-                app:layout_constraintBottom_toTopOf="@+id/guideline25"
-                app:layout_constraintEnd_toStartOf="@+id/guideline23"
-                app:layout_constraintStart_toStartOf="@+id/guideline23"
-                app:layout_constraintTop_toTopOf="@+id/guideline25"
-                app:progressBackgroundColor="#74C8C8C8"
-                app:progressBackgroundStrokeWidth="4dp"
-                app:progressCap="round"
-                app:progressColor="@android:color/white"
-                app:progressStrokeWidth="4dp"
-                app:startAngle="280"
-                app:textColor="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/tv_storage_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="4dp"
                 android:text="1532MB  3.7GB"
-                android:textColor="@color/colorWhite"
+
                 android:textSize="10sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/stackedHorChart"
+                app:layout_constraintEnd_toEndOf="@+id/stackedHorChart" />
+
+            <com.cleaner.booster.phone.repairer.app.utils.customprogresschart.StackedHorizontalChart
+                android:id="@+id/stackedHorChart"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/white_bg"
+                android:max="100"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/pgb_storage"
-                app:layout_constraintHorizontal_bias="0.515"
-                app:layout_constraintStart_toStartOf="@+id/pgb_storage"
-                app:layout_constraintTop_toBottomOf="@+id/pgb_storage"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView29"
+                app:layout_constraintVertical_bias="0.538" />
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/stackedHorChart"
+                app:layout_constraintStart_toStartOf="@+id/stackedHorChart"
+                app:layout_constraintTop_toBottomOf="@+id/stackedHorChart">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <View
+                        android:id="@+id/view46"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/photos_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView100"
+                        app:layout_constraintEnd_toStartOf="@+id/textView100"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView100" />
+
+                    <TextView
+                        android:layout_marginStart="6dp"
+                        android:id="@+id/textView100"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Photos"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view46"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+
+                        android:id="@+id/view51"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/videos_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView101"
+                        app:layout_constraintStart_toEndOf="@+id/textView100"
+                        app:layout_constraintTop_toTopOf="@+id/textView101" />
+
+
+                    <TextView
+                        android:id="@+id/textView101"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Videos"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view51"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/view53"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/audios_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView101"
+                        app:layout_constraintStart_toEndOf="@+id/textView101"
+                        app:layout_constraintTop_toTopOf="@+id/textView101" />
+
+                    <TextView
+                        android:layout_marginStart="6dp"
+                        android:id="@+id/textView104"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Audios"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view53"
+                        app:layout_constraintTop_toTopOf="parent" />
+<View
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/view55"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/apps_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView104"
+                        app:layout_constraintStart_toEndOf="@+id/textView104"
+                        app:layout_constraintTop_toTopOf="@+id/textView104" />
+
+                    <TextView
+                        android:layout_marginStart="6dp"
+                        android:id="@+id/textView106"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view55"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/view54"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:background="@drawable/free_circle"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView105"
+                        app:layout_constraintStart_toEndOf="@+id/textView106"
+                        app:layout_constraintTop_toTopOf="@+id/textView105" />
+
+                    <TextView
+                        android:layout_marginStart="6dp"
+                        android:id="@+id/textView105"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view54"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </HorizontalScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/white">
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/cpu_temperature"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView14"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_temp" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline27"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline28"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
 
             <TextView
+                android:id="@+id/textView92"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="10dp"
                 android:text="CPU Temperature"
-                android:maxEms="10"
-                android:textColor="@android:color/white"
-                android:textSize="10sp"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_num"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView13"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -174,126 +250,173 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="89"
-                android:textColor="@color/colorWhite"
-                android:textSize="50sp"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/guideline27"
-                app:layout_constraintEnd_toStartOf="@+id/guideline28"
-                app:layout_constraintStart_toStartOf="@+id/guideline28"
-                app:layout_constraintTop_toTopOf="@+id/guideline27" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView91"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView91"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="°C"
-                android:textColor="@color/standard_white"
-                android:textSize="10sp"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_num"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_num"
-                app:layout_constraintTop_toTopOf="@+id/guideline27"
-                app:layout_constraintVertical_bias="0.13" />
+                app:layout_constraintEnd_toStartOf="@+id/appCompatImageView14" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/far_tv"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/left_curved_background_bg"
+                    android:gravity="center"
+                    android:text="°F"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/cel_tv"
+                    android:layout_width="50dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/right_curved_primary_bg"
+                    android:gravity="center"
+                    android:text="°C"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:layout_weight="1">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline30"
-                android:layout_width="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+            <TextView
+                android:id="@+id/textView102"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline29"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/ram"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_margin="10dp"
+                android:text="Ram Info"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView31"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="4dp"
-                android:text="RAM"
-                android:textColor="@android:color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/pgb_ram"
-                app:layout_constraintEnd_toStartOf="@+id/guideline29"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/imageView14"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/tv_ram_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="1532MB    3.7GB"
-                android:textColor="@color/colorWhite"
-                android:textSize="10sp"
-                android:textStyle="bold"
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/pgb_ram"
-                app:layout_constraintStart_toStartOf="@+id/pgb_ram"
-                app:layout_constraintTop_toBottomOf="@+id/pgb_ram"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintEnd_toStartOf="@+id/chartPie"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView102">
 
-            <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
-                android:id="@+id/pgb_ram"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                app:direction="clockwise"
-                app:drawDot="false"
-                app:enableProgressAnimation="true"
-                app:fillBackground="false"
-                app:layout_constraintBottom_toTopOf="@+id/guideline30"
-                app:layout_constraintEnd_toStartOf="@+id/guideline29"
-                app:layout_constraintStart_toStartOf="@+id/guideline29"
-                app:layout_constraintTop_toTopOf="@+id/guideline30"
-                app:progressBackgroundColor="#73C8C8C8"
-                app:progressBackgroundStrokeWidth="4dp"
-                app:progressCap="round"
-                app:progressColor="@android:color/white"
-                app:progressStrokeWidth="4dp"
-                app:startAngle="280"
-                app:textColor="@android:color/transparent" />
 
-            <TextView
-                android:id="@+id/ramProPercent_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12%"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/pgb_ram"
-                app:layout_constraintEnd_toEndOf="@+id/pgb_ram"
-                app:layout_constraintStart_toStartOf="@+id/pgb_ram"
-                app:layout_constraintTop_toTopOf="@+id/pgb_ram" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="300dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView102">
+
+
+                    <TextView
+                        android:id="@+id/textView88"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Free RAM : "
+                        app:layout_constraintBottom_toTopOf="@+id/textView87"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+
+                    <TextView
+                        android:id="@+id/textView87"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Used RAM :"
+                        app:layout_constraintBottom_toTopOf="@+id/textView85"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView88" />
+
+                    <TextView
+                        android:id="@+id/textView85"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Total RAM :"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+                    <TextView
+                        android:id="@+id/freeRam_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView88"
+                        app:layout_constraintStart_toEndOf="@+id/textView88"
+                        app:layout_constraintTop_toTopOf="@+id/textView88" />
+
+                    <TextView
+                        android:id="@+id/usedRam_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView87"
+                        app:layout_constraintStart_toEndOf="@+id/textView87"
+                        app:layout_constraintTop_toTopOf="@+id/textView87" />
+
+                    <TextView
+                        android:id="@+id/totalRam_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView85"
+                        app:layout_constraintStart_toEndOf="@+id/textView85"
+                        app:layout_constraintTop_toTopOf="@+id/textView85" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+
+            <LinearLayout
+                android:id="@+id/chartPie"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </LinearLayout>
+            <!--
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />-->
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

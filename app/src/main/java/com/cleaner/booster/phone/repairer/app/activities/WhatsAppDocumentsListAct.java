@@ -33,8 +33,7 @@ public class WhatsAppDocumentsListAct extends WhatsAppBaseActivity implements Se
 
         type = "doc";
         commonAdapter = new CommonAdapter(this,CommonAdapter.DOCUMENT,this);
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this,commonAdapter,rvCleanWhatsApp,type);
-        whatsAppCommonTask.execute();
+          new WhatsAppCommonTask(this,commonAdapter,rvCleanWhatsApp,type);
 
         whatsAppDocList_btn.setOnClickListener(new View.OnClickListener() {
             @Override

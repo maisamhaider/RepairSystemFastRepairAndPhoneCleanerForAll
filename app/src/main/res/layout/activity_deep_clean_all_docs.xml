@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".activities.DeepCleanAllDocsAct">
 
     <TextView
@@ -24,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-         android:buttonTint="@color/checkbox_selector"
         android:layout_marginEnd="16dp"
+        android:buttonTint="@color/checkbox_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +44,11 @@
         android:id="@+id/deepCleanDocs_ll"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
+        android:layout_margin="10dp"
+        android:background="@drawable/white_curved_ripple"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,16 +61,17 @@
             android:background="@android:color/transparent"
             android:gravity="center"
             android:text="CLEAN"
-            android:textColor="@color/standard_white"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="11dp"
             tools:layout_editor_absoluteY="594dp" />
     </LinearLayout>
+
     <TextView
-        android:visibility="gone"
         android:id="@+id/noData_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="No data" />
+        android:text="No data"
+        android:visibility="gone" />
 </RelativeLayout>

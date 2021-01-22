@@ -1,8 +1,9 @@
 package com.cleaner.booster.phone.repairer.app.async;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DeepCleanDocsTask extends AsyncTask<Void, Integer, String> {
+public class DeepCleanDocsTask {
 
     Context context;
     private DeepCleanAdapter deepCleanAdapter;
@@ -35,47 +36,37 @@ public class DeepCleanDocsTask extends AsyncTask<Void, Integer, String> {
         this.list = new ArrayList<>();
         utils = new Utils(context);
         loadingDialog = new LoadingDialog(context);
-
-
-    }
-
-    @Override
-    protected void onPreExecute() {
         try {
             loadingDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    protected String doInBackground(Void... voids) {
         list = utils.getAllDocs(String.valueOf(Environment.getExternalStorageDirectory()));
-    return null;
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                deepCleanAdapter.setFileList(list);
+                recyclerView.setAdapter(deepCleanAdapter);
+                deepCleanAdapter.notifyDataSetChanged();
+                loadingDialog.dismiss();
+                if (list.isEmpty())
+                {
+                    ((DeepCleanAllDocsAct)context).selectAll_cb1.setVisibility(View.GONE);
+                    ((DeepCleanAllDocsAct)context).select_tv.setVisibility(View.GONE);
+                    ((DeepCleanAllDocsAct)context).noData_tv.setVisibility(View.VISIBLE);
+
+                }
+                else
+                {
+                    ((DeepCleanAllDocsAct)context).selectAll_cb1.setVisibility(View.VISIBLE);
+                    ((DeepCleanAllDocsAct)context).select_tv.setVisibility(View.VISIBLE);
+                    ((DeepCleanAllDocsAct)context).noData_tv.setVisibility(View.GONE);
+                }
+            }
+        });
     }
-
-    @Override
-    protected void onPostExecute(String s) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        deepCleanAdapter.setFileList(list);
-        recyclerView.setAdapter(deepCleanAdapter);
-        deepCleanAdapter.notifyDataSetChanged();
-            loadingDialog.dismiss();
-        if (list.isEmpty())
-        {
-            ((DeepCleanAllDocsAct)context).selectAll_cb1.setVisibility(View.GONE);
-            ((DeepCleanAllDocsAct)context).select_tv.setVisibility(View.GONE);
-            ((DeepCleanAllDocsAct)context).noData_tv.setVisibility(View.VISIBLE);
-
-        }
-        else
-        {
-            ((DeepCleanAllDocsAct)context).selectAll_cb1.setVisibility(View.VISIBLE);
-            ((DeepCleanAllDocsAct)context).select_tv.setVisibility(View.VISIBLE);
-            ((DeepCleanAllDocsAct)context).noData_tv.setVisibility(View.GONE);
-        }
-        }
 }

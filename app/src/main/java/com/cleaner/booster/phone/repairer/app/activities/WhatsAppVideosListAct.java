@@ -32,8 +32,7 @@ public class WhatsAppVideosListAct extends WhatsAppBaseActivity implements Selec
 
         type = "videos";
         commonAdapter = new CommonAdapter(this, CommonAdapter.VIDEO, this);
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
-        whatsAppCommonTask.execute();
+        new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type);
 
         whatsAppVideosList_btn.setOnClickListener(new View.OnClickListener() {
             @Override

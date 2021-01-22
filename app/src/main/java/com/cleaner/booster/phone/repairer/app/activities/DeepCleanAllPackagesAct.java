@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cleaner.booster.phone.repairer.app.R;
 import com.cleaner.booster.phone.repairer.app.adapters.DeepCleanAdapter;
 import com.cleaner.booster.phone.repairer.app.async.DeepCleanPkgsTask;
-import com.cleaner.booster.phone.repairer.app.async.FileMoverTask;
 import com.cleaner.booster.phone.repairer.app.interfaces.SelectAll;
+import com.cleaner.booster.phone.repairer.app.models.CommonModel;
 import com.cleaner.booster.phone.repairer.app.utils.Utils;
 
 import java.io.File;
@@ -27,8 +27,7 @@ import java.util.List;
 public class DeepCleanAllPackagesAct extends AppCompatActivity implements SelectAll {
 
     DeepCleanAdapter deepCleanAdapter;
-    DeepCleanPkgsTask deepCleanPkgsTask;
-    RecyclerView deepCleanAllPkgs_rv;
+     RecyclerView deepCleanAllPkgs_rv;
     Utils utils;
     File file;
 
@@ -61,11 +60,11 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
         deepCleanPkgs_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<String> pathList = deepCleanAdapter.getList();
+                List<CommonModel> pathList = deepCleanAdapter.getList();
 
                 if (isSend) {
-                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(), pathList, "Packages");
-                    fileMoverTask.execute();
+//                    FileMoverTask fileMoverTask = new FileMoverTask(getApplicationContext(), pathList, "Packages");
+//                    fileMoverTask.execute();
 
                 } else {
 
@@ -98,7 +97,7 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
                         public void onClick(View v) {
                             for (int i = 0; i < pathList.size(); i++) {
                                 try {
-                                    file = new File(pathList.get(i));
+                                    file = new File(pathList.get(i).getPath());
                                     file.delete();
 //                        utils.scanaddedFile(imagePathList.get(i));
                                 } catch (Exception e) {
@@ -106,7 +105,7 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
                                 }
                             }
                             dialog.dismiss();
-                            loadData();
+                            deepCleanAdapter.removeDeleted();
                         }
                     });
                 }
@@ -141,7 +140,7 @@ public class DeepCleanAllPackagesAct extends AppCompatActivity implements Select
 
     public void loadData() {
         deepCleanAdapter = new DeepCleanAdapter(this, this,3);
-        deepCleanPkgsTask = new DeepCleanPkgsTask(this, deepCleanAdapter, deepCleanAllPkgs_rv);
-        deepCleanPkgsTask.execute();
+        new DeepCleanPkgsTask(this, deepCleanAdapter, deepCleanAllPkgs_rv);
+         deepCleanAdapter.notifyDataSetChanged();
     }
 }

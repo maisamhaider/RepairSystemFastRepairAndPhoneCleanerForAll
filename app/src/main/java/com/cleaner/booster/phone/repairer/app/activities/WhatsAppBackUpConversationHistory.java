@@ -37,8 +37,7 @@ public class WhatsAppBackUpConversationHistory extends WhatsAppBaseActivity impl
         type = "BUCH";
 
         commonAdapter = new CommonAdapter(this, CommonAdapter.BACKUP,this);
-        WhatsAppCommonTask whatsAppCommonTask = new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type );
-        whatsAppCommonTask.execute();
+         new WhatsAppCommonTask(this, commonAdapter, rvCleanWhatsApp, type );
 
         whatsAppBUCHList_btn.setOnClickListener(new View.OnClickListener() {
             @Override

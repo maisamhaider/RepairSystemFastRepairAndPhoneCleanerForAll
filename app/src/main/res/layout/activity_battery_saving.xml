@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/standard_white"
+    android:background="@color/colorBackground"
     tools:context=".activities.BatterySavingAct">
 
     <View
         android:id="@+id/view13"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/ic_background"
+        android:background="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/guideline35"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,11 +27,7 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/white_stroke_curved_d"
+        android:background="@drawable/bellow_curved_sky_blue_bg"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,12 +49,12 @@
 
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_power_saving_two"
+            android:id="@+id/imageView30"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_battery_white"
             app:layout_constraintBottom_toTopOf="@+id/guideline37"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,13 +64,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="30"
-            android:textColor="@color/colorTextOne"
+            android:textColor="@android:color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline36"
+            app:layout_constraintTop_toBottomOf="@+id/imageView30"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -82,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Apps are found"
-            android:textColor="@color/colorTextOne"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/powerSavingMainAppsAmount_tv"
@@ -149,11 +145,12 @@
 
 
         <LinearLayout
+            android:layout_margin="10dp"
             android:id="@+id/powerSavingBtn_ll"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/black_bg_white_ripple_flat_d"
+            android:background="@drawable/white_curved_ripple"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -163,10 +160,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:gravity="center"
+                 android:gravity="center"
                 android:text="OPTIMIZE BATTERY LIFE"
-                android:textColor="@color/standard_white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="11dp"
                 tools:layout_editor_absoluteY="594dp" />
@@ -179,7 +175,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/noDrainingApp_cl"
         android:layout_width="match_parent"
-        android:background="@android:color/white"
+        android:background="@color/colorBackground"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4">
@@ -188,14 +184,14 @@
             android:id="@+id/noDrainingApp_iv"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/ic_no_draing_apps"
-            app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -233,7 +229,6 @@
 
     <include
         android:visibility="gone"
-
         layout="@layout/battery_savers_first_screen_layout" />
 
     <include

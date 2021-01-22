@@ -5,11 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
-import android.util.Log;
 
 import com.cleaner.booster.phone.repairer.app.activities.ChargingLockedScreenAct;
 
-import static android.content.Intent.ACTION_SCREEN_OFF;
 import static android.content.Intent.ACTION_SCREEN_ON;
 
 
@@ -18,7 +16,6 @@ public class FastChargingChargerReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.w("TAG", "onReceive: ");
 
         int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
         boolean onScreenOn = intent.getAction().equals(ACTION_SCREEN_ON);

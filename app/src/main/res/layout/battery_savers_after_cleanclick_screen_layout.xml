@@ -5,30 +5,36 @@
     android:id="@+id/hibernatingAppsPkgMain_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background">
+    android:background="@color/colorBackground">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="POWER SAVING"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/textView90"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+         android:text="POWER SAVING"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/battery_saving_gif"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/battery_lav"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView90"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/full_battery" />
 
     <TextView
         android:id="@+id/textView30"
@@ -36,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:text="Hibernating apps to save power"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hibernatingAppsPkg_tv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="60/300"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/guideline31"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

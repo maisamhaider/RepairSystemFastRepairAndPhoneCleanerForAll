@@ -7,30 +7,41 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/junkCollecting_giv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/junk_collecting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
 
-    <pl.droidsonroids.gif.GifImageView
-        android:visibility="gone"
-        android:id="@+id/junkBinDone_giv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/junkBinDone_iv"
+        android:layout_width="200dp"
+        android:visibility="invisible"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/trashCleanLast_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView51"
+        app:srcCompat="@drawable/ic_bin_sky_blue" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_av"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/dustbin" />
+
 
     <TextView
         android:id="@+id/textView51"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
         android:text="JUNK FILES"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,13 +51,13 @@
         android:id="@+id/trashCleanLast_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="CLEAN TRASH"
+         android:text="CLEAN TRASH"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView51"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintTop_toBottomOf="@+id/junkBinDone_iv"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

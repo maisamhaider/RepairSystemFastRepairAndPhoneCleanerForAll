@@ -54,15 +54,7 @@
                 app:sb_checked_color="@color/colorPrimaryDark"
                 app:sb_uncheck_color="@color/colorAccent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
+      </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView3"
@@ -122,15 +114,7 @@
                 app:sb_checked_color="@color/colorPrimaryDark"
                 app:sb_uncheck_color="@color/colorAccent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
+      </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -177,14 +161,6 @@
                 app:sb_checked_color="@color/colorPrimaryDark"
                 app:sb_uncheck_color="@color/colorAccent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <View
-            android:layout_width="8dp"
-            android:layout_height="30dp"
-            android:layout_gravity="right|top"
-            android:background="@drawable/black_bar_d"
-            app:layout_constraintBottom_toTopOf="@+id/guideline8"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.cardview.widget.CardView>
+      </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

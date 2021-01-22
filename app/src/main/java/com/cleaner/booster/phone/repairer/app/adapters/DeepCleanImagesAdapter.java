@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -21,7 +22,7 @@ import java.util.List;
 public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImagesAdapter.WhatsAppStatusHolder> implements SelectAll {
     Context context;
     List<CommonModel> fileList;
-    List<String> list;
+    List<CommonModel> list;
     WhatsAppStatusHolder holder;
     SelectAll selectAll;
 
@@ -36,12 +37,20 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
         this.fileList = fileList;
 
     }
-
-    public List<String> getList() {
+    public void removeDeleted(){
+        for (int i = 0; i < list.size(); i++) {
+            if (fileList.contains(list.get(i))){
+                fileList.remove(list.get(i));
+            }
+        }
+        notifyDataSetChanged();
+        list.clear();
+    }
+    public List<CommonModel> getList() {
         return list;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<CommonModel> list) {
         this.list = list;
     }
 
@@ -57,17 +66,18 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
     @Override
     public void onBindViewHolder(@NonNull WhatsAppStatusHolder holder, int position) {
 
-        final String imageString = fileList.get(position).getPath();
+        final CommonModel imageString = fileList.get(position);
 
         if (list.contains(imageString)) {
-            holder.selectImage_iv.setImageResource(R.drawable.ic_select);
+            holder.selectImage_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                    ,R.drawable.ic_selected,null));
         } else {
-            holder.selectImage_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selectImage_iv.setImageBitmap(null);
         }
 
 
         Glide.with(context)
-                .load(imageString)
+                .load(imageString.getPath())
                 .into(holder.deepCleanRv_iv);
 
         holder.imageAdapter_cl.setOnClickListener(new View.OnClickListener() {
@@ -76,16 +86,14 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
                 if (list.contains(imageString)) {
                     list.remove(imageString);
                     selectAll.selectAll(false);
-                    holder.selectImage_iv.setImageResource(R.drawable.ic_deselect);
+                    holder.selectImage_iv.setImageBitmap(null);
                 } else {
                     list.add(imageString);
-                    if (list.size() == fileList.size()) {
-                        selectAll.selectAll(true);
-                    } else {
-                        selectAll.selectAll(false);
-                    }
-                    holder.selectImage_iv.setImageResource(R.drawable.ic_select);
-                }
+                    selectAll.selectAll(list.size() == fileList.size());
+
+                    holder.selectImage_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                            ,R.drawable.ic_selected,null));
+                 }
             }
         });
     }
@@ -105,8 +113,9 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
             list.clear();
         }
         for (CommonModel path : fileList) {
-            list.add(path.getPath());
-            holder.selectImage_iv.setImageResource(R.drawable.ic_select);
+            list.add(path);
+            holder.selectImage_iv.setImageDrawable(ResourcesCompat.getDrawable(context.getResources()
+                    ,R.drawable.ic_selected,null));
             notifyDataSetChanged();
         }
     }
@@ -114,7 +123,7 @@ public class DeepCleanImagesAdapter extends RecyclerView.Adapter<DeepCleanImages
     private void clearList() {
         if (!list.isEmpty()) {
             list.clear();
-            holder.selectImage_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selectImage_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
     }

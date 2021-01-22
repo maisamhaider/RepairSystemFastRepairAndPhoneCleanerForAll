@@ -1,10 +1,9 @@
 package com.cleaner.booster.phone.repairer.app.async;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Environment;
-import android.view.View;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WhatsAppCommonTask extends AsyncTask<Void, Integer, String> {
+public class WhatsAppCommonTask  {
 
     Context context;
     private CommonAdapter commonAdapter;
@@ -41,22 +40,11 @@ public class WhatsAppCommonTask extends AsyncTask<Void, Integer, String> {
         utils = new Utils(context);
         loadingDialog = new LoadingDialog(context);
         this.whatThingIs = whatThingIs;
-
-
-    }
-
-    @Override
-    protected void onPreExecute() {
         try {
             loadingDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    protected String doInBackground(Void... voids) {
         if (whatThingIs.matches("videos")) {
             file1 = new File(Environment.getExternalStorageDirectory().getPath() + "/WhatsApp/Media/WhatsApp Video");
         } else if (whatThingIs.matches("audios")) {
@@ -85,23 +73,21 @@ public class WhatsAppCommonTask extends AsyncTask<Void, Integer, String> {
 
         list = utils.getListFiles(file1);
 
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
+                commonAdapter.setFileList(list);
+                recyclerView.setAdapter(commonAdapter);
+                commonAdapter.notifyDataSetChanged();
+                loadingDialog.dismiss();
+                ((WhatsAppBaseActivity) context).toggleVisibility(list.size() > 0);
+            }
+        }, 2500);
 
-        return null;
+
     }
 
-    @Override
-    protected void onPostExecute(String s) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        commonAdapter.setFileList(list);
-        recyclerView.setAdapter(commonAdapter);
-        commonAdapter.notifyDataSetChanged();
-        loadingDialog.dismiss();
-        if (list.size() > 0) {
-            ((WhatsAppBaseActivity) context).toggleVisibility(true);
-        } else {
-            ((WhatsAppBaseActivity) context).toggleVisibility(false);
-        }
-    }
 }

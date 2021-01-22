@@ -22,7 +22,7 @@ public class DeepCleanAdapter extends
         RecyclerView.Adapter<DeepCleanAdapter.WhatsAppStatusHolder> implements SelectAll {
     Context context;
     List<CommonModel> fileList;
-    List<String> list;
+    List<CommonModel> list;
     WhatsAppStatusHolder holder;
     SelectAll selectAll;
 
@@ -43,12 +43,20 @@ public class DeepCleanAdapter extends
         this.fileList = fileList;
 
     }
-
-    public List<String> getList() {
+    public void removeDeleted(){
+        for (int i = 0; i <list .size(); i++) {
+            if (fileList.contains(list.get(i))){
+                fileList.remove(list.get(i));
+            }
+        }
+        notifyDataSetChanged();
+        list.clear();
+    }
+    public List<CommonModel> getList() {
         return list;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<CommonModel> list) {
         this.list = list;
     }
 
@@ -64,21 +72,20 @@ public class DeepCleanAdapter extends
     @Override
     public void onBindViewHolder(@NonNull WhatsAppStatusHolder holder, int position) {
 
-        final String pkgString = fileList.get(position).getPath();
-        final String pkgName = fileList.get(position).getName();
+        final CommonModel commonModel = fileList.get(position);
 
-        if (list.contains(pkgString)) {
-            holder.selectPkg_iv.setImageResource(R.drawable.ic_select);
+        if (list.contains(commonModel)) {
+            holder.selectPkg_iv.setImageResource(R.drawable.ic_selected);
         } else {
-            holder.selectPkg_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selectPkg_iv.setImageBitmap(null);
         }
-        holder.deepCleanPkgName_tv.setText(pkgName);
+        holder.deepCleanPkgName_tv.setText(commonModel.getName());
         if (fileType == AUDIO) {
             holder.deepCleanPgksRv_iv.
-                    setImageDrawable(context.getResources().getDrawable(R.drawable.ic_audio));
+                    setImageDrawable(context.getResources().getDrawable(R.drawable.ic_music));
         } else if (fileType == DOCUMENT) {
             holder.deepCleanPgksRv_iv
-                    .setImageDrawable(context.getResources().getDrawable(R.drawable.ic_received_file));
+                    .setImageDrawable(context.getResources().getDrawable(R.drawable.ic_file));
         } else if (fileType == PACKAGES) {
             holder.deepCleanPgksRv_iv
                     .setImageDrawable(context.getResources()
@@ -87,20 +94,20 @@ public class DeepCleanAdapter extends
         holder.pkgAdapter_cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (list.contains(pkgString)) {
-                    list.remove(pkgString);
+                if (list.contains(commonModel)) {
+                    list.remove(commonModel);
                     selectAll.selectAll(false);
-                    holder.selectPkg_iv.setImageResource(R.drawable.ic_deselect);
+                    holder.selectPkg_iv.setImageBitmap(null);
 
                 } else {
-                    list.add(pkgString);
+                    list.add(commonModel);
                     if (list.size() == fileList.size()) {
                         selectAll.selectAll(true);
                     }
                     else {
                         selectAll.selectAll(false);
                     }
-                    holder.selectPkg_iv.setImageResource(R.drawable.ic_select);
+                    holder.selectPkg_iv.setImageResource(R.drawable.ic_selected);
                 }
             }
         });
@@ -121,8 +128,8 @@ public class DeepCleanAdapter extends
             list.clear();
         }
         for (CommonModel path : fileList) {
-            list.add(path.getPath());
-            holder.selectPkg_iv.setImageResource(R.drawable.ic_select);
+            list.add(path);
+            holder.selectPkg_iv.setImageResource(R.drawable.ic_selected);
             notifyDataSetChanged();
         }
     }
@@ -130,7 +137,7 @@ public class DeepCleanAdapter extends
     private void clearList() {
         if (!list.isEmpty()) {
             list.clear();
-            holder.selectPkg_iv.setImageResource(R.drawable.ic_deselect);
+            holder.selectPkg_iv.setImageBitmap(null);
             notifyDataSetChanged();
         }
     }

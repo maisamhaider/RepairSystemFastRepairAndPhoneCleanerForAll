@@ -68,7 +68,8 @@ public class ProcessesAdapter extends RecyclerView.Adapter<ProcessesAdapter.AllA
     @NonNull
     @Override
     public AllAppsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from( parent.getContext() ).inflate( R.layout.processes_lo, parent, false );
+        View view = LayoutInflater.from( parent.getContext() ).inflate( R.layout.processes_lo,
+                parent, false );
         return new AllAppsHolder( view );
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".activities.DeepCleanAllVideosAct">
 
     <TextView
@@ -43,24 +44,26 @@
         android:id="@+id/deepCleanVideosClean_ll"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/black_bg_white_ripple_flat_d"
+        android:layout_margin="10dp"
+        android:background="@drawable/white_curved_ripple"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="16dp">
 
-    <TextView
-        android:id="@+id/deepCleanVideosCleanBtn_tv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="CLEAN"
-        android:textColor="@color/standard_white"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="594dp" />
+        <TextView
+            android:id="@+id/deepCleanVideosCleanBtn_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CLEAN"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="594dp" />
     </LinearLayout>
     <TextView
         android:visibility="gone"
